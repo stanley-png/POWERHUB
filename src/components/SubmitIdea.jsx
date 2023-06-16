@@ -6,7 +6,7 @@ import { selectUser } from "../features/userSlice";
 import { db } from "../utils/firebase";
 import firebase from "firebase/compat/app";
 
-const SubmitProject = () => {
+const SubmitIdea = () => {
   const user = useSelector(selectUser);
   const navigate = useNavigate();
   const [fName, setFName] = useState("");
@@ -46,14 +46,14 @@ const SubmitProject = () => {
 
     if (isValid) {
       // Check if user has already submitted
-      db.collection("projects")
+      db.collection("projectIdeas")
         .where("email", "==", email)
         .get()
         .then((querySnapshot) => {
           if (!querySnapshot.empty) {
             setErrorMessage("You have already registered for this event");
           } else {
-            db.collection("projects")
+            db.collection("projectIdeas")
               .add({
                 fName: fName,
                 lName: lName,
@@ -80,20 +80,14 @@ const SubmitProject = () => {
         });
     }
   };
-
   return (
     <main>
       <div className="md:mt-24">
         <div className="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
           <div className="grid md:grid-cols-2  gap-12">
             <div>
-              <img
-                className="w-full mt-3 rounded-md max-h-[30vh]"
-                src="https://powerlearnproject.org/_next/image?url=%2Fassets%2Fperk2.jpeg&w=640&q=75"
-                alt=""
-              />
               <h1 className="mt-2 text-2xl font-bold text-gray-800 sm:text-4xl lg:text-4xl lg:leading-tight">
-                Showcase your project with PowerHub
+                Submit your project Idea with PowerHub
               </h1>
 
               <p className="mt-3 md:text-lg text-gray-800 "></p>
@@ -108,17 +102,16 @@ const SubmitProject = () => {
                   us to support you Thankyou
                 </h2>
               </div>
-              <div className="mt-6">
-                <p className="mb-3 text-sm">
-                  If You have not completed your project but have an idea,
-                  kindly submit it here instead.
+              <div className="mt-6 ">
+                <p className="mb-3">
+                  If You have a complete project, kindly submit it here instead.
                 </p>
                 <button
-                  onClick={() => navigate("/idea-submission")}
+                  onClick={() => navigate("/submitProject")}
                   type="button"
                   className="py-3 px-4  mt-2 rounded-md bg-[#C1224F] border border-transparent font-semibold text-white hover:text-white hover:bg-[#13ABC4] text-sm "
                 >
-                  Submit Idea Instead
+                  Submit Project
                 </button>
               </div>
             </div>
@@ -126,7 +119,7 @@ const SubmitProject = () => {
             <div className="relative">
               <div className="flex flex-col border border-gray-300 rounded-xl p-4 sm:p-6 lg:p-10 ">
                 <h2 className="text-xl font-semibold text-gray-800 ">
-                  Fill in the form to submit your Project.
+                  Fill in the form to submit your Idea.
                 </h2>
 
                 <form>
@@ -179,7 +172,11 @@ const SubmitProject = () => {
                     </div>
                     <div>
                       <label className="block text-sm text-gray-700 font-medium ">
-                        Github Link
+                        Github Link (
+                        <span className="text-xs text-gray-500">
+                          You can create an Empty repo and keep updating it
+                        </span>
+                        )
                       </label>
                       <input
                         type="text"
@@ -192,16 +189,21 @@ const SubmitProject = () => {
                     </div>
                     <div>
                       <label className="block text-sm text-gray-700 font-medium ">
-                        Pitch Deck Link
+                        Project Description
                       </label>
-                      <input
+                      <textarea
+                        className="py-3 px-4 block w-full border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 border border-1"
+                        rows="5"
+                        placeholder="Briefly describe your project idea here..."
+                      ></textarea>
+                      {/* <input
                         type="text"
                         required
                         autoComplete
                         value={pitchDeck}
                         onChange={(e) => setPitchDeck(e.target.value)}
                         className="py-3 px-4 block w-full border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 border border-1"
-                      />
+                      /> */}
                     </div>
 
                     <div>
@@ -260,7 +262,7 @@ const SubmitProject = () => {
 
                     <div className="flex flex-col w-full mx-wd2 mx-auto rounded-lg">
                       <label className="block text-sm text-gray-700 font-medium ">
-                        Technology Used
+                        Technology Of Interest
                       </label>
                       <select
                         className=" p-2 cursor-pointer bg-white border rounded-md shadow-sm outline-none "
@@ -268,7 +270,7 @@ const SubmitProject = () => {
                         onChange={(e) => setHackCategory(e.target.value)}
                       >
                         <option value="" disabled>
-                          Select Technology Used
+                          Select Technology Of Interest
                         </option>
                         <option value="Web Development">Web Development</option>
                         <option value="Python & Django">Python & Django</option>
@@ -296,20 +298,20 @@ const SubmitProject = () => {
                       type="submit"
                       className="inline-flex justify-center items-center gap-x-3 text-center bg-[#C1224F] hover:bg-[#13ABC4] border border-transparent text-sm lg:text-base text-white font-medium rounded-md focus:outline-none focus:ring-2 focus:ring-[#C1224F] focus:ring-offset-2 focus:ring-offset-white transition py-3 px-4 "
                     >
-                      Submit Project
+                      Submit Idea
                     </button>
                   </div>
                   <div className="mt-3 grid">
                     <p className="mb-3 text-sm">
-                      If You have not completed your project but have an idea,
-                      kindly submit it here instead.
+                      If You have a complete project, kindly submit it here
+                      instead.
                     </p>
                     <button
-                      onClick={() => navigate("/idea-submission")}
+                      onClick={() => navigate("/submitProject")}
                       type="button"
                       className="inline-flex justify-center items-center gap-x-3 text-center bg-[#C1224F] hover:bg-[#13ABC4] border border-transparent text-sm lg:text-base text-white font-medium rounded-md focus:outline-none focus:ring-2 focus:ring-[#C1224F] focus:ring-offset-2 focus:ring-offset-white transition py-3 px-4 "
                     >
-                      Submit an Idea
+                      Submit a Project
                     </button>
                   </div>
                 </form>
@@ -322,4 +324,4 @@ const SubmitProject = () => {
   );
 };
 
-export default SubmitProject;
+export default SubmitIdea;
