@@ -31,7 +31,7 @@ const Header = () => {
         <a className="font-semibold text-white hover:text-[#EBFFFB] sm:py-6 px-4 md:px-0 cursor-pointer" href="#">Projects</a>
         <a className="font-semibold text-white hover:text-[#EBFFFB] sm:py-6 px-4 md:px-0 cursor-pointer" href="#">Specialization</a>
         <a className="font-semibold text-white hover:text-[#EBFFFB] sm:py-6 px-4 md:px-0 cursor-pointer" href="https://stirring-dodol-bca1da.netlify.app/blogs" target="_blank">Blog</a>
-        <a className="font-semibold text-white hover:text-[#EBFFFB] sm:py-6 px-4 md:px-0 cursor-pointer" href="#">Login</a>
+        <p className="font-semibold text-white hover:text-[#EBFFFB] sm:py-6 px-4 md:px-0 cursor-pointer" onClick={() => navigate("/login")}>Login</p>
       </div>
     </div>
   </nav>

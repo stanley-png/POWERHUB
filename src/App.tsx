@@ -6,6 +6,7 @@ import Footer from './components/StaticPages/Footer';
 import PageNotFound from './components/StaticPages/PageNotFound';
 import SubmitProject from './components/SubmitProject';
 import SubmitIdea from './components/SubmitIdea';
+import Login from './components/Login';
 import ContactUs from './components/StaticPages/ContactUs';
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -19,6 +20,7 @@ function App() {
       <Header/>
       <Routes>
         <Route path="/" element={<HomePage/>}/>
+        <Route path="/login" element={<Login/>}/>
         <Route path="/submitProject" element={<SubmitProject />} />
         <Route path="/idea-submission" element={<SubmitIdea />} />
         <Route path="/contact-us" element={<ContactUs />} />
