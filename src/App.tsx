@@ -2,6 +2,10 @@ import { useState } from 'react'
 import { Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import HomePage from './components/StaticPages/HomePage';
+import Footer from './components/StaticPages/Footer';
+import PageNotFound from './components/StaticPages/PageNotFound';
+import SubmitProject from './components/SubmitProject';
+import ContactUs from './components/StaticPages/ContactUs';
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 /* @ts-ignore */
@@ -12,8 +16,13 @@ function App() {
   return (
     <main>
       <Header/>
-      <HomePage/>
-      <h1>Hello power hub</h1>
+      <Routes>
+        <Route path="/" element={<HomePage/>}/>
+        <Route path="/submitProject" element={<SubmitProject />} />
+        <Route path="/contact-us" element={<ContactUs />} />
+        <Route path="*" element={<PageNotFound />} />
+      </Routes>
+      <Footer/>
     </main>
   )
 }

@@ -24,10 +24,13 @@ const Header = () => {
     </div>
     <div id="navbar-image-1" className="hs-collapse hidden overflow-hidden transition-all duration-300 basis-full bg-[#C1224F] rounded-md max-w-[60rem]  grow sm:block ">
       <div className="flex flex-col gap-y-4 gap-x-0 mt-5 mb-5 md:mb-0 sm:flex-row sm:items-center sm:justify-between sm:gap-y-0 sm:gap-x-7 sm:mt-0 sm:px-7">
-        <a className="font-semibold text-white hover:text-[#EBFFFB] sm:py-6 px-4 md:px-0 cursor-pointer" href="#" aria-current="page">Home</a>
-        <a className="font-semibold text-white hover:text-[#EBFFFB] sm:py-6 px-4 md:px-0 cursor-pointer" href="#">Alumni's</a>
-        <a className="font-semibold text-white hover:text-[#EBFFFB] sm:py-6 px-4 md:px-0 cursor-pointer" href="#">Work</a>
-        <a className="font-semibold text-white hover:text-[#EBFFFB] sm:py-6 px-4 md:px-0 cursor-pointer" href="#">Blog</a>
+        <p className="font-semibold text-white hover:text-[#EBFFFB] sm:py-6 px-4 md:px-0 cursor-pointer" onClick={() => navigate("/")} aria-current="page">Home</p>
+        <p className="font-semibold text-white hover:text-[#EBFFFB] sm:py-6 px-4 md:px-0 cursor-pointer" >Alumni's</p>
+        <p className="font-semibold text-white hover:text-[#EBFFFB] sm:py-6 px-4 md:px-0 cursor-pointer" onClick={() => navigate("/contact-us")}>Contact Us</p>
+        <a className="font-semibold text-white hover:text-[#EBFFFB] sm:py-6 px-4 md:px-0 cursor-pointer" href="#">Opportunities</a>
+        <a className="font-semibold text-white hover:text-[#EBFFFB] sm:py-6 px-4 md:px-0 cursor-pointer" href="#">Projects</a>
+        <a className="font-semibold text-white hover:text-[#EBFFFB] sm:py-6 px-4 md:px-0 cursor-pointer" href="#">Specialization</a>
+        <a className="font-semibold text-white hover:text-[#EBFFFB] sm:py-6 px-4 md:px-0 cursor-pointer" href="https://stirring-dodol-bca1da.netlify.app/blogs" target="_blank">Blog</a>
         <a className="font-semibold text-white hover:text-[#EBFFFB] sm:py-6 px-4 md:px-0 cursor-pointer" href="#">Login</a>
       </div>
     </div>

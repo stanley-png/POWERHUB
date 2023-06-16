@@ -8,7 +8,7 @@ const HomePage = () => {
       <div className="flex flex-wrap md:flex-nowrap gap-4 md:gap-8 xl:gap-20 md:items-center">
         <div className="mt-12 md:mt-0">
           <h1 className="block text-3xl font-bold text-gray-800 sm:text-4xl lg:text-6xl lg:leading-tight">
-            Start your tech career with{" "}
+            Showcase your project with{" "}
             <span className="bg-clip-text bg-gradient-to-tr from-[#13ABC4] to-[#C1224F] text-transparent">
               PowerHub
             </span>
@@ -17,17 +17,17 @@ const HomePage = () => {
             Be part or the team that make a change in the tech market.
           </p>
           <p className="text-lg text-gray-800  mt-3 pr-3">
-            Who are we? Power learn Boot-camp is a child start up of Power learn
-            project that Organizes, plans and hold Boot-camps at different
-            institutions.
+            Who are we? PowerHub is a platform for plp alumni, current learners and future learners to showcase their skills
+            project that organizations and investors would be interested in, plans and brings investors from different
+            institutions to invest in your project.
           </p>
 
-          <div className="mt-7 grid gap-3 w-full sm:inline-flex">
+          <div className="mt-7 grid gap-5 w-full sm:inline-flex">
             <p
               className="inline-flex justify-center items-center gap-x-3 text-center bg-[#C1224F] hover:bg-[#a5153e] border border-transparent text-sm lg:text-base text-white font-medium rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 focus:ring-offset-white transition py-3 px-4 cursor-pointer"
-              onClick={() => navigate("/")}
+              onClick={() => navigate("/submitProject")}
             >
-              Get started
+              Submit Project
               <svg
                 className="w-2.5 h-2.5"
                 width="16"
@@ -54,7 +54,7 @@ const HomePage = () => {
 
         <div className="relative">
           <img
-            className=" min-w-[350px] min-h-[300] rounded-md"
+            className=" min-w-[500px] min-h-[400px] rounded-md"
             src="https://powerlearnproject.org/_next/image?url=%2Fassets%2Fnetwork.jpeg&w=1080&q=75"
             alt="Image Description"
           />
