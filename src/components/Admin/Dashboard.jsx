@@ -58,10 +58,6 @@ const Dashboard = () => {
           <h1 class="block text-2xl font-bold text-gray-800 sm:text-3xl mt-4">
             Hello, {user.displayName}
           </h1>
-          {/* <p class="mt-2 text-lg text-gray-800 ">
-            This are the statistics of all the activities in plp BootCamp. Make
-            sure you perform every activity with control and on time.
-          </p> */}
         </header>
 
         <div class="max-w-7xl md:px-1  sm:px-6 mt-10">
