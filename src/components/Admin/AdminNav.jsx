@@ -1,5 +1,4 @@
 import React from "react";
-import env from "dotenv";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { selectUser } from "../../features/userSlice";
@@ -7,9 +6,7 @@ import { selectUser } from "../../features/userSlice";
 const AdminNav = () => {
   const user = useSelector(selectUser);
   const navigate = useNavigate();
-  const authorizedEmails = env.AUTHORIZED_EMAILS
-    ? env.AUTHORIZED_EMAILS.split(",")
-    : [];
+
   return (
     <main className="">
       <div className="sticky top-0 inset-x-0 z-20 bg-white border-y px-4 sm:px-6 md:px-8 lg:hidden">
@@ -116,7 +113,7 @@ const AdminNav = () => {
             <li>
               <p
                 className="flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-white hover:text-white rounded-md hover:bg-[#C1224F] cursor-pointer"
-                onClick={() => navigate("/submissions")}
+                onClick={() => navigate("/project-submissions")}
               >
                 <svg
                   className="w-3.5 h-3.5"
@@ -134,7 +131,7 @@ const AdminNav = () => {
             <li>
               <p
                 className="flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-white hover:text-white rounded-md hover:bg-[#C1224F] cursor-pointer"
-                onClick={() => navigate("/submissions")}
+                onClick={() => navigate("/ideas-submissions")}
               >
                 <svg
                   className="w-3.5 h-3.5"
