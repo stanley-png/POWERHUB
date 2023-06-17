@@ -10,12 +10,17 @@ import SubmitIdea from './components/SubmitIdea';
 import Login from './components/Login';
 import Specialization from './components/Specialization';
 import ContactUs from './components/StaticPages/ContactUs';
+import { useSelector } from 'react-redux';
+import { selectUser } from "./features/userSlice";
+import Dashboard from './components/Admin/Dashboard';
+
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 /* @ts-ignore */
 import('preline')
 
 function App() {
+  const user = useSelector(selectUser)
 
   return (
     <main>
@@ -28,6 +33,7 @@ function App() {
         <Route path="/specialization" element={<Specialization />} />
         <Route path="/alumni" element={<Alumni />} />
         <Route path="/contact-us" element={<ContactUs />} />
+        {user && <Route path="/admin" element={<Dashboard/>}/>}
         <Route path="*" element={<PageNotFound />} />
       </Routes>
       <Footer/>
