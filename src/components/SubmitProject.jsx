@@ -47,37 +47,26 @@ const SubmitProject = () => {
 
     if (isValid) {
       // Check if user has already submitted
+
       db.collection("projects")
-        .where("email", "==", email)
-        .get()
-        .then((querySnapshot) => {
-          if (!querySnapshot.empty) {
-            setErrorMessage("You have already registered for this event");
-          } else {
-            db.collection("projects")
-              .add({
-                fName: fName,
-                lName: lName,
-                email: user.email,
-                emailAddress: email,
-                githubLink: githubLink,
-                pitchDeck: pitchDeck,
-                phoneNumber: phoneNumber,
-                country: country,
-                cohort: cohort,
-                hackCategory: hackCategory,
-                timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-              })
-              .then(() => {
-                navigate("/submission-success");
-              })
-              .catch((error) => {
-                console.log("Error submitting registration", error);
-              });
-          }
+        .add({
+          fName: fName,
+          lName: lName,
+          email: user.email,
+          emailAddress: email,
+          githubLink: githubLink,
+          pitchDeck: pitchDeck,
+          phoneNumber: phoneNumber,
+          country: country,
+          cohort: cohort,
+          hackCategory: hackCategory,
+          timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+        })
+        .then(() => {
+          navigate("/submission-success");
         })
         .catch((error) => {
-          console.log("Error checking duplicate registration", error);
+          console.log("Error submitting registration", error);
         });
     }
   };
@@ -139,7 +128,7 @@ const SubmitProject = () => {
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 lg:gap-6">
                           <div>
                             <label className="block text-sm text-gray-700 font-medium ">
-                              Full Name
+                              First Name
                             </label>
                             <input
                               required

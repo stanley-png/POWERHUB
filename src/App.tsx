@@ -1,9 +1,10 @@
-import { useState } from 'react'
+import React,{ useState } from 'react'
 import { Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import HomePage from './components/StaticPages/HomePage';
 import Alumni from './components/StaticPages/Alumni';
 import Footer from './components/StaticPages/Footer';
+import SuccessPage from './components/StaticPages/SuccessPage';
 import PageNotFound from './components/StaticPages/PageNotFound';
 import SubmitProject from './components/SubmitProject';
 import SubmitIdea from './components/SubmitIdea';
@@ -13,6 +14,7 @@ import ContactUs from './components/StaticPages/ContactUs';
 import { useSelector } from 'react-redux';
 import { selectUser } from "./features/userSlice";
 import Dashboard from './components/Admin/Dashboard';
+import Submissions from './components/Admin/Submissions';
 
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -34,6 +36,8 @@ function App() {
         <Route path="/alumni" element={<Alumni />} />
         <Route path="/contact-us" element={<ContactUs />} />
         {user && <Route path="/admin" element={<Dashboard/>}/>}
+        <Route path="/project-submissions" element={<Submissions/>}/>
+        <Route path="/success" element={<SuccessPage/>}/>
         <Route path="*" element={<PageNotFound />} />
       </Routes>
       <Footer/>

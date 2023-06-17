@@ -3,7 +3,6 @@ import { useSelector } from "react-redux";
 import { selectUser } from "../../features/userSlice";
 import { db } from "../../utils/firebase";
 import AdminNav from "./AdminNav";
-import env from "dotenv";
 
 const Dashboard = () => {
   const user = useSelector(selectUser);
@@ -100,7 +99,7 @@ const Dashboard = () => {
 
                   <div class="text-center">
                     <h3 class="text-3xl sm:text-4xl lg:text-5xl font-semibold text-gray-800 ">
-                      750+
+                      0
                     </h3>
                   </div>
 
