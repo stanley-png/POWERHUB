@@ -12,8 +12,6 @@ const Specialization = () => {
   const [fName, setFName] = useState("");
   const [lName, setLName] = useState("");
   const [email, setEmail] = useState("");
-  const [githubLink, setGithubLink] = useState("");
-  const [pitchDeck, setPitchDeck] = useState("");
   const [country, setCountry] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [cohort, setCohort] = useState("");
@@ -25,7 +23,6 @@ const Specialization = () => {
       !fName.trim() ||
       !lName.trim() ||
       !email.trim() ||
-      !githubLink.trim() ||
       !phoneNumber.trim() ||
       !country.trim() ||
       !cohort.trim() ||
@@ -60,8 +57,6 @@ const Specialization = () => {
                 lName: lName,
                 email: user.email,
                 emailAddress: email,
-                githubLink: githubLink,
-                pitchDeck: pitchDeck,
                 phoneNumber: phoneNumber,
                 country: country,
                 cohort: cohort,
