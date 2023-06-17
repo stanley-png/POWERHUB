@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import HomePage from './components/StaticPages/HomePage';
+import Alumni from './components/StaticPages/Alumni';
 import Footer from './components/StaticPages/Footer';
 import PageNotFound from './components/StaticPages/PageNotFound';
 import SubmitProject from './components/SubmitProject';
@@ -25,6 +26,7 @@ function App() {
         <Route path="/submitProject" element={<SubmitProject />} />
         <Route path="/idea-submission" element={<SubmitIdea />} />
         <Route path="/specialization" element={<Specialization />} />
+        <Route path="/alumni" element={<Alumni />} />
         <Route path="/contact-us" element={<ContactUs />} />
         <Route path="*" element={<PageNotFound />} />
       </Routes>

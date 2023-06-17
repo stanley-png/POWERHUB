@@ -87,7 +87,10 @@ const Header = () => {
             >
               Home
             </p>
-            <p className="font-semibold text-white hover:text-[#EBFFFB] sm:py-6 px-4 md:px-0 cursor-pointer">
+            <p
+              className="font-semibold text-white hover:text-[#EBFFFB] sm:py-6 px-4 md:px-0 cursor-pointer"
+              onClick={() => navigate("/alumni")}
+            >
               Alumni's
             </p>
             <p
@@ -100,7 +103,7 @@ const Header = () => {
               className="font-semibold text-white hover:text-[#EBFFFB] sm:py-6 px-4 md:px-0 cursor-pointer"
               href="#"
             >
-              Opportunities
+              Events
             </a>
             <a
               className="font-semibold text-white hover:text-[#EBFFFB] sm:py-6 px-4 md:px-0 cursor-pointer"
@@ -108,12 +111,12 @@ const Header = () => {
             >
               Projects
             </a>
-            <a
+            <p
               className="font-semibold text-white hover:text-[#EBFFFB] sm:py-6 px-4 md:px-0 cursor-pointer"
-              href="#"
+              onClick={() => navigate("/specialization")}
             >
               Specialization
-            </a>
+            </p>
             <a
               className="font-semibold text-white hover:text-[#EBFFFB] sm:py-6 px-4 md:px-0 cursor-pointer"
               href="https://stirring-dodol-bca1da.netlify.app/blogs"

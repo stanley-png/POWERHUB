@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 const Specialization = () => {
   const user = useSelector(selectUser);
   const navigate = useNavigate();
-  return <>{!user ? <Login /> : <main>Specialization</main>}</>;
+  return <>{!user ? <Login /> : <main></main>}</>;
 };
 
 export default Specialization;
