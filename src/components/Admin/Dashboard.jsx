@@ -8,16 +8,13 @@ import AdminNav from "./AdminNav";
 const Dashboard = () => {
   const user = useSelector(selectUser);
   const [totalCoursesCount, setTotalCoursesCount] = useState(0);
-  const [totalAdvancedCoursesCount, setTotalAdvancedCoursesCount] = useState(0);
   const [publishedBlogsCount, setPublishedBlogsCount] = useState(0);
-  const [publishedBlogsCountPreviousWeek, setPublishedBlogsCountPreviousWeek] =
-    useState(0);
   const [signedUpUsersCount, setSignedUpUsersCount] = useState(0);
 
   useEffect(() => {
     const fetchTotalCoursesCount = async () => {
       try {
-        const blogsSnapshot = await db.collection("courses").get();
+        const blogsSnapshot = await db.collection("projects").get();
         const totalCoursesCount = blogsSnapshot.size;
         setTotalCoursesCount(totalCoursesCount);
       } catch (error) {
@@ -25,52 +22,13 @@ const Dashboard = () => {
       }
     };
 
-    const fetchAdvancedTotalCoursesCount = async () => {
-      try {
-        const blogsSnapshot = await db
-          .collection("courses")
-          .where("categoryName", "==", "Advanced Courses")
-          .get();
-        const totalAdvancedCoursesCount = blogsSnapshot.size;
-        setTotalAdvancedCoursesCount(totalAdvancedCoursesCount);
-      } catch (error) {
-        console.log("Error fetching courses", error);
-      }
-    };
-
     const fetchPublishedBlogsCount = async () => {
       try {
-        const blogsSnapshot = await db.collection("blogArticles").get();
+        const blogsSnapshot = await db.collection("specialization").get();
         const publishedBlogsCount = blogsSnapshot.size;
         setPublishedBlogsCount(publishedBlogsCount);
       } catch (error) {
         console.log("Error fetching published blogs count", error);
-      }
-    };
-
-    const fetchPublishedBlogsCountPreviousWeek = async () => {
-      try {
-        const currentDate = new Date();
-        const previousWeek = new Date(
-          currentDate.getFullYear(),
-          currentDate.getMonth(),
-          currentDate.getDate() - 7
-        );
-        const blogsSnapshot = await db
-          .collection("blogArticles")
-          .where(
-            "timestamp",
-            ">=",
-            firebase.firestore.Timestamp.fromDate(previousWeek)
-          )
-          .get();
-        const publishedBlogsCountPreviousWeek = blogsSnapshot.size;
-        setPublishedBlogsCountPreviousWeek(publishedBlogsCountPreviousWeek);
-      } catch (error) {
-        console.log(
-          "Error fetching published blogs count from previous week",
-          error
-        );
       }
     };
 
@@ -85,10 +43,8 @@ const Dashboard = () => {
       }
     };
 
-    fetchAdvancedTotalCoursesCount();
     fetchTotalCoursesCount();
     fetchPublishedBlogsCount();
-    fetchPublishedBlogsCountPreviousWeek();
     fetchSignedUpUsersCount();
   }, []);
   return (
@@ -123,15 +79,6 @@ const Dashboard = () => {
                   {totalCoursesCount}
                 </h3>
               </div>
-
-              <dl class="flex justify-center items-center divide-x divide-gray-200">
-                <dd class="flex items-center gap-1 text-left pl-3">
-                  <span class="text-sm font-semibold text-gray-800 ">
-                    {totalAdvancedCoursesCount}
-                  </span>
-                  <span class="block text-sm text-gray-500">Advanced</span>
-                </dd>
-              </dl>
             </div>
 
             <div class="flex flex-col gap-y-3 lg:gap-y-5 p-4 md:p-5 bg-white border shadow-sm rounded-xl">
@@ -153,12 +100,6 @@ const Dashboard = () => {
                   <span class="inline-block text-sm">{signedUpUsersCount}</span>
                   <span class="block text-sm text-gray-500">Profiles</span>
                 </dt>
-                {/* <dd class="text-left pl-3">
-              <span class="text-sm font-semibold text-gray-800">
-                7
-              </span>
-              <span class="block text-sm text-gray-500">last week</span>
-            </dd> */}
               </dl>
             </div>
 
@@ -175,15 +116,6 @@ const Dashboard = () => {
                   {publishedBlogsCount}
                 </h3>
               </div>
-
-              <dl class="flex justify-center items-center divide-x divide-gray-200">
-                <dd class="text-left flex gap-1 items-center">
-                  <span class="text-sm font-semibold text-gray-800">
-                    {publishedBlogsCountPreviousWeek}
-                  </span>
-                  <span class="block text-sm text-gray-500">last week</span>
-                </dd>
-              </dl>
             </div>
           </div>
         </div>
