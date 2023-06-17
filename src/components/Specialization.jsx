@@ -181,32 +181,6 @@ const Specialization = () => {
                             className="py-3 px-4 block w-full border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 border border-1"
                           />
                         </div>
-                        <div>
-                          <label className="block text-sm text-gray-700 font-medium ">
-                            Github Link
-                          </label>
-                          <input
-                            type="text"
-                            required
-                            autoComplete
-                            value={githubLink}
-                            onChange={(e) => setGithubLink(e.target.value)}
-                            className="py-3 px-4 block w-full border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 border border-1"
-                          />
-                        </div>
-                        <div>
-                          <label className="block text-sm text-gray-700 font-medium ">
-                            Pitch Deck Link
-                          </label>
-                          <input
-                            type="text"
-                            required
-                            autoComplete
-                            value={pitchDeck}
-                            onChange={(e) => setPitchDeck(e.target.value)}
-                            className="py-3 px-4 block w-full border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 border border-1"
-                          />
-                        </div>
 
                         <div>
                           <label className="block text-sm text-gray-700 font-medium ">
@@ -264,7 +238,7 @@ const Specialization = () => {
 
                         <div className="flex flex-col w-full mx-wd2 mx-auto rounded-lg">
                           <label className="block text-sm text-gray-700 font-medium ">
-                            Technology Used
+                            Module Of Specialization
                           </label>
                           <select
                             className=" p-2 cursor-pointer bg-white border rounded-md shadow-sm outline-none "
@@ -272,7 +246,7 @@ const Specialization = () => {
                             onChange={(e) => setHackCategory(e.target.value)}
                           >
                             <option value="" disabled>
-                              Select Technology Used
+                              Select Module Of Specialization
                             </option>
                             <option value="Web Development">
                               Web Development
@@ -283,11 +257,16 @@ const Specialization = () => {
                             <option value="Dart & Flutter">
                               Dart & Flutter
                             </option>
-                            <option value="Machine Learning">
-                              Machine Learning
+                            <option value="Python & Web">
+                              Python & Web Dev
                             </option>
-                            <option value="Artificial Intelligence">
-                              Artificial Intelligence
+                            <option value="Python & Dart">
+                              {" "}
+                              Python & Dart
+                            </option>
+                            <option value="Dart & Web">Dart & Web Dev</option>
+                            <option value="All 3 Core Modules">
+                              All the 3 core Modules
                             </option>
                             <option value="Other">Other</option>
                           </select>
