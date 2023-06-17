@@ -91,13 +91,8 @@ const Specialization = () => {
             <div className="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
               <div className="grid md:grid-cols-2  gap-12">
                 <div>
-                  <img
-                    className="w-full mt-3 rounded-md max-h-[30vh]"
-                    src="https://powerlearnproject.org/_next/image?url=%2Fassets%2Fperk2.jpeg&w=640&q=75"
-                    alt=""
-                  />
                   <h1 className="mt-2 text-2xl font-bold text-gray-800 sm:text-4xl lg:text-4xl lg:leading-tight">
-                    Showcase your project with PowerHub
+                    PowerHub Module Specialization
                   </h1>
 
                   <p className="mt-3 md:text-lg text-gray-800 "></p>
@@ -130,7 +125,7 @@ const Specialization = () => {
                 <div className="relative">
                   <div className="flex flex-col border border-gray-300 rounded-xl p-4 sm:p-6 lg:p-10 ">
                     <h2 className="text-xl font-semibold text-gray-800 ">
-                      Fill in the form to submit your Project.
+                      Module Specialization Form.
                     </h2>
 
                     <form>
@@ -285,10 +280,10 @@ const Specialization = () => {
                           type="submit"
                           className="inline-flex justify-center items-center gap-x-3 text-center bg-[#C1224F] hover:bg-[#13ABC4] border border-transparent text-sm lg:text-base text-white font-medium rounded-md focus:outline-none focus:ring-2 focus:ring-[#C1224F] focus:ring-offset-2 focus:ring-offset-white transition py-3 px-4 "
                         >
-                          Submit Project
+                          Submit
                         </button>
                       </div>
-                      <div className="mt-3 grid">
+                      {/* <div className="mt-3 grid">
                         <p className="mb-3 text-sm">
                           If You have not completed your project but have an
                           idea, kindly submit it here instead.
@@ -300,7 +295,7 @@ const Specialization = () => {
                         >
                           Submit an Idea
                         </button>
-                      </div>
+                      </div> */}
                     </form>
                   </div>
                 </div>
