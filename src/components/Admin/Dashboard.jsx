@@ -102,10 +102,10 @@ const Dashboard = () => {
           <h1 class="block text-2xl font-bold text-gray-800 sm:text-3xl mt-4">
             Hello, {user.displayName}
           </h1>
-          <p class="mt-2 text-lg text-gray-800 ">
+          {/* <p class="mt-2 text-lg text-gray-800 ">
             This are the statistics of all the activities in plp BootCamp. Make
             sure you perform every activity with control and on time.
-          </p>
+          </p> */}
         </header>
 
         <div class="max-w-7xl md:px-1  sm:px-6 mt-10">
@@ -114,7 +114,7 @@ const Dashboard = () => {
               <div class="inline-flex justify-center items-center">
                 <span class="w-2 h-2 inline-block bg-gray-500 rounded-full mr-2"></span>
                 <span class="text-xs font-semibold uppercase text-gray-600">
-                  courses
+                  Project Submissions
                 </span>
               </div>
 
@@ -125,25 +125,6 @@ const Dashboard = () => {
               </div>
 
               <dl class="flex justify-center items-center divide-x divide-gray-200">
-                {/* <dt class="pr-3">
-              <span class="text-green-600">
-                <svg
-                  class="inline-block w-4 h-4 self-center"
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  fill="currentColor"
-                  viewBox="0 0 16 16"
-                >
-                  <path
-                    fill-rule="evenodd"
-                    d="m7.247 4.86-4.796 5.481c-.566.647-.106 1.659.753 1.659h9.592a1 1 0 0 0 .753-1.659l-4.796-5.48a1 1 0 0 0-1.506 0z"
-                  />
-                </svg>
-                <span class="inline-block text-sm">4</span>
-              </span>
-              <span class="block text-sm text-gray-500">Basic</span>
-            </dt> */}
                 <dd class="flex items-center gap-1 text-left pl-3">
                   <span class="text-sm font-semibold text-gray-800 ">
                     {totalAdvancedCoursesCount}
@@ -157,7 +138,7 @@ const Dashboard = () => {
               <div class="inline-flex justify-center items-center">
                 <span class="w-2 h-2 inline-block bg-green-500 rounded-full mr-2"></span>
                 <span class="text-xs font-semibold uppercase text-gray-600">
-                  Successful Learners
+                  Project Ideas
                 </span>
               </div>
 
@@ -185,7 +166,7 @@ const Dashboard = () => {
               <div class="inline-flex justify-center items-center">
                 <span class="w-2 h-2 inline-block bg-[#C1224F] rounded-full mr-2"></span>
                 <span class="text-xs font-semibold uppercase text-gray-600">
-                  Published Articles
+                  Submitted Specializations
                 </span>
               </div>
 
