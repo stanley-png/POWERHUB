@@ -61,6 +61,7 @@ const AdminProjectIdeas = () => {
   const authorizedEmails = [
     "evansnyamai98@gmail.com",
     "evansifysoftwares@gmail.com",
+    "mungastan@gmail.com",
   ];
   return (
     <main>
