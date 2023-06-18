@@ -149,7 +149,7 @@ const AdminNav = () => {
             <li>
               <p
                 className="flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-white hover:text-white rounded-md hover:bg-[#C1224F] cursor-pointer"
-                onClick={() => navigate("/submissions")}
+                onClick={() => navigate("/module-specialization")}
               >
                 <svg
                   className="w-3.5 h-3.5"

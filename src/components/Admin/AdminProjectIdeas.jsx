@@ -139,7 +139,7 @@ const AdminProjectIdeas = () => {
                               <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                                 {assignment.githubLink}
                               </td>
-                              <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                              <td className=" whitespace-nowrap text-sm w-24 text-gray-500">
                                 {assignment.description}
                               </td>
                               <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
