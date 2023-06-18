@@ -14,7 +14,7 @@ const SubmitIdea = () => {
   const [lName, setLName] = useState("");
   const [email, setEmail] = useState("");
   const [githubLink, setGithubLink] = useState("");
-  const [pitchDeck, setPitchDeck] = useState("");
+  const [description, setDescription] = useState("");
   const [country, setCountry] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [cohort, setCohort] = useState("");
@@ -27,6 +27,7 @@ const SubmitIdea = () => {
       !lName.trim() ||
       !email.trim() ||
       !githubLink.trim() ||
+      !description.trim() ||
       !phoneNumber.trim() ||
       !country.trim() ||
       !cohort.trim() ||
@@ -61,7 +62,7 @@ const SubmitIdea = () => {
                 email: user.email,
                 emailAddress: email,
                 githubLink: githubLink,
-                pitchDeck: pitchDeck,
+                description: description,
                 phoneNumber: phoneNumber,
                 country: country,
                 cohort: cohort,
@@ -200,6 +201,8 @@ const SubmitIdea = () => {
                           <textarea
                             className="py-3 px-4 block w-full border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 border border-1"
                             rows="5"
+                            value={description}
+                            onChange={(e) => setDescription(e.target.value)}
                             placeholder="Briefly describe your project idea here..."
                           ></textarea>
                           {/* <input

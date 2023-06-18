@@ -15,6 +15,7 @@ import { useSelector } from 'react-redux';
 import { selectUser } from "./features/userSlice";
 import Dashboard from './components/Admin/Dashboard';
 import Submissions from './components/Admin/Submissions';
+import AdminProjectIdeas from './components/Admin/AdminProjectIdeas';
 
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -35,8 +36,9 @@ function App() {
         <Route path="/specialization" element={<Specialization />} />
         <Route path="/alumni" element={<Alumni />} />
         <Route path="/contact-us" element={<ContactUs />} />
-        {user && <Route path="/admin" element={<Dashboard/>}/>}
+        {user && <Route path="/admin" element={<Dashboard/>}/>}/ideas-submissions
         <Route path="/project-submissions" element={<Submissions/>}/>
+        <Route path="/ideas-submissions" element={<AdminProjectIdeas/>}/>
         <Route path="/success" element={<SuccessPage/>}/>
         <Route path="*" element={<PageNotFound />} />
       </Routes>
