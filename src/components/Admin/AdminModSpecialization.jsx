@@ -20,7 +20,7 @@ const AdminModSpecialization = () => {
     const fetchAssignments = async () => {
       try {
         const assignmentsSnapshot = await db
-          .collectionGroup("projectIdeas")
+          .collectionGroup("specialization")
           .get();
         const assignmentsData = assignmentsSnapshot.docs.map((doc) => ({
           id: doc.id,
@@ -35,7 +35,7 @@ const AdminModSpecialization = () => {
     const fetchTotalSubmissions = async () => {
       try {
         const submissionsSnapshot = await db
-          .collectionGroup("projectIdeas")
+          .collectionGroup("specialization")
           .get();
         const totalSubmissions = submissionsSnapshot.size;
         setTotalSubmissions(totalSubmissions);
@@ -90,9 +90,9 @@ const AdminModSpecialization = () => {
                               Student Name
                             </th>
 
-                            <th className="px-6 py-3 text-left text-xs font-bold uppercase tracking-wider">
+                            {/* <th className="px-6 py-3 text-left text-xs font-bold uppercase tracking-wider">
                               Submission date
-                            </th>
+                            </th> */}
                             <th className="px-6 py-3 text-left text-xs font-bold uppercase tracking-wider">
                               Mobile No
                             </th>
@@ -116,11 +116,11 @@ const AdminModSpecialization = () => {
                               <td className="px-6 pl-0 pr-4 whitespace-nowrap text-sm text-gray-500">
                                 {assignment.fName} {assignment.lName}
                               </td>
-                              <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                              {/* <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                                 {assignment.timestamp
                                   .toDate()
                                   .toLocaleDateString()}
-                              </td>
+                              </td> */}
                               <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                                 {assignment.phoneNumber}
                               </td>
