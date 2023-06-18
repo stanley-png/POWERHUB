@@ -8,7 +8,7 @@ const Dashboard = () => {
   const user = useSelector(selectUser);
   const [totalCoursesCount, setTotalCoursesCount] = useState(0);
   const [publishedBlogsCount, setPublishedBlogsCount] = useState(0);
-  const [signedUpUsersCount, setSignedUpUsersCount] = useState(0);
+  const [ideasCount, setIdeasCount] = useState(0);
 
   useEffect(() => {
     const fetchTotalCoursesCount = async () => {
@@ -18,6 +18,16 @@ const Dashboard = () => {
         setTotalCoursesCount(totalCoursesCount);
       } catch (error) {
         console.log("Error fetching published blogs count", error);
+      }
+    };
+
+    const fetchTotalIdeasCount = async () => {
+      try {
+        const ideasSnapshot = await db.collection("projects").get();
+        const totalIdeasCount = ideasSnapshot.size;
+        setIdeasCount(totalIdeasCount);
+      } catch (error) {
+        console.log("Error fetching published ideas count", error);
       }
     };
 
@@ -31,20 +41,9 @@ const Dashboard = () => {
       }
     };
 
-    const fetchSignedUpUsersCount = async () => {
-      // Fetch the number of signed up users
-      try {
-        const usersSnapshot = await db.collection("usersDetails").get();
-        const signedUpUsersCount = usersSnapshot.size;
-        setSignedUpUsersCount(signedUpUsersCount);
-      } catch (error) {
-        console.log("Error fetching signed up users count", error);
-      }
-    };
-
     fetchTotalCoursesCount();
     fetchPublishedBlogsCount();
-    fetchSignedUpUsersCount();
+    fetchTotalIdeasCount();
   }, []);
 
   const authorizedEmails = [
@@ -99,14 +98,14 @@ const Dashboard = () => {
 
                   <div class="text-center">
                     <h3 class="text-3xl sm:text-4xl lg:text-5xl font-semibold text-gray-800 ">
-                      0
+                      {ideasCount}
                     </h3>
                   </div>
 
                   <dl class="flex justify-center items-center divide-x divide-gray-200 ">
                     <dt class="pr-3 flex items-center gap-1">
                       <span class="inline-block text-sm">
-                        {signedUpUsersCount}
+                        {/* {signedUpUsersCount} */}
                       </span>
                       <span class="block text-sm text-gray-500">Profiles</span>
                     </dt>
