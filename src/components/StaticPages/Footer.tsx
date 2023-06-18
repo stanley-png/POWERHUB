@@ -1,6 +1,3 @@
-import React from "react";
-// import TelegramIcon from '@mui/icons-material/Telegram';
-
 const Footer = () => {
   return (
     <footer className="border-t border-[#94D2E6] mt-24">
