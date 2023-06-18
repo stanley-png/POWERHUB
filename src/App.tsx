@@ -17,6 +17,7 @@ import Dashboard from './components/Admin/Dashboard';
 import Submissions from './components/Admin/Submissions';
 import AdminProjectIdeas from './components/Admin/AdminProjectIdeas';
 import AdminModSpecialization from './components/Admin/AdminModSpecialization';
+import TopProjects from './components/StaticPages/TopProjects';
 
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -41,6 +42,7 @@ function App() {
         <Route path="/project-submissions" element={<Submissions/>}/>
         <Route path="/ideas-submissions" element={<AdminProjectIdeas/>}/>
         <Route path="/module-specialization" element={<AdminModSpecialization/>}/>
+        <Route path="/top-projects" element={<TopProjects/>}/>
         <Route path="/success" element={<SuccessPage/>}/>
         <Route path="*" element={<PageNotFound />} />
       </Routes>
