@@ -6,6 +6,12 @@ import { selectUser } from "../features/userSlice";
 import { db } from "../utils/firebase";
 import firebase from "firebase/compat/app";
 import Login from "./Login";
+import Select from "react-select";
+
+const options = [
+  { value: "individual", label: "Individual" },
+  { value: "group", label: "Group" },
+];
 
 const SubmitProject = () => {
   const user = useSelector(selectUser);
@@ -20,6 +26,20 @@ const SubmitProject = () => {
   const [cohort, setCohort] = useState("");
   const [hackCategory, setHackCategory] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
+  const [selectedOption, setSelectedOption] = useState(null);
+  const [groupMembers, setGroupMembers] = useState([]);
+
+  const handleOptionChange = (option) => {
+    setSelectedOption(option);
+  };
+
+  const handleGroupMembersChange = (event) => {
+    const { name, value } = event.target;
+    setGroupMembers((prevMembers) => ({
+      ...prevMembers,
+      [name]: value,
+    }));
+  };
 
   const validateInputs = () => {
     if (
@@ -61,6 +81,8 @@ const SubmitProject = () => {
           country: country,
           cohort: cohort,
           hackCategory: hackCategory,
+          type: selectedOption.value,
+          groupMembers: selectedOption.value === "group" ? groupMembers : [],
           timestamp: firebase.firestore.FieldValue.serverTimestamp(),
         })
         .then(() => {
@@ -212,6 +234,36 @@ const SubmitProject = () => {
                             className="py-3 px-4 block w-full border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 border border-1"
                           />
                         </div>
+
+                        <div>
+                          <label className="block text-sm text-gray-700 font-medium ">
+                            Select Project Type:
+                          </label>
+                          <Select
+                            options={options}
+                            value={selectedOption}
+                            onChange={handleOptionChange}
+                          />
+                        </div>
+
+                        {selectedOption && selectedOption.value === "group" && (
+                          <div>
+                            <label className="block text-sm text-gray-700 font-medium ">
+                              Members Names & Emails
+                            </label>
+                            <textarea
+                              required
+                              className="py-3 px-4 block w-full border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 border border-1"
+                              type="text"
+                              rows="5"
+                              name="member1"
+                              value={groupMembers.member1 || ""}
+                              onChange={handleGroupMembersChange}
+                              placeholder="Member Details, Emails "
+                            />
+                            {/* Add more input fields for additional group members */}
+                          </div>
+                        )}
 
                         <div className="flex flex-col w-full mx-wd2 mx-auto rounded-lg">
                           <label className="block text-sm text-gray-700 font-medium ">
