@@ -75,7 +75,7 @@ const AdminProjectIdeas = () => {
           <AdminNav />
           <section className="md:mt-16 px-4 sm:px-6 md:mx-8 lg:pl-72">
             <section className="max-w-7xl min-h-[70vh]">
-              <h1>Project Submissions</h1>
+              <h1 className="text-2xl font-bold">Project Ideas Submissions</h1>
               <div class="flex flex-col">
                 <div class="-m-1.5 overflow-x-auto mt-10">
                   <p className="m-1 font-semibold">
@@ -106,7 +106,7 @@ const AdminProjectIdeas = () => {
                               GitHub Link
                             </th>
                             <th className="px-6 py-3 text-left text-xs font-bold uppercase tracking-wider">
-                              Pitch Deck
+                              Description
                             </th>
                             <th className="px-6 py-3 text-left text-xs font-bold uppercase tracking-wider">
                               Cohort
@@ -140,7 +140,7 @@ const AdminProjectIdeas = () => {
                                 {assignment.githubLink}
                               </td>
                               <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                {assignment.pitchDeck}
+                                {assignment.description}
                               </td>
                               <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                                 {assignment.cohort}

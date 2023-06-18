@@ -79,7 +79,7 @@ const Submissions = () => {
           <AdminNav />
           <section className="md:mt-16 px-4 sm:px-6 md:mx-8 lg:pl-72">
             <section className="max-w-7xl min-h-[70vh]">
-              <h1>Project Submissions</h1>
+              <h1 className="text-2xl font-bold">Project Submissions</h1>
               <div class="flex flex-col">
                 <div class="-m-1.5 overflow-x-auto mt-10">
                   <p className="m-1 font-semibold">
