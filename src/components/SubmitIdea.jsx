@@ -57,6 +57,7 @@ const SubmitIdea = () => {
           } else {
             db.collection("projectIdeas")
               .add({
+                uid: user.uid,
                 fName: fName,
                 lName: lName,
                 email: user.email,

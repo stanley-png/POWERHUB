@@ -50,6 +50,7 @@ const SubmitProject = () => {
 
       db.collection("projects")
         .add({
+          uid: user.uid,
           fName: fName,
           lName: lName,
           email: user.email,

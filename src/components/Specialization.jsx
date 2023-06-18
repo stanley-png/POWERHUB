@@ -53,6 +53,7 @@ const Specialization = () => {
           } else {
             db.collection("specialization")
               .add({
+                uid: user.uid,
                 fName: fName,
                 lName: lName,
                 email: user.email,
