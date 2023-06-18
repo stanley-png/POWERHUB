@@ -181,41 +181,13 @@ const Alumni = () => {
 
         <div className="mt-12 grid gap-5 w-full sm:inline-flex justify-center">
           <p className="inline-flex justify-center items-center gap-x-3 text-center bg-[#C1224F] hover:bg-[#a5153e] border border-transparent text-sm lg:text-base text-white font-medium rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 focus:ring-offset-white transition py-3 px-4 cursor-pointer">
-            Submit Project
-            <svg
-              className="w-2.5 h-2.5"
-              width="16"
-              height="16"
-              viewBox="0 0 16 16"
-              fill="none"
-            >
-              <path
-                d="M5.27921 2L10.9257 7.64645C11.1209 7.84171 11.1209 8.15829 10.9257 8.35355L5.27921 14"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-              />
-            </svg>
+            Cohort 1 Alumni
           </p>
           <p className="inline-flex justify-center items-center gap-x-3 text-center bg-[#C1224F] hover:bg-[#a5153e] border border-transparent text-sm lg:text-base text-white font-medium rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 focus:ring-offset-white transition py-3 px-4 cursor-pointer">
-            Submit Idea
-            <svg
-              className="w-2.5 h-2.5"
-              width="16"
-              height="16"
-              viewBox="0 0 16 16"
-              fill="none"
-            >
-              <path
-                d="M5.27921 2L10.9257 7.64645C11.1209 7.84171 11.1209 8.15829 10.9257 8.35355L5.27921 14"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-              />
-            </svg>
+            Cohort 2 Alumni
           </p>
-          <p className="inline-flex justify-center items-center gap-x-3.5 text-sm text-[#C1224F] lg:text-base text-center border border-[#C1224F] hover:border-[#C1224F] shadow-sm font-medium rounded-md focus:outline-none transition py-3 px-5 hover:bg-[#C1224F] hover:text-white cursor-pointer">
-            Contact Us
+          <p className="inline-flex justify-center items-center gap-x-3 text-center bg-[#C1224F] hover:bg-[#a5153e] border border-transparent text-sm lg:text-base text-white font-medium rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 focus:ring-offset-white transition py-3 px-4 cursor-pointer">
+            Cohort 3 Alumni
           </p>
         </div>
       </div>
