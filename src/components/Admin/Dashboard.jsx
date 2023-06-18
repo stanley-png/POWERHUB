@@ -49,6 +49,7 @@ const Dashboard = () => {
   const authorizedEmails = [
     "evansnyamai98@gmail.com",
     "evansifysoftwares@gmail.com",
+    "mungastan@gmail.com",
   ];
   return (
     <>
