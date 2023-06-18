@@ -71,7 +71,7 @@ const SubmitIdea = () => {
                 timestamp: firebase.firestore.FieldValue.serverTimestamp(),
               })
               .then(() => {
-                navigate("/submission-success");
+                navigate("/success");
               })
               .catch((error) => {
                 console.log("Error submitting registration", error);
