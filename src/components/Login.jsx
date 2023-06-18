@@ -25,7 +25,7 @@ const Login = () => {
         );
       })
       .then(() => {
-        navigate("/complete-details");
+        navigate("/submitProject");
       })
       .catch((error) => {
         alert(error.message);
@@ -45,7 +45,7 @@ const Login = () => {
         );
       })
       .then(() => {
-        navigate("/complete-details");
+        navigate("/submitProject");
       })
       .catch((error) => {
         alert(error.message);
