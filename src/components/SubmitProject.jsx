@@ -21,6 +21,8 @@ const SubmitProject = () => {
   const [email, setEmail] = useState("");
   const [githubLink, setGithubLink] = useState("");
   const [pitchDeck, setPitchDeck] = useState("");
+  const [expertise, setExpertise] = useState("");
+  const [projectCat, setProjectCat] = useState("");
   const [country, setCountry] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [cohort, setCohort] = useState("");
@@ -47,7 +49,9 @@ const SubmitProject = () => {
       !lName.trim() ||
       !email.trim() ||
       !githubLink.trim() ||
+      !expertise.trim() ||
       !phoneNumber.trim() ||
+      !projectCat.trim() ||
       !country.trim() ||
       !cohort.trim() ||
       !hackCategory.trim()
@@ -78,6 +82,8 @@ const SubmitProject = () => {
           githubLink: githubLink,
           pitchDeck: pitchDeck,
           phoneNumber: phoneNumber,
+          expertise: expertise,
+          projectCat: projectCat,
           country: country,
           cohort: cohort,
           hackCategory: hackCategory,
@@ -234,6 +240,20 @@ const SubmitProject = () => {
                             className="py-3 px-4 block w-full border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 border border-1"
                           />
                         </div>
+                        <div>
+                          <label className="block text-sm text-gray-700 font-medium ">
+                            Areas of Expertise
+                          </label>
+                          <input
+                            type="text"
+                            required
+                            autoComplete
+                            value={expertise}
+                            onChange={(e) => setExpertise(e.target.value)}
+                            className="py-3 px-4 block w-full border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 border border-1"
+                            placeholder="Briefly tell us area of expertise eg, Web dev, Python"
+                          />
+                        </div>
 
                         <div>
                           <label className="block text-sm text-gray-700 font-medium ">
@@ -265,6 +285,36 @@ const SubmitProject = () => {
                           </div>
                         )}
 
+                        <div className="flex flex-col w-full mx-wd2 mx-auto rounded-lg">
+                          <label className="block text-sm text-gray-700 font-medium ">
+                            Project Category
+                          </label>
+                          <select
+                            className=" p-2 cursor-pointer bg-white border rounded-md shadow-sm outline-none "
+                            value={projectCat}
+                            onChange={(e) => setProjectCat(e.target.value)}
+                          >
+                            <option value="" disabled>
+                              Select Category
+                            </option>
+                            <option value="FINTECH">Financial Tech</option>
+                            <option value="Agri Tech">Agri Tech</option>
+                            <option value="E-commerce">E-commerce</option>
+                            <option value="Climate">Climate</option>
+                            <option value="EDUTECH">Education Tech</option>
+                            <option value="Entertainment">Entertainment</option>
+                            <option value="Portfolio">Portfolio</option>
+                            <option value="Communication">Communication</option>
+                            <option value="Data-science">Data Science</option>
+                            <option value="Machine Learning">
+                              Machine Learning
+                            </option>
+                            <option value="Artificial Intelligence">
+                              Artificial Intelligence
+                            </option>
+                            <option value="Other">Other</option>
+                          </select>
+                        </div>
                         <div className="flex flex-col w-full mx-wd2 mx-auto rounded-lg">
                           <label className="block text-sm text-gray-700 font-medium ">
                             Country
@@ -326,12 +376,7 @@ const SubmitProject = () => {
                             <option value="Dart & Flutter">
                               Dart & Flutter
                             </option>
-                            <option value="Machine Learning">
-                              Machine Learning
-                            </option>
-                            <option value="Artificial Intelligence">
-                              Artificial Intelligence
-                            </option>
+
                             <option value="Other">Other</option>
                           </select>
                         </div>

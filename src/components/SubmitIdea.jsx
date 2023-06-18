@@ -14,6 +14,7 @@ const SubmitIdea = () => {
   const [lName, setLName] = useState("");
   const [email, setEmail] = useState("");
   const [githubLink, setGithubLink] = useState("");
+  const [expertise, setExpertise] = useState("");
   const [description, setDescription] = useState("");
   const [country, setCountry] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
@@ -27,6 +28,7 @@ const SubmitIdea = () => {
       !lName.trim() ||
       !email.trim() ||
       !githubLink.trim() ||
+      !expertise.trim() ||
       !description.trim() ||
       !phoneNumber.trim() ||
       !country.trim() ||
@@ -63,6 +65,7 @@ const SubmitIdea = () => {
                 email: user.email,
                 emailAddress: email,
                 githubLink: githubLink,
+                expertise: expertise,
                 description: description,
                 phoneNumber: phoneNumber,
                 country: country,
@@ -197,6 +200,20 @@ const SubmitIdea = () => {
                         </div>
                         <div>
                           <label className="block text-sm text-gray-700 font-medium ">
+                            Areas of Expertise
+                          </label>
+                          <input
+                            type="text"
+                            required
+                            autoComplete
+                            value={expertise}
+                            onChange={(e) => setExpertise(e.target.value)}
+                            className="py-3 px-4 block w-full border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 border border-1"
+                            placeholder="Briefly tell us area of expertise eg, Web dev, Python"
+                          />
+                        </div>
+                        <div>
+                          <label className="block text-sm text-gray-700 font-medium ">
                             Project Description
                           </label>
                           <textarea
@@ -297,6 +314,7 @@ const SubmitIdea = () => {
                             <option value="Artificial Intelligence">
                               Artificial Intelligence
                             </option>
+                            <option value="Data Science">Data Science</option>
                             <option value="Other">Other</option>
                           </select>
                         </div>
