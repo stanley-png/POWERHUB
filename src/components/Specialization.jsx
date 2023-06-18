@@ -14,6 +14,7 @@ const Specialization = () => {
   const [email, setEmail] = useState("");
   const [country, setCountry] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
+  const [expertise, setExpertise] = useState("");
   const [cohort, setCohort] = useState("");
   const [hackCategory, setHackCategory] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
@@ -24,6 +25,7 @@ const Specialization = () => {
       !lName.trim() ||
       !email.trim() ||
       !phoneNumber.trim() ||
+      !expertise.trim() ||
       !country.trim() ||
       !cohort.trim() ||
       !hackCategory.trim()
@@ -59,6 +61,7 @@ const Specialization = () => {
                 email: user.email,
                 emailAddress: email,
                 phoneNumber: phoneNumber,
+                expertise: expertise,
                 country: country,
                 cohort: cohort,
                 hackCategory: hackCategory,
@@ -184,6 +187,20 @@ const Specialization = () => {
                             value={phoneNumber}
                             onChange={(e) => setPhoneNumber(e.target.value)}
                             className="py-3 px-4 block w-full border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 border border-1"
+                          />
+                        </div>
+                        <div>
+                          <label className="block text-sm text-gray-700 font-medium ">
+                            Areas of Expertise
+                          </label>
+                          <input
+                            type="text"
+                            required
+                            autoComplete
+                            value={expertise}
+                            onChange={(e) => setExpertise(e.target.value)}
+                            className="py-3 px-4 block w-full border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 border border-1"
+                            placeholder="Briefly tell us area of expertise eg, Web dev, Python"
                           />
                         </div>
 
