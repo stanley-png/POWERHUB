@@ -99,12 +99,12 @@ const Header = () => {
             >
               Contact Us
             </p>
-            <a
+            {/* <a
               className="font-semibold text-white hover:text-[#EBFFFB] sm:py-6 px-4 md:px-0 cursor-pointer"
               href="#"
             >
               Events
-            </a>
+            </a> */}
             <p
               className="font-semibold text-white hover:text-[#EBFFFB] sm:py-6 px-4 md:px-0 cursor-pointer"
               onClick={() => navigate("/top-projects")}
