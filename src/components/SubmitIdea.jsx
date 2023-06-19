@@ -13,7 +13,7 @@ const SubmitIdea = () => {
   const [fName, setFName] = useState("");
   const [lName, setLName] = useState("");
   const [email, setEmail] = useState("");
-  const [githubLink, setGithubLink] = useState("");
+  const [pitchDeckLink, setPitchDeckLink] = useState("");
   const [expertise, setExpertise] = useState("");
   const [description, setDescription] = useState("");
   const [country, setCountry] = useState("");
@@ -28,7 +28,7 @@ const SubmitIdea = () => {
       !fName.trim() ||
       !lName.trim() ||
       !email.trim() ||
-      !githubLink.trim() ||
+      !pitchDeckLink.trim() ||
       !expertise.trim() ||
       !description.trim() ||
       !phoneNumber.trim() ||
@@ -66,7 +66,7 @@ const SubmitIdea = () => {
                 lName: lName,
                 email: user.email,
                 emailAddress: email,
-                githubLink: githubLink,
+                pitchDeckLink: pitchDeckLink,
                 expertise: expertise,
                 description: description,
                 phoneNumber: phoneNumber,
@@ -186,18 +186,14 @@ const SubmitIdea = () => {
                         </div>
                         <div>
                           <label className="block text-sm text-gray-700 font-medium ">
-                            Github Link (
-                            <span className="text-xs text-gray-500">
-                              You can create an Empty repo and keep updating it
-                            </span>
-                            )
+                            PitchDeck Link
                           </label>
                           <input
                             type="text"
                             required
                             autoComplete
-                            value={githubLink}
-                            onChange={(e) => setGithubLink(e.target.value)}
+                            value={pitchDeckLink}
+                            onChange={(e) => setPitchDeckLink(e.target.value)}
                             className="py-3 px-4 block w-full border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 border border-1"
                           />
                         </div>

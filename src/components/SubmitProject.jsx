@@ -114,7 +114,7 @@ const SubmitProject = () => {
               <div className="grid md:grid-cols-2  gap-12">
                 <div>
                   <img
-                    className="w-full mt-3 rounded-md max-h-[30vh]"
+                    className="w-full mt-3 rounded-md max-h-[42vh]"
                     src="https://powerlearnproject.org/_next/image?url=%2Fassets%2Fperk2.jpeg&w=640&q=75"
                     alt=""
                   />
