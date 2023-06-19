@@ -48,11 +48,18 @@ const Header = () => {
         aria-label="Global"
       >
         <div className="flex items-center justify-between">
-          <p
+          {/* <p
             className="flex-none cursor-pointer bg-clip-text bg-gradient-to-tr from-[#13ABC4] to-[#C1224F] text-transparent text-xl font-bold sm:text-2xl lg:text-3xl lg:leading-tight"
             onClick={() => navigate("/")}
           >
             PowerHub
+          </p> */}
+          <p onClick={() => navigate("/")} className="cursor-pointer ">
+            <img
+              src="https://powerlearnproject.org/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Flogo.d5479260.png&w=640&q=75"
+              className="max-w-[120px]"
+              alt=""
+            />
           </p>
           <div className="sm:hidden">
             <button
