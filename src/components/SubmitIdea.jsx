@@ -249,6 +249,24 @@ const SubmitIdea = () => {
                             className="py-3 px-4 block w-full border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 border border-1"
                           />
                         </div>
+                        <div className="flex flex-col w-full mx-wd2 mx-auto rounded-lg">
+                          <label className="block text-sm text-gray-700 font-medium ">
+                            Gender
+                          </label>
+                          <select
+                            className=" p-2 cursor-pointer bg-white border rounded-md shadow-sm outline-none "
+                            value={gender}
+                            onChange={(e) => setGender(e.target.value)}
+                          >
+                            <option value="" disabled>
+                              Select Gender
+                            </option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                            <option value="None Binary">None Binary</option>
+                            <option value="Other">Other</option>
+                          </select>
+                        </div>
 
                         <div className="flex flex-col w-full mx-wd2 mx-auto rounded-lg">
                           <label className="block text-sm text-gray-700 font-medium ">
