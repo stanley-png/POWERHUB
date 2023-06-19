@@ -5,42 +5,44 @@ import Cohort1 from "../AlumniData/Cohort1";
 const Alumni = () => {
   return (
     <main>
-      <div class="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
-        <div class="max-w-2xl mx-auto text-center mb-10 lg:mb-14">
-          <h2 class="text-2xl font-bold md:text-4xl md:leading-tight ">
+      <div className="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
+        <div className="max-w-2xl mx-auto text-center mb-10 lg:mb-14">
+          <h2 className="text-2xl font-bold md:text-4xl md:leading-tight ">
             Our Alumni
           </h2>
-          <p class="mt-1 text-gray-600 ">Creative people</p>
+          <p className="mt-1 text-gray-600 ">Creative people</p>
         </div>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          <div class="flex flex-col rounded-xl p-4 md:p-6 bg-white border border-gray-200 ">
-            <div class="flex items-center gap-x-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="flex flex-col rounded-xl p-4 md:p-6 bg-white border border-gray-200 ">
+            <div className="flex items-center gap-x-4">
               <img
-                class="rounded-full w-20 h-20"
+                className="rounded-full w-20 h-20"
                 src="https://powerlearnproject.org/_next/image?url=%2Fassets%2FdevelopSkills.jpeg&w=1080&q=75"
                 alt="Image Description"
               />
-              <div class="grow">
-                <h3 class="font-medium text-gray-800 dark:text-gray-200">
+              <div className="grow">
+                <h3 className="font-medium text-gray-800 dark:text-gray-200">
                   Dedan Okware
                 </h3>
-                <p class="text-xs uppercase text-gray-500">Data Scientist</p>
+                <p className="text-xs uppercase text-gray-500">
+                  Data Scientist
+                </p>
               </div>
             </div>
 
-            <p class="mt-3 text-gray-500">
+            <p className="mt-3 text-gray-500">
               I am an ambitious workaholic, but apart from that, pretty simple
               person.
             </p>
 
-            <div class="mt-3 space-x-1">
+            <div className="mt-3 space-x-1">
               <a
-                class="inline-flex justify-center items-center text-gray-500 border border-gray-200 w-8 h-8 rounded-md hover:text-gray-800 hover:shadow-sm "
+                className="inline-flex justify-center items-center text-gray-500 border border-gray-200 w-8 h-8 rounded-md hover:text-gray-800 hover:shadow-sm "
                 href="#"
               >
                 <svg
-                  class="w-3.5 h-3.5"
+                  className="w-3.5 h-3.5"
                   xmlns="http://www.w3.org/2000/svg"
                   width="16"
                   height="16"
@@ -51,11 +53,11 @@ const Alumni = () => {
                 </svg>
               </a>
               <a
-                class="inline-flex justify-center items-center text-gray-500 border border-gray-200 w-8 h-8 rounded-md hover:text-gray-800 hover:shadow-sm"
+                className="inline-flex justify-center items-center text-gray-500 border border-gray-200 w-8 h-8 rounded-md hover:text-gray-800 hover:shadow-sm"
                 href="#"
               >
                 <svg
-                  class="w-3.5 h-3.5"
+                  className="w-3.5 h-3.5"
                   xmlns="http://www.w3.org/2000/svg"
                   width="16"
                   height="16"
@@ -68,31 +70,33 @@ const Alumni = () => {
             </div>
           </div>
 
-          <div class="flex flex-col rounded-xl p-4 md:p-6 bg-white border border-gray-200 ">
-            <div class="flex items-center gap-x-4">
+          <div className="flex flex-col rounded-xl p-4 md:p-6 bg-white border border-gray-200 ">
+            <div className="flex items-center gap-x-4">
               <img
-                class="rounded-full w-20 h-20"
+                className="rounded-full w-20 h-20"
                 src="https://powerlearnproject.org/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Flogo.d5479260.png&w=640&q=75"
                 alt="Image Description"
               />
-              <div class="grow">
-                <h3 class="font-medium text-gray-800 ">Univer Omoro</h3>
-                <p class="text-xs uppercase text-gray-500">UI/UX Designer</p>
+              <div className="grow">
+                <h3 className="font-medium text-gray-800 ">Univer Omoro</h3>
+                <p className="text-xs uppercase text-gray-500">
+                  UI/UX Designer
+                </p>
               </div>
             </div>
 
-            <p class="mt-3 text-gray-500">
+            <p className="mt-3 text-gray-500">
               I am an ambitious workaholic, but apart from that, pretty simple
               person.
             </p>
 
-            <div class="mt-3 space-x-1">
+            <div className="mt-3 space-x-1">
               <a
-                class="inline-flex justify-center items-center text-gray-500 border border-gray-200 w-8 h-8 rounded-md hover:text-gray-800 hover:shadow-sm"
+                className="inline-flex justify-center items-center text-gray-500 border border-gray-200 w-8 h-8 rounded-md hover:text-gray-800 hover:shadow-sm"
                 href="#"
               >
                 <svg
-                  class="w-3.5 h-3.5"
+                  className="w-3.5 h-3.5"
                   xmlns="http://www.w3.org/2000/svg"
                   width="16"
                   height="16"
@@ -103,11 +107,11 @@ const Alumni = () => {
                 </svg>
               </a>
               <a
-                class="inline-flex justify-center items-center text-gray-500 border border-gray-200 w-8 h-8 rounded-md hover:text-gray-800 hover:shadow-sm "
+                className="inline-flex justify-center items-center text-gray-500 border border-gray-200 w-8 h-8 rounded-md hover:text-gray-800 hover:shadow-sm "
                 href="#"
               >
                 <svg
-                  class="w-3.5 h-3.5"
+                  className="w-3.5 h-3.5"
                   xmlns="http://www.w3.org/2000/svg"
                   width="16"
                   height="16"
@@ -121,15 +125,15 @@ const Alumni = () => {
           </div>
 
           <a
-            class="col-span-full lg:col-span-1 group flex flex-col justify-center text-center rounded-xl p-4 md:p-6 border border-dashed border-gray-200 hover:shadow-sm"
+            className="col-span-full lg:col-span-1 group flex flex-col justify-center text-center rounded-xl p-4 md:p-6 border border-dashed border-gray-200 hover:shadow-sm"
             href="#"
           >
-            <h3 class="text-lg text-gray-800">Join PLP Academy</h3>
+            <h3 className="text-lg text-gray-800">Join PLP Academy</h3>
             <div>
-              <span class="inline-flex items-center gap-x-2 text-[#C1224F] group-hover:text-[#13ABC4]">
+              <span className="inline-flex items-center gap-x-2 text-[#C1224F] group-hover:text-[#13ABC4]">
                 Join the next cohort
                 <svg
-                  class="w-2.5 h-2.5"
+                  className="w-2.5 h-2.5"
                   width="16"
                   height="16"
                   viewBox="0 0 16 16"
