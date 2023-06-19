@@ -189,6 +189,87 @@ const Alumni = () => {
           <p className="inline-flex justify-center items-center gap-x-3 text-center bg-[#C1224F] hover:bg-[#a5153e] border border-transparent text-sm lg:text-base text-white font-medium rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 focus:ring-offset-white transition py-3 px-4 cursor-pointer">
             Cohort 3 Alumni
           </p>
+
+          <section>
+            <button
+              type="button"
+              className="py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-[#C1224F] text-white hover:bg-[#13ABC4] transition-all text-sm "
+              data-hs-overlay="#hs-static-backdrop-modal"
+            >
+              Create Group
+            </button>
+
+            <div
+              id="hs-static-backdrop-modal"
+              className="hs-overlay hidden w-full h-full fixed top-0 left-0 overflow-x-hidden overflow-y-auto [--overlay-backdrop:static] bg-[#13ABC4] bg-opacity-20 backdrop-blur-xs"
+              data-hs-overlay-keyboard="false"
+            >
+              <div className="hs-overlay-open:mt-7 hs-overlay-open:opacity-100 hs-overlay-open:duration-500 md:mt-24 opacity-100 ease-out transition-all sm:max-w-4xl w-full m-3 mx-auto ">
+                <div className="flex flex-col bg-white border shadow-sm rounded-xl">
+                  <div className="flex justify-between items-center py-3 px-4 border-b">
+                    <h3 className="font-bold text-gray-800">
+                      Create New Group
+                    </h3>
+                    <button
+                      type="button"
+                      className="hs-dropdown-toggle inline-flex flex-shrink-0 justify-center items-center h-8 w-8 rounded-md text-gray-500 hover:text-gray-400 transition-all text-sm"
+                      data-hs-overlay="#hs-static-backdrop-modal"
+                    >
+                      {/* <CloseOutlinedIcon /> */}
+                    </button>
+                  </div>
+                  {/* <ToastContainer /> */}
+                  <div className="p-4 overflow-y-auto">
+                    <div className="flex flex-col mb-3">
+                      <label htmlFor="Lesson Title" className="font-semibold">
+                        Group Name
+                      </label>
+                      <input
+                        // onChange={(e) => setGroupName(e.target.value)}
+                        // value={groupName}
+                        type="text"
+                        className=" py-3 px-4 block w-full border border-gray-300 rounded-md text-sm focus:border-[#C1224F] focus:ring-[#C1224F]"
+                        placeholder="Add a creative group name"
+                      />
+                    </div>
+
+                    <div className="flex flex-col mb-2">
+                      <label className="font-semibold">
+                        Add Group Description
+                      </label>
+
+                      <textarea
+                        // value={groupDescription}
+                        // onChange={(e) => setGroupDescription(e.target.value)}
+                        placeholder="Add your group description and some rules"
+                        cols="20"
+                        rows="5"
+                        className=" py-3 px-4 block w-full border border-gray-300 rounded-md text-sm focus:border-[#C1224F] focus:ring-[#C1224F]"
+                      ></textarea>
+                    </div>
+                  </div>
+                  {/* {errorMessage && (
+                <p className="px-4 mb-1 font-semibold text-[#C1224F]">{errorMessage}</p>
+              )} */}
+                  <div className="flex justify-between items-center gap-x-2 py-3 px-4 border-t">
+                    <button
+                      type="button"
+                      className="hs-dropdown-toggle py-3 px-6 inline-flex justify-center items-center gap-2 rounded-md border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 transition-all text-sm "
+                      data-hs-overlay="#hs-static-backdrop-modal"
+                    >
+                      Cancel
+                    </button>
+                    <a
+                      // onClick={handleCreateGroup}
+                      className="py-3 px-6 inline-flex justify-center items-center gap-2 cursor-pointer rounded-md border border-transparent font-semibold bg-[#C1224F] text-white hover:bg-[#13ABC4] transition-all text-sm"
+                    >
+                      Save
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
         </div>
       </div>
     </main>
