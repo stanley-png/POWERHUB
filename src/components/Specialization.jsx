@@ -106,14 +106,18 @@ const Specialization = () => {
                       Specialization allows you to delve deeper into a
                       particular area of interest and develop a strong
                       foundation of knowledge and skills. As you make this
-                      decision, we want to highlight the importance of the
-                      databases module, which serves as a core pillar in many
-                      aspects of modern technology. Embrace the challenge, dive
-                      into the databases module, and let your passion for
-                      learning drive you towards mastery. Remember,
-                      specialization begins one month after sessions begin. Keep
-                      up the great work, and we are here to support you every
-                      step of the way.
+                      decision, we want to highlight the{" "}
+                      <b> importance of the databases module, </b> which serves
+                      as a core pillar in many aspects of modern technology.
+                      Embrace the challenge, dive into the databases module, and
+                      let your passion for learning drive you towards mastery.{" "}
+                      <b>
+                        {" "}
+                        Remember, specialization begins after one month of study
+                        .
+                      </b>{" "}
+                      Keep up the great work, and we are here to support you
+                      every step of the way.
                     </h2>
                   </div>
                   <div className="mt-6">
