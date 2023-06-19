@@ -26,6 +26,7 @@ const SubmitProject = () => {
   const [country, setCountry] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [cohort, setCohort] = useState("");
+  const [gender, setGender] = useState("");
   const [hackCategory, setHackCategory] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const [selectedOption, setSelectedOption] = useState(null);
@@ -54,6 +55,7 @@ const SubmitProject = () => {
       !projectCat.trim() ||
       !country.trim() ||
       !cohort.trim() ||
+      !gender.trim() ||
       !hackCategory.trim()
     ) {
       setErrorMessage("Please fill in all the fields");
@@ -86,6 +88,7 @@ const SubmitProject = () => {
           projectCat: projectCat,
           country: country,
           cohort: cohort,
+          gender: gender,
           hackCategory: hackCategory,
           type: selectedOption.value,
           groupMembers: selectedOption.value === "group" ? groupMembers : [],
@@ -351,6 +354,24 @@ const SubmitProject = () => {
                             <option value="Cohort 1">Cohort 1</option>
                             <option value="Cohort 2">Cohort 2</option>
                             <option value="Cohort 3">Cohort 3</option>
+                            <option value="Other">Other</option>
+                          </select>
+                        </div>
+                        <div className="flex flex-col w-full mx-wd2 mx-auto rounded-lg">
+                          <label className="block text-sm text-gray-700 font-medium ">
+                            Gender
+                          </label>
+                          <select
+                            className=" p-2 cursor-pointer bg-white border rounded-md shadow-sm outline-none "
+                            value={gender}
+                            onChange={(e) => setGender(e.target.value)}
+                          >
+                            <option value="" disabled>
+                              Select Gender
+                            </option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                            <option value="None Binary">None Binary</option>
                             <option value="Other">Other</option>
                           </select>
                         </div>
