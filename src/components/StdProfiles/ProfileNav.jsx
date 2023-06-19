@@ -21,7 +21,7 @@ const ProfileNav = () => {
   };
   return (
     <main>
-      <section className="bg-[#C1224F] px-5 py-4 rounded-md min-h-[75vh] flex flex-col justify-between h-full">
+      <section className="bg-[#C1224F] px-10 py-4 rounded-md min-h-[75vh] flex flex-col justify-between h-full">
         <div className="flex flex-col gap-5">
           <p
             className="text-white text-sm cursor-pointer hover:text-gray-300 font-semibold"
