@@ -18,6 +18,7 @@ const SubmitIdea = () => {
   const [description, setDescription] = useState("");
   const [country, setCountry] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
+  const [gender, setGender] = useState("");
   const [cohort, setCohort] = useState("");
   const [hackCategory, setHackCategory] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
@@ -31,6 +32,7 @@ const SubmitIdea = () => {
       !expertise.trim() ||
       !description.trim() ||
       !phoneNumber.trim() ||
+      !gender.trim() ||
       !country.trim() ||
       !cohort.trim() ||
       !hackCategory.trim()
@@ -68,6 +70,7 @@ const SubmitIdea = () => {
                 expertise: expertise,
                 description: description,
                 phoneNumber: phoneNumber,
+                gender: gender,
                 country: country,
                 cohort: cohort,
                 hackCategory: hackCategory,

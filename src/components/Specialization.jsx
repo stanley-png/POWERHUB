@@ -12,6 +12,7 @@ const Specialization = () => {
   const [fName, setFName] = useState("");
   const [lName, setLName] = useState("");
   const [email, setEmail] = useState("");
+  const [gender, setGender] = useState("");
   const [country, setCountry] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [expertise, setExpertise] = useState("");
@@ -26,6 +27,7 @@ const Specialization = () => {
       !email.trim() ||
       !phoneNumber.trim() ||
       !expertise.trim() ||
+      !gender.trim() ||
       !country.trim() ||
       !cohort.trim() ||
       !hackCategory.trim()
@@ -62,6 +64,7 @@ const Specialization = () => {
                 emailAddress: email,
                 phoneNumber: phoneNumber,
                 expertise: expertise,
+                gender: gender,
                 country: country,
                 cohort: cohort,
                 hackCategory: hackCategory,
@@ -216,6 +219,25 @@ const Specialization = () => {
                             className="py-3 px-4 block w-full border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 border border-1"
                             placeholder="Briefly tell us area of expertise eg, Web dev, Python"
                           />
+                        </div>
+
+                        <div className="flex flex-col w-full mx-wd2 mx-auto rounded-lg">
+                          <label className="block text-sm text-gray-700 font-medium ">
+                            Gender
+                          </label>
+                          <select
+                            className=" p-2 cursor-pointer bg-white border rounded-md shadow-sm outline-none "
+                            value={gender}
+                            onChange={(e) => setGender(e.target.value)}
+                          >
+                            <option value="" disabled>
+                              Select Gender
+                            </option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                            <option value="None Binary">None Binary</option>
+                            <option value="Other">Other</option>
+                          </select>
                         </div>
 
                         <div className="flex flex-col w-full mx-wd2 mx-auto rounded-lg">
