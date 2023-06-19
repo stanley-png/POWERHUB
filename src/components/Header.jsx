@@ -230,7 +230,7 @@ const Header = () => {
                     <Menu.Item>
                       {({ active }) => (
                         <p
-                          onClick={() => navigate("/")}
+                          onClick={() => navigate("/update-profile")}
                           className={classNames(
                             active ? "hover:text-[#13ABC4]" : "",
                             "block px-4 py-2 text-sm text-white cursor-pointer"
