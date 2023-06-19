@@ -25,7 +25,7 @@ const ProfileNav = () => {
         <div className="flex flex-col gap-5">
           <p
             className="text-white text-sm cursor-pointer hover:text-gray-300 font-semibold"
-            onClick={() => navigate("/")}
+            onClick={() => navigate("/update-profile")}
           >
             Update Profile
           </p>
@@ -57,7 +57,7 @@ const ProfileNav = () => {
         <div>
           <p
             className="text-white text-sm cursor-pointer hover:text-gray-300 font-semibold"
-            onClick={() => navigate("/")}
+            onClick={signOutOfApp}
           >
             Log Out
           </p>
