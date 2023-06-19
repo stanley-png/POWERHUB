@@ -97,13 +97,23 @@ const Specialization = () => {
                   <p className="mt-3 md:text-lg text-gray-800 "></p>
 
                   <div className="mt-6">
-                    <h2 className="text-lg mb-4">Dear Learners,</h2>
+                    <h2 className="text-lg mb-4">
+                      Congratulations on your learning progress.
+                    </h2>
                     <h2 className=" text-gray-800 ">
-                      We hope this message finds you well and that you are
-                      enjoying your learning journey with us. We greatly value
-                      your creativity, innovation, and dedication to expanding
-                      your knowledge and skills. Kindly submit your projects or
-                      ideas for us to support you Thankyou
+                      As you continue your learning journey, we encourage you to
+                      consider specializing in a specific module of your choice.
+                      Specialization allows you to delve deeper into a
+                      particular area of interest and develop a strong
+                      foundation of knowledge and skills. As you make this
+                      decision, we want to highlight the importance of the
+                      databases module, which serves as a core pillar in many
+                      aspects of modern technology. Embrace the challenge, dive
+                      into the databases module, and let your passion for
+                      learning drive you towards mastery. Remember,
+                      specialization begins one month after sessions begin. Keep
+                      up the great work, and we are here to support you every
+                      step of the way.
                     </h2>
                   </div>
                   <div className="mt-6">
@@ -273,10 +283,6 @@ const Specialization = () => {
                               Python & Dart
                             </option>
                             <option value="Dart & Web">Dart & Web Dev</option>
-                            <option value="All 3 Core Modules">
-                              All the 3 core Modules
-                            </option>
-                            <option value="Other">Other</option>
                           </select>
                         </div>
 
