@@ -30,6 +30,17 @@ const Header = () => {
     });
   }, [dispatch]);
 
+  const signOutOfApp = () => {
+    dispatch(logout);
+    auth.signOut();
+    window.location.reload(false);
+
+    if (user) {
+      auth.signOut();
+    }
+    navigate("/");
+  };
+
   return (
     <header className="flex flex-wrap sm:justify-start sm:flex-nowrap z-50 w-full text-sm py-4">
       <nav
@@ -238,10 +249,7 @@ const Header = () => {
                           )}
                           to={!user && "/"}
                         >
-                          <div
-                            // onClick={signOutOfApp}
-                            className=""
-                          >
+                          <div onClick={signOutOfApp} className="">
                             <span className="font-semibold">Sign Out</span>{" "}
                             <br />
                             <span className="">

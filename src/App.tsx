@@ -38,7 +38,7 @@ function App() {
         <Route path="/specialization" element={<Specialization />} />
         <Route path="/alumni" element={<Alumni />} />
         <Route path="/contact-us" element={<ContactUs />} />
-        {user && <Route path="/admin" element={<Dashboard/>}/>}/ideas-submissions
+        {user && <Route path="/admin" element={<Dashboard/>}/>}
         <Route path="/project-submissions" element={<Submissions/>}/>
         <Route path="/ideas-submissions" element={<AdminProjectIdeas/>}/>
         <Route path="/module-specialization" element={<AdminModSpecialization/>}/>
