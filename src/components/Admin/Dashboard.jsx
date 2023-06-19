@@ -23,7 +23,7 @@ const Dashboard = () => {
 
     const fetchTotalIdeasCount = async () => {
       try {
-        const ideasSnapshot = await db.collection("projects").get();
+        const ideasSnapshot = await db.collection("projectIdeas").get();
         const totalIdeasCount = ideasSnapshot.size;
         setIdeasCount(totalIdeasCount);
       } catch (error) {
@@ -103,14 +103,14 @@ const Dashboard = () => {
                     </h3>
                   </div>
 
-                  <dl class="flex justify-center items-center divide-x divide-gray-200 ">
+                  {/* <dl class="flex justify-center items-center divide-x divide-gray-200 ">
                     <dt class="pr-3 flex items-center gap-1">
                       <span class="inline-block text-sm">
-                        {/* {signedUpUsersCount} */}
+                        {signedUpUsersCount}
                       </span>
                       <span class="block text-sm text-gray-500">Profiles</span>
                     </dt>
-                  </dl>
+                  </dl> */}
                 </div>
 
                 <div class="flex flex-col gap-y-3 lg:gap-y-5 p-4 md:p-5 bg-white border shadow-sm rounded-xl">
