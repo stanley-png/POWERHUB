@@ -17,7 +17,7 @@ const HomePage = () => {
           </p>
           <p className="text-lg text-gray-800  mt-3 pr-3">
             Who are we? PowerHub is a platform for plp alumni, current learners
-            and future learners to showcase their skills project that
+            and future learners to showcase their skills and project that
             organizations and investors would be interested in, plans and brings
             investors from different institutions to invest in your project.
           </p>
