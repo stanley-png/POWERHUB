@@ -104,7 +104,7 @@ const AdminProjectIdeas = () => {
                               Student Email Address
                             </th>
                             <th className="px-6 py-3 text-left text-xs font-bold uppercase w-[20px]">
-                              GitHub Link
+                              PitchDeck Link
                             </th>
                             <th className="px-6 py-3 text-left text-xs font-bold uppercase tracking-wider">
                               Description
@@ -138,7 +138,13 @@ const AdminProjectIdeas = () => {
                                 {assignment.email}
                               </td>
                               <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                {assignment.githubLink}
+                                <a
+                                  className="text-blue-400"
+                                  href={assignment.pitchDeckLink}
+                                  target="_blank"
+                                >
+                                  {assignment.pitchDeckLink}
+                                </a>
                               </td>
                               <td className=" whitespace-nowrap text-sm w-24 text-gray-500">
                                 {assignment.description}
