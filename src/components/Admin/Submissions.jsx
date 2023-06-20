@@ -142,10 +142,22 @@ const Submissions = () => {
                                 {assignment.email}
                               </td>
                               <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                {assignment.githubLink}
+                                <a
+                                  className="text-blue-400 underline"
+                                  href={assignment.githubLink}
+                                  target="_blank"
+                                >
+                                  {assignment.githubLink}
+                                </a>
                               </td>
                               <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                {assignment.pitchDeck}
+                                <a
+                                  className="text-blue-400 underline"
+                                  href={assignment.pitchDeck}
+                                  target="_blank"
+                                >
+                                  {assignment.pitchDeck}
+                                </a>
                               </td>
                               <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                                 {assignment.cohort}
