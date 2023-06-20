@@ -105,30 +105,14 @@ const Header = () => {
             >
               Home
             </p>
-            <p
-              className="font-semibold text-white hover:text-[#EBFFFB] sm:py-6 px-4 md:px-0 cursor-pointer"
-              onClick={() => navigate("/alumni")}
-            >
-              Alumni's
-            </p>
-            <p
-              className="font-semibold text-white hover:text-[#EBFFFB] sm:py-6 px-4 md:px-0 cursor-pointer"
-              onClick={() => navigate("/contact-us")}
-            >
-              Contact Us
-            </p>
+
             {/* <a
               className="font-semibold text-white hover:text-[#EBFFFB] sm:py-6 px-4 md:px-0 cursor-pointer"
               href="#"
             >
               Events
             </a> */}
-            <p
-              className="font-semibold text-white hover:text-[#EBFFFB] sm:py-6 px-4 md:px-0 cursor-pointer"
-              onClick={() => navigate("/top-projects")}
-            >
-              Projects
-            </p>
+
             <p
               className="font-semibold text-white hover:text-[#EBFFFB] sm:py-6 px-4 md:px-0 cursor-pointer"
               onClick={() => navigate("/specialization")}
@@ -140,6 +124,24 @@ const Header = () => {
               onClick={() => navigate("/graduation")}
             >
               Graduation
+            </p>
+            <p
+              className="font-semibold text-white hover:text-[#EBFFFB] sm:py-6 px-4 md:px-0 cursor-pointer"
+              onClick={() => navigate("/top-projects")}
+            >
+              Projects
+            </p>
+            <p
+              className="font-semibold text-white hover:text-[#EBFFFB] sm:py-6 px-4 md:px-0 cursor-pointer"
+              onClick={() => navigate("/alumni")}
+            >
+              Alumni's
+            </p>
+            <p
+              className="font-semibold text-white hover:text-[#EBFFFB] sm:py-6 px-4 md:px-0 cursor-pointer"
+              onClick={() => navigate("/contact-us")}
+            >
+              Contact Us
             </p>
             {!user ? (
               <p
