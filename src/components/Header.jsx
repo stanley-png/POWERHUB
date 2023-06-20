@@ -135,13 +135,12 @@ const Header = () => {
             >
               Specialization
             </p>
-            <a
+            <p
               className="font-semibold text-white hover:text-[#EBFFFB] sm:py-6 px-4 md:px-0 cursor-pointer"
-              href="https://stirring-dodol-bca1da.netlify.app/blogs"
-              target="_blank"
+              onClick={() => navigate("/graduation")}
             >
-              Blog
-            </a>
+              Graduation
+            </p>
             {!user ? (
               <p
                 className="flex items-center gap-x-2 font-medium text-white/[.8] hover:text-white sm:border-l sm:border-white/[.3] sm:my-6 sm:pl-6 px-4 md:px-0 cursor-pointer"
