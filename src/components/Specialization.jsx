@@ -48,38 +48,27 @@ const Specialization = () => {
 
     if (isValid) {
       // Check if user has already submitted
+
       db.collection("specialization")
-        .where("email", "==", email)
-        .get()
-        .then((querySnapshot) => {
-          if (!querySnapshot.empty) {
-            setErrorMessage("You have already registered for this event");
-          } else {
-            db.collection("specialization")
-              .add({
-                uid: user.uid,
-                fName: fName,
-                lName: lName,
-                email: user.email,
-                emailAddress: email,
-                phoneNumber: phoneNumber,
-                expertise: expertise,
-                gender: gender,
-                country: country,
-                cohort: cohort,
-                hackCategory: hackCategory,
-                timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-              })
-              .then(() => {
-                navigate("/success");
-              })
-              .catch((error) => {
-                console.log("Error submitting registration", error);
-              });
-          }
+        .add({
+          uid: user.uid,
+          fName: fName,
+          lName: lName,
+          email: user.email,
+          emailAddress: email,
+          phoneNumber: phoneNumber,
+          expertise: expertise,
+          gender: gender,
+          country: country,
+          cohort: cohort,
+          hackCategory: hackCategory,
+          timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+        })
+        .then(() => {
+          navigate("/success");
         })
         .catch((error) => {
-          console.log("Error checking duplicate registration", error);
+          console.log("Error submitting registration", error);
         });
     }
   };

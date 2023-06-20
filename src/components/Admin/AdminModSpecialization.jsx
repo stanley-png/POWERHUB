@@ -91,9 +91,9 @@ const AdminModSpecialization = () => {
                               Student Name
                             </th>
 
-                            {/* <th className="px-6 py-3 text-left text-xs font-bold uppercase tracking-wider">
-                              Submission date
-                            </th> */}
+                            <th className="px-6 py-3 text-left text-xs font-bold uppercase tracking-wider">
+                              Gender
+                            </th>
                             <th className="px-6 py-3 text-left text-xs font-bold uppercase tracking-wider">
                               Mobile No
                             </th>
@@ -105,6 +105,9 @@ const AdminModSpecialization = () => {
                             </th>
                             <th className="px-6 py-3 text-left text-xs font-bold uppercase tracking-wider">
                               Cohort
+                            </th>
+                            <th className="px-6 py-3 text-left text-xs font-bold uppercase tracking-wider">
+                              Expertise
                             </th>
                             <th className="px-6 py-3 text-left text-xs font-bold uppercase tracking-wider">
                               Category
@@ -123,6 +126,9 @@ const AdminModSpecialization = () => {
                                   .toLocaleDateString()}
                               </td> */}
                               <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                {assignment.gender}
+                              </td>
+                              <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                                 {assignment.phoneNumber}
                               </td>
                               <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
@@ -133,6 +139,9 @@ const AdminModSpecialization = () => {
                               </td>
                               <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                                 {assignment.cohort}
+                              </td>
+                              <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                {assignment.hackCategory}
                               </td>
                               <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                                 {assignment.hackCategory}
