@@ -130,8 +130,8 @@ const SubmitProject = () => {
                       We hope this message finds you well and that you are
                       enjoying your learning journey with us. We greatly value
                       your creativity, innovation, and dedication to expanding
-                      your knowledge and skills. Kindly submit your projects or
-                      ideas for us to support you Thankyou
+                      your knowledge and skills. Kindly submit your projects
+                      here. Thank You
                     </h2>
                   </div>
                   <div className="mt-6">
