@@ -15,6 +15,7 @@ const SubmitIdea = () => {
   const [email, setEmail] = useState("");
   const [pitchDeckLink, setPitchDeckLink] = useState("");
   const [expertise, setExpertise] = useState("");
+  const [projectTittle, setProjectTittle] = useState("");
   const [description, setDescription] = useState("");
   const [country, setCountry] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
@@ -30,6 +31,7 @@ const SubmitIdea = () => {
       !email.trim() ||
       !pitchDeckLink.trim() ||
       !expertise.trim() ||
+      !projectTittle.trim() ||
       !description.trim() ||
       !phoneNumber.trim() ||
       !gender.trim() ||
@@ -68,6 +70,7 @@ const SubmitIdea = () => {
                 emailAddress: email,
                 pitchDeckLink: pitchDeckLink,
                 expertise: expertise,
+                projectTittle: projectTittle,
                 description: description,
                 phoneNumber: phoneNumber,
                 gender: gender,
@@ -111,8 +114,8 @@ const SubmitIdea = () => {
                       We hope this message finds you well and that you are
                       enjoying your learning journey with us. We greatly value
                       your creativity, innovation, and dedication to expanding
-                      your knowledge and skills. Kindly submit your projects or
-                      ideas for us to support you Thankyou
+                      your knowledge and skills. Kindly submit your projects
+                      idea for us to support you. Thank you
                     </h2>
                   </div>
                   <div className="mt-6 ">
@@ -207,6 +210,20 @@ const SubmitIdea = () => {
                             autoComplete
                             value={expertise}
                             onChange={(e) => setExpertise(e.target.value)}
+                            className="py-3 px-4 block w-full border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 border border-1"
+                            placeholder="Briefly tell us area of expertise eg, Web dev, Python"
+                          />
+                        </div>
+                        <div>
+                          <label className="block text-sm text-gray-700 font-medium ">
+                            Project Title
+                          </label>
+                          <input
+                            type="text"
+                            required
+                            autoComplete
+                            value={projectTittle}
+                            onChange={(e) => setProjectTittle(e.target.value)}
                             className="py-3 px-4 block w-full border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 border border-1"
                             placeholder="Briefly tell us area of expertise eg, Web dev, Python"
                           />
