@@ -6,11 +6,11 @@ import { useNavigate } from "react-router-dom";
 import firebase from "firebase/compat/app";
 import { db } from "../utils/firebase";
 
-const Specialization = () => {
+const Graduation = () => {
   const user = useSelector(selectUser);
   const navigate = useNavigate();
   const [fName, setFName] = useState("");
-  const [lName, setLName] = useState("");
+  //   const [lName, setLName] = useState("");
   const [email, setEmail] = useState("");
   const [gender, setGender] = useState("");
   const [country, setCountry] = useState("");
@@ -19,14 +19,26 @@ const Specialization = () => {
   const [cohort, setCohort] = useState("");
   const [hackCategory, setHackCategory] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
+  const [city, setCity] = useState("");
+  const [institution, setInstitution] = useState("");
+  const [education, setEducation] = useState("");
+  const [employment, setEmployment] = useState("");
+  const [qualification, setQualification] = useState("");
+  const [career, setCareer] = useState("");
 
   const validateInputs = () => {
     if (
       !fName.trim() ||
-      !lName.trim() ||
+      //   !lName.trim() ||
       !email.trim() ||
       !phoneNumber.trim() ||
-      !expertise.trim() ||
+      //   !expertise.trim() ||
+      !city.trim() ||
+      !institution.trim() ||
+      !education.trim() ||
+      !employment.trim() ||
+      !qualification.trim() ||
+      !career.trim() ||
       !gender.trim() ||
       !country.trim() ||
       !cohort.trim() ||
@@ -49,15 +61,20 @@ const Specialization = () => {
     if (isValid) {
       // Check if user has already submitted
 
-      db.collection("specialization")
+      db.collection("postGraduation")
         .add({
           uid: user.uid,
           fName: fName,
-          lName: lName,
           email: user.email,
           emailAddress: email,
           phoneNumber: phoneNumber,
-          expertise: expertise,
+          //   expertise: expertise,
+          city: city,
+          institution: institution,
+          education: education,
+          employment: employment,
+          qualification: qualification,
+          career: career,
           gender: gender,
           country: country,
           cohort: cohort,
@@ -83,7 +100,7 @@ const Specialization = () => {
               <div className="grid md:grid-cols-2  gap-12">
                 <div>
                   <h1 className="mt-2 text-2xl font-bold text-gray-800 sm:text-4xl lg:text-4xl lg:leading-tight">
-                    PowerHub Module Specialization
+                    Post Graduation Form
                   </h1>
 
                   <p className="mt-3 md:text-lg text-gray-800 "></p>
@@ -93,23 +110,11 @@ const Specialization = () => {
                       Congratulations on your learning progress.
                     </h2>
                     <h2 className=" text-gray-800 ">
-                      As you continue your learning journey, we encourage you to
-                      consider specializing in a specific module of your choice.
-                      Specialization allows you to delve deeper into a
-                      particular area of interest and develop a strong
-                      foundation of knowledge and skills. As you make this
-                      decision, we want to highlight the{" "}
-                      <b> importance of the databases module, </b> which serves
-                      as a core pillar in many aspects of modern technology.
-                      Embrace the challenge, dive into the databases module, and
-                      let your passion for learning drive you towards mastery.{" "}
-                      <b>
-                        {" "}
-                        Remember, specialization begins after one month of study
-                        .
-                      </b>{" "}
-                      Keep up the great work, and we are here to support you
-                      every step of the way.
+                      We are glad that you graduated from the
+                      <b> #1MillionDevs4Africa </b> program. We would love to
+                      know what you are up to after this, to help us support you
+                      through your journey as a software developer. Fill in the
+                      details as indicated below.
                     </h2>
                   </div>
                   <div className="mt-6">
@@ -130,42 +135,27 @@ const Specialization = () => {
                 <div className="relative">
                   <div className="flex flex-col border border-gray-300 rounded-xl p-4 sm:p-6 lg:p-10 ">
                     <h2 className="text-xl font-semibold text-gray-800 ">
-                      Module Specialization Form.
+                      Post Graduation Form
                     </h2>
 
                     <form>
                       <div className="mt-6 grid gap-4 lg:gap-6">
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 lg:gap-6">
-                          <div>
-                            <label className="block text-sm text-gray-700 font-medium ">
-                              First Name
-                            </label>
-                            <input
-                              required
-                              value={fName}
-                              onChange={(e) => setFName(e.target.value)}
-                              type="text"
-                              className="py-3 px-4 block w-full border-gray-200 rounded-md text-sm  border border-1"
-                            />
-                            {errorMessage.fName && (
-                              <p className="text-xs ml-1 text-red-500">
-                                {errorMessage.fName}
-                              </p>
-                            )}
-                          </div>
-
-                          <div>
-                            <label className="block text-sm text-gray-700 font-medium ">
-                              Last Name
-                            </label>
-                            <input
-                              type="text"
-                              required
-                              value={lName}
-                              onChange={(e) => setLName(e.target.value)}
-                              className="py-3 px-4 block w-full border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 border border-1"
-                            />
-                          </div>
+                        <div>
+                          <label className="block text-sm text-gray-700 font-medium ">
+                            Full Name
+                          </label>
+                          <input
+                            required
+                            value={fName}
+                            onChange={(e) => setFName(e.target.value)}
+                            type="text"
+                            className="py-3 px-4 block w-full border-gray-200 rounded-md text-sm  border border-1"
+                          />
+                          {errorMessage.fName && (
+                            <p className="text-xs ml-1 text-red-500">
+                              {errorMessage.fName}
+                            </p>
+                          )}
                         </div>
 
                         <div>
@@ -195,7 +185,7 @@ const Specialization = () => {
                             className="py-3 px-4 block w-full border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 border border-1"
                           />
                         </div>
-                        <div>
+                        {/* <div>
                           <label className="block text-sm text-gray-700 font-medium ">
                             Areas of Expertise
                           </label>
@@ -207,6 +197,108 @@ const Specialization = () => {
                             onChange={(e) => setExpertise(e.target.value)}
                             className="py-3 px-4 block w-full border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 border border-1"
                             placeholder="Briefly tell us area of expertise eg, Web dev, Python"
+                          />
+                        </div> */}
+
+                        <div className="flex flex-col w-full mx-wd2 mx-auto rounded-lg">
+                          <label className="block text-sm text-gray-700 font-medium ">
+                            Employment Status
+                          </label>
+                          <select
+                            className=" p-2 cursor-pointer bg-white border rounded-md shadow-sm outline-none "
+                            value={employment}
+                            onChange={(e) => setEmployment(e.target.value)}
+                          >
+                            <option value="" disabled>
+                              Employment Status
+                            </option>
+                            <option value="Student">Student</option>
+                            <option value="Employed">Employed</option>
+                            <option value="Student Employee">
+                              Student Employee
+                            </option>
+                            <option value="Other">Other</option>
+                          </select>
+                        </div>
+
+                        <div className="flex flex-col w-full mx-wd2 mx-auto rounded-lg">
+                          <label className="block text-sm text-gray-700 font-medium ">
+                            Level of Education
+                          </label>
+                          <select
+                            className=" p-2 cursor-pointer bg-white border rounded-md shadow-sm outline-none "
+                            value={education}
+                            onChange={(e) => setEducation(e.target.value)}
+                          >
+                            <option value="" disabled>
+                              Level of Education
+                            </option>
+                            <option value="Pre-Secondary">Pre-Secondary</option>
+                            <option value="Secondary/High School">
+                              Secondary/High School
+                            </option>
+                            <option value="College">College</option>
+                            <option value="University">University</option>
+                            <option value="Not Applicable">
+                              Not Applicable
+                            </option>
+                          </select>
+                        </div>
+
+                        <div className="flex flex-col w-full mx-wd2 mx-auto rounded-lg">
+                          <label className="block text-sm text-gray-700 font-medium ">
+                            Qualification
+                          </label>
+                          <select
+                            className=" p-2 cursor-pointer bg-white border rounded-md shadow-sm outline-none "
+                            value={qualification}
+                            onChange={(e) => setQualification(e.target.value)}
+                          >
+                            <option value="" disabled>
+                              Select Qualification
+                            </option>
+                            <option value="PhD">PhD</option>
+                            <option value="Masters Degree">
+                              Masters Degree
+                            </option>
+                            <option value="Graduate">Graduate</option>
+                            <option value="Undergraduate">Undergraduate</option>
+                            <option value="Diploma">Diploma</option>
+                            <option value="High School">High School</option>
+                            <option value="Not Applicable">
+                              Not Applicable
+                            </option>
+                          </select>
+                        </div>
+
+                        <div>
+                          <label className="block text-sm text-gray-700 font-medium ">
+                            Institution/College/University attend or currently
+                            attending
+                          </label>
+                          <input
+                            type="text"
+                            required
+                            autoComplete
+                            value={institution}
+                            onChange={(e) => setInstitution(e.target.value)}
+                            className="py-3 px-4 block w-full border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 border border-1"
+                            placeholder=""
+                          />
+                        </div>
+
+                        <div>
+                          <label className="block text-sm text-gray-700 font-medium ">
+                            Tech career interest domain
+                          </label>
+                          <input
+                            type="text"
+                            required
+                            autoComplete
+                            value={career}
+                            onChange={(e) => setCareer(e.target.value)}
+                            className="py-3 px-4 block w-full border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 border border-1"
+                            placeholder="Web developer, ML Expert etc"
                           />
                         </div>
 
@@ -248,6 +340,21 @@ const Specialization = () => {
                             <option value="Nigeria">Nigeria</option>
                             <option value="Other">Other</option>
                           </select>
+                        </div>
+
+                        <div>
+                          <label className="block text-sm text-gray-700 font-medium ">
+                            Nearest Town / city
+                          </label>
+                          <input
+                            type="text"
+                            required
+                            autoComplete
+                            value={city}
+                            onChange={(e) => setCity(e.target.value)}
+                            className="py-3 px-4 block w-full border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 border border-1"
+                            placeholder="Briefly tell us area of expertise eg, Web dev, Python"
+                          />
                         </div>
 
                         <div className="flex flex-col w-full mx-wd2 mx-auto rounded-lg">
@@ -318,18 +425,18 @@ const Specialization = () => {
                         </button>
                       </div>
                       {/* <div className="mt-3 grid">
-                        <p className="mb-3 text-sm">
-                          If You have not completed your project but have an
-                          idea, kindly submit it here instead.
-                        </p>
-                        <button
-                          onClick={() => navigate("/idea-submission")}
-                          type="button"
-                          className="inline-flex justify-center items-center gap-x-3 text-center bg-[#C1224F] hover:bg-[#13ABC4] border border-transparent text-sm lg:text-base text-white font-medium rounded-md focus:outline-none focus:ring-2 focus:ring-[#C1224F] focus:ring-offset-2 focus:ring-offset-white transition py-3 px-4 "
-                        >
-                          Submit an Idea
-                        </button>
-                      </div> */}
+                      <p className="mb-3 text-sm">
+                        If You have not completed your project but have an
+                        idea, kindly submit it here instead.
+                      </p>
+                      <button
+                        onClick={() => navigate("/idea-submission")}
+                        type="button"
+                        className="inline-flex justify-center items-center gap-x-3 text-center bg-[#C1224F] hover:bg-[#13ABC4] border border-transparent text-sm lg:text-base text-white font-medium rounded-md focus:outline-none focus:ring-2 focus:ring-[#C1224F] focus:ring-offset-2 focus:ring-offset-white transition py-3 px-4 "
+                      >
+                        Submit an Idea
+                      </button>
+                    </div> */}
                     </form>
                   </div>
                 </div>
@@ -342,4 +449,4 @@ const Specialization = () => {
   );
 };
 
-export default Specialization;
+export default Graduation;
