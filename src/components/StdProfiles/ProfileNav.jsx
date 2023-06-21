@@ -27,7 +27,7 @@ const ProfileNav = () => {
             className="text-white text-sm cursor-pointer hover:text-gray-300 font-semibold"
             onClick={() => navigate("/update-profile")}
           >
-            Update Profile
+            Dashboard
           </p>
           <p
             className="text-white text-sm cursor-pointer hover:text-gray-300 font-semibold"
@@ -52,6 +52,12 @@ const ProfileNav = () => {
             onClick={() => navigate("/specialization")}
           >
             Specialization
+          </p>
+          <p
+            className="text-white text-sm cursor-pointer hover:text-gray-300 font-semibold"
+            onClick={() => navigate("/graduation")}
+          >
+            Post Graduation
           </p>
         </div>
         <div>
