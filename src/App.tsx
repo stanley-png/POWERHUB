@@ -20,6 +20,7 @@ import AdminModSpecialization from './components/Admin/AdminModSpecialization';
 import TopProjects from './components/StaticPages/TopProjects';
 import ProfileDash from './components/StdProfiles/ProfileDash';
 import Graduation from './components/Graduation';
+import PostGraduation from './components/Admin/PostGraduation';
 
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -46,6 +47,7 @@ function App() {
         <Route path="/project-submissions" element={<Submissions/>}/>
         <Route path="/ideas-submissions" element={<AdminProjectIdeas/>}/>
         <Route path="/module-specialization" element={<AdminModSpecialization/>}/>
+        <Route path="/post-graduation" element={<PostGraduation/>}/>
         <Route path="/top-projects" element={<TopProjects/>}/>
         <Route path="/success" element={<SuccessPage/>}/>
         <Route path="*" element={<PageNotFound />} />
