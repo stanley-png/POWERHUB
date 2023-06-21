@@ -64,6 +64,30 @@ const CreateProfile = () => {
               </button>
             </div>
             <div className="p-4 overflow-y-auto">
+              <div className="mb-5">
+                <label className="font-semibold">Add Cover Image</label>
+                <input
+                  type="file"
+                  onChange={handleImagePreview}
+                  className="block cursor-pointer w-full text-sm text-gray-500
+              file:mr-4 file:py-2 file:px-4
+              file:rounded-md file:border-0
+              file:text-sm file:font-semibold
+            file:bg-[#13ABC4] file:text-white
+            hover:file:bg-[#C1224F] "
+                  accept="image/*"
+                />
+                <div className="mt-4 max-w-[300px]">
+                  {imagePreview && (
+                    <img
+                      src={imagePreview}
+                      alt="Image Preview"
+                      style={{ maxWidth: "400px", maxHeight: "200px" }}
+                      className="rounded-md h-[250px] w-full"
+                    />
+                  )}
+                </div>
+              </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 lg:gap-6">
                 <div>
                   <label className="block text-sm text-gray-700 font-medium ">
