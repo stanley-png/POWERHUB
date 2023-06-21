@@ -31,25 +31,25 @@ const ProfileNav = () => {
           </p>
           <p
             className="text-white text-sm cursor-pointer hover:text-gray-300 font-semibold"
-            onClick={() => navigate("/")}
+            onClick={() => navigate("/update-profile")}
           >
             View Profile
           </p>
           <p
             className="text-white text-sm cursor-pointer hover:text-gray-300 font-semibold"
-            onClick={() => navigate("/")}
+            onClick={() => navigate("/submitProject")}
           >
             Submit Project
           </p>
           <p
             className="text-white text-sm cursor-pointer hover:text-gray-300 font-semibold"
-            onClick={() => navigate("/")}
+            onClick={() => navigate("/idea-submission")}
           >
             Submit Idea
           </p>
           <p
             className="text-white text-sm cursor-pointer hover:text-gray-300 font-semibold"
-            onClick={() => navigate("/")}
+            onClick={() => navigate("/specialization")}
           >
             Specialization
           </p>
