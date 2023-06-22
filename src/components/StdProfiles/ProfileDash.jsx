@@ -110,11 +110,11 @@ const ProfileDash = () => {
                           <h1 className="font-bold">Career</h1>
                           <p> {userData?.career}</p>
                         </div>
-                        <div>
+                        <div className="mb-2">
                           <h1 className="font-bold">Gender</h1>
                           <p> {userData?.gender}</p>
                         </div>
-                        <div>
+                        <div className="mb-2">
                           <h1 className="font-bold">Website</h1>
                           <a
                             href={userData?.website}
