@@ -3,6 +3,10 @@ import CloseOutlinedIcon from "@mui/icons-material/CloseOutlined";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { selectUser } from "../../features/userSlice";
+import { db, storage } from "../../utils/firebase";
+import firebase from "firebase/compat/app";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const CreateProfile = () => {
   const user = useSelector(selectUser);
@@ -33,6 +37,85 @@ const CreateProfile = () => {
       reader.readAsDataURL(file);
     } else {
       setImagePreview(null);
+    }
+  };
+
+  const handleCreateBlog = (e) => {
+    e.preventDefault();
+
+    try {
+      const uploadTask = storage
+        .ref(`usersProfilesImages/${articleImage.name}`)
+        .put(articleImage);
+
+      uploadTask.on(
+        "state_changed",
+        (snapshot) => {
+          const progress = Math.round(
+            (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+          );
+          console.log("Upload progress: ", progress);
+        },
+        (error) => {
+          console.log("Error uploading image: ", error);
+        },
+        () => {
+          storage
+            .ref("usersProfiles")
+            .child(articleImage.name)
+            .getDownloadURL()
+            .then((imageUrl) => {
+              const usersCollection = db.collection("usersProfiles");
+
+              const blogData = {
+                fName,
+                slug: fName.replace(/\s/g, "-"),
+                gender,
+                country,
+                phoneNumber,
+                bio,
+                cohort,
+                website,
+                currentActivity,
+                employment,
+                career,
+                imageUrl,
+                displayName: user.displayName,
+                timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+              };
+
+              usersCollection
+                .add(blogData)
+                .then(() => {
+                  setFName("");
+                  setPhoneNumber("");
+                  setBio("");
+                  setCareer("");
+                  setWebsite("");
+                  setCurrentActivity("");
+                  setArticleImage(null);
+                  setImagePreview(null);
+                  toast.success("Content Updated successfully!", {
+                    position: "top-center",
+                    autoClose: 3000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                  });
+                })
+                .catch((error) => {
+                  console.log("Error creating blog post: ", error);
+                });
+            })
+            .catch((error) => {
+              console.log("Error retrieving image URL: ", error);
+            });
+        }
+      );
+    } catch (error) {
+      console.log("Error creating blog post: ", error);
     }
   };
 
