@@ -54,11 +54,13 @@ const ProfileDash = () => {
                 return (
                   <>
                     <article className="flex items-center">
-                      <img
-                        className="rounded-full w-28 h-28"
-                        src={userData.imageUrl}
-                        alt=""
-                      />
+                      <div className="rounded-full ring-2 ring-[#C1224F]">
+                        <img
+                          className="rounded-full w-28 h-28 "
+                          src={userData.imageUrl}
+                          alt=""
+                        />
+                      </div>
 
                       <div className="ml-10">
                         <h1 className="text-md md:text-2xl font-bold">
@@ -76,23 +78,35 @@ const ProfileDash = () => {
                       <div className=" mb-4 mt-3 flex justify-between">
                         <div>
                           <h1 className="font-bold ">Country</h1>
-                          <p> {userData?.country}</p>
+                          <p className="text-xs text-center">
+                            {" "}
+                            {userData?.country}
+                          </p>
                         </div>
                         <div>
                           <h1 className="font-bold">Cohort</h1>
-                          <p> {userData?.cohort}</p>
+                          <p className="text-xs text-center">
+                            {" "}
+                            {userData?.cohort}
+                          </p>
                         </div>
                         <div>
                           <h1 className="font-bold">Phone Number</h1>
-                          <p> {userData?.phoneNumber}</p>
+                          <p className="text-xs text-center">
+                            {" "}
+                            {userData?.phoneNumber}
+                          </p>
                         </div>
                         <div>
                           <h1 className="font-bold">Employment</h1>
-                          <p> {userData?.employment}</p>
+                          <p className="text-xs text-center">
+                            {" "}
+                            {userData?.employment}
+                          </p>
                         </div>
                       </div>
                       <div className=" mb-4 mt-6 ">
-                        <div>
+                        <div className="mb-2">
                           <h1 className="font-bold">Career</h1>
                           <p> {userData?.career}</p>
                         </div>
