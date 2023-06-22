@@ -12,7 +12,6 @@ const CreateProfile = () => {
   const user = useSelector(selectUser);
   const navigate = useNavigate();
   const [fName, setFName] = useState("");
-  const [email, setEmail] = useState("");
   const [gender, setGender] = useState("");
   const [country, setCountry] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
@@ -40,7 +39,7 @@ const CreateProfile = () => {
     }
   };
 
-  const handleCreateBlog = (e) => {
+  const handleCreateProfile = (e) => {
     e.preventDefault();
 
     try {
@@ -61,7 +60,7 @@ const CreateProfile = () => {
         },
         () => {
           storage
-            .ref("usersProfiles")
+            .ref("usersProfilesImages")
             .child(articleImage.name)
             .getDownloadURL()
             .then((imageUrl) => {
@@ -80,6 +79,8 @@ const CreateProfile = () => {
                 employment,
                 career,
                 imageUrl,
+                email: user?.email,
+                uid: user.uid,
                 displayName: user.displayName,
                 timestamp: firebase.firestore.FieldValue.serverTimestamp(),
               };
@@ -95,7 +96,7 @@ const CreateProfile = () => {
                   setCurrentActivity("");
                   setArticleImage(null);
                   setImagePreview(null);
-                  toast.success("Content Updated successfully!", {
+                  toast.success("Profile Created successfully!", {
                     position: "top-center",
                     autoClose: 3000,
                     hideProgressBar: false,
@@ -128,7 +129,7 @@ const CreateProfile = () => {
       >
         Edit Profile
       </button>
-
+      <ToastContainer />
       <div
         id="hs-static-backdrop-modal"
         className="hs-overlay hidden w-full h-full fixed top-0 left-0 overflow-x-hidden overflow-y-auto [--overlay-backdrop:static] bg-[#13ABC4] bg-opacity-20 backdrop-blur-xs"
@@ -344,9 +345,12 @@ const CreateProfile = () => {
               >
                 Cancel
               </button>
-              <a className="py-3 px-6 inline-flex justify-center items-center gap-2 cursor-pointer rounded-md border border-transparent font-semibold bg-[#C1224F] text-white hover:bg-[#13ABC4] transition-all text-sm">
+              <button
+                onClick={handleCreateProfile}
+                className="py-3 px-6 inline-flex justify-center items-center gap-2 cursor-pointer rounded-md border border-transparent font-semibold bg-[#C1224F] text-white hover:bg-[#13ABC4] transition-all text-sm"
+              >
                 Save
-              </a>
+              </button>
             </div>
           </div>
         </div>

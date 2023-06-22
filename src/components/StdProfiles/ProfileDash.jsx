@@ -10,7 +10,7 @@ const ProfileDash = () => {
   const [userProfileDetails, setUserProfileDetails] = useState([]);
   const fetchUserProfileDetails = async () => {
     await db
-      .collection("Users")
+      .collection("usersProfiles")
       .where("uid", "==", user?.uid)
       .onSnapshot((snapshot) => {
         setUserProfileDetails(
@@ -47,72 +47,80 @@ const ProfileDash = () => {
             </h1>
             <CreateProfile />
           </div>
-          {userProfileDetails ? (
-            <div className="text-xl font-extrabold text-gray-500  mt-10">
-              No Profile Created
-            </div>
-          ) : (
-            <section className="w-full ml-0 md:ml-20 bg-white">
-              {userProfileDetails.map((userData) => {
+
+          <section className="w-full ml-0 mt-5">
+            {userProfileDetails &&
+              userProfileDetails.map((userData) => {
                 return (
                   <>
-                    <article className="flex items-top">
+                    <article className="flex items-center">
                       <img
-                        className="rounded-md w-52 h-52"
-                        src={userData.profileImage}
+                        className="rounded-full w-28 h-28"
+                        src={userData.imageUrl}
                         alt=""
                       />
 
-                      <div className="ml-12">
-                        <h1 className="text-md md:text-2xl">
+                      <div className="ml-10">
+                        <h1 className="text-md md:text-2xl font-bold">
                           {user.displayName}
                         </h1>
-                        <p className="font-semibold">
-                          {userData?.workExperience}
+                        <p className="font-semibold text-xs">
+                          {userData?.email}
                         </p>
-                        <p className="text-purple-600 font-semibold mt-4 flex items-center">
-                          #{userData?.tagName}
+                        <p className="font-semibold">
+                          {userData?.currentActivity}
                         </p>
                       </div>
                     </article>
-                    <article className="mt-16 w-4/6 p-2">
-                      <h1>About</h1>
-                      <div className="flex justify-between gap-28 mb-4 mt-3">
-                        <div className="flex flex-col gap-6 mb-4">
-                          <span className="font-semibold">User ID</span>
-                          <span className="font-semibold">Name</span>
-                          {/* <span className="font-semibold">Email</span> */}
-                          <span className="font-semibold">Website</span>
-                          <span className="font-semibold">Location</span>
-                          <span className="font-semibold">Work</span>
-                          <span className="font-semibold">Skills</span>
-                          <span className="font-semibold">Bio</span>
+                    <article className="mt-6 w-4/6 p-2 border bg-[#e5fdf8] rounded-md shadow-sm">
+                      <div className=" mb-4 mt-3 flex justify-between">
+                        <div>
+                          <h1 className="font-bold ">Country</h1>
+                          <p> {userData?.country}</p>
                         </div>
-
-                        <div className="flex flex-col gap-6 mb-4">
-                          <p>{userData.uid}</p>
-                          <p>{user.displayName}</p>
-                          {/* <p>{userData.emailAddress}</p> */}
+                        <div>
+                          <h1 className="font-bold">Cohort</h1>
+                          <p> {userData?.cohort}</p>
+                        </div>
+                        <div>
+                          <h1 className="font-bold">Phone Number</h1>
+                          <p> {userData?.phoneNumber}</p>
+                        </div>
+                        <div>
+                          <h1 className="font-bold">Employment</h1>
+                          <p> {userData?.employment}</p>
+                        </div>
+                      </div>
+                      <div className=" mb-4 mt-6 ">
+                        <div>
+                          <h1 className="font-bold">Career</h1>
+                          <p> {userData?.career}</p>
+                        </div>
+                        <div>
+                          <h1 className="font-bold">Gender</h1>
+                          <p> {userData?.gender}</p>
+                        </div>
+                        <div>
+                          <h1 className="font-bold">Website</h1>
                           <a
-                            href="https://melbite.com"
-                            className="text-purple-500 underlined"
+                            href={userData?.website}
                             target="_blank"
-                            rel="noreferrer"
+                            className="text-blue-400"
                           >
-                            {userData.website}
+                            {" "}
+                            {userData?.website}
                           </a>
-                          <p>{userData.location}</p>
-                          <p>{userData.workExperience}</p>
-                          <p>{userData.skills}</p>
-                          <p>{userData.biography}</p>
                         </div>
+                      </div>
+                      <div className=" mb-4 mt-3">
+                        <h1 className="font-bold text-2xl mb-3">About</h1>
+                        <p> {userData?.bio}</p>
                       </div>
                     </article>
                   </>
                 );
               })}
-            </section>
-          )}
+          </section>
         </section>
       </section>
     </main>
