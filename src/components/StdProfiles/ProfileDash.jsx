@@ -74,7 +74,7 @@ const ProfileDash = () => {
                         </p>
                       </div>
                     </article>
-                    <article className="mt-6 w-4/6 p-2 border bg-[#e5fdf8] rounded-md shadow-sm">
+                    <article className="mt-6 w-4/6 p-4 border bg-[#e5fdf8] rounded-md shadow-sm">
                       <div className=" mb-4 mt-3 flex justify-between">
                         <div>
                           <h1 className="font-bold ">Country</h1>
