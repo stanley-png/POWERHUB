@@ -108,18 +108,18 @@ const ProfileDash = () => {
                       <div className=" mb-4 mt-6 ">
                         <div className="mb-2">
                           <h1 className="font-bold">Career</h1>
-                          <p> {userData?.career}</p>
+                          <p className="text-sm"> {userData?.career}</p>
                         </div>
                         <div className="mb-2">
                           <h1 className="font-bold">Gender</h1>
-                          <p> {userData?.gender}</p>
+                          <p className="text-sm"> {userData?.gender}</p>
                         </div>
                         <div className="mb-2">
                           <h1 className="font-bold">Website</h1>
                           <a
                             href={userData?.website}
                             target="_blank"
-                            className="text-blue-400"
+                            className="text-blue-400 text-sm"
                           >
                             {" "}
                             {userData?.website}
@@ -128,7 +128,7 @@ const ProfileDash = () => {
                       </div>
                       <div className=" mb-4 mt-3">
                         <h1 className="font-bold text-2xl mb-3">About</h1>
-                        <p> {userData?.bio}</p>
+                        <p className="text-sm"> {userData?.bio}</p>
                       </div>
                     </article>
                   </>
