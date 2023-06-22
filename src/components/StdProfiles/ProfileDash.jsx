@@ -1,8 +1,29 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import ProfileNav from "./ProfileNav";
 import CreateProfile from "./CreateProfile";
+import { useSelector } from "react-redux";
+import { selectUser } from "../../features/userSlice";
+import { db } from "../../utils/firebase";
 
 const ProfileDash = () => {
+  const user = useSelector(selectUser);
+  const [userProfileDetails, setUserProfileDetails] = useState([]);
+  const fetchUserProfileDetails = async () => {
+    await db
+      .collection("Users")
+      .where("uid", "==", user?.uid)
+      .onSnapshot((snapshot) => {
+        setUserProfileDetails(
+          snapshot.docs.map((doc) => ({
+            id: doc.id,
+            ...doc.data(),
+          }))
+        );
+      });
+  };
+  useEffect(() => {
+    fetchUserProfileDetails();
+  }, []);
   return (
     <main className="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 mx-auto">
       <section className="flex gap-24">
