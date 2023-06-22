@@ -78,28 +78,28 @@ const ProfileDash = () => {
                       <div className=" mb-4 mt-3 flex justify-between">
                         <div>
                           <h1 className="font-bold ">Country</h1>
-                          <p className="text-xs text-center">
+                          <p className="text-sm text-center">
                             {" "}
                             {userData?.country}
                           </p>
                         </div>
                         <div>
                           <h1 className="font-bold">Cohort</h1>
-                          <p className="text-xs text-center">
+                          <p className="text-sm text-center">
                             {" "}
                             {userData?.cohort}
                           </p>
                         </div>
                         <div>
                           <h1 className="font-bold">Phone Number</h1>
-                          <p className="text-xs text-center">
+                          <p className="text-sm text-center">
                             {" "}
                             {userData?.phoneNumber}
                           </p>
                         </div>
                         <div>
                           <h1 className="font-bold">Employment</h1>
-                          <p className="text-xs text-center">
+                          <p className="text-sm text-center">
                             {" "}
                             {userData?.employment}
                           </p>
