@@ -24,6 +24,7 @@ const CreateProfile = () => {
 
   const [articleImage, setArticleImage] = useState(null);
   const [imagePreview, setImagePreview] = useState(null);
+  const [errorMessage, setErrorMessage] = useState("");
   const handleImagePreview = (e) => {
     const file = e.target.files[0];
     setArticleImage(file);
@@ -41,83 +42,92 @@ const CreateProfile = () => {
 
   const handleCreateProfile = (e) => {
     e.preventDefault();
+    db.collection("usersProfiles")
+      .where("email", "==", user.email)
+      .get()
+      .then((querySnapshot) => {
+        if (!querySnapshot.empty) {
+          setErrorMessage("You can't create more than one Profile");
+        } else {
+          try {
+            const uploadTask = storage
+              .ref(`usersProfilesImages/${articleImage.name}`)
+              .put(articleImage);
 
-    try {
-      const uploadTask = storage
-        .ref(`usersProfilesImages/${articleImage.name}`)
-        .put(articleImage);
+            uploadTask.on(
+              "state_changed",
+              (snapshot) => {
+                const progress = Math.round(
+                  (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+                );
+                console.log("Upload progress: ", progress);
+              },
+              (error) => {
+                console.log("Error uploading image: ", error);
+              },
+              () => {
+                storage
+                  .ref("usersProfilesImages")
+                  .child(articleImage.name)
+                  .getDownloadURL()
+                  .then((imageUrl) => {
+                    const usersCollection = db.collection("usersProfiles");
 
-      uploadTask.on(
-        "state_changed",
-        (snapshot) => {
-          const progress = Math.round(
-            (snapshot.bytesTransferred / snapshot.totalBytes) * 100
-          );
-          console.log("Upload progress: ", progress);
-        },
-        (error) => {
-          console.log("Error uploading image: ", error);
-        },
-        () => {
-          storage
-            .ref("usersProfilesImages")
-            .child(articleImage.name)
-            .getDownloadURL()
-            .then((imageUrl) => {
-              const usersCollection = db.collection("usersProfiles");
+                    const blogData = {
+                      fName,
+                      slug: fName.replace(/\s/g, "-"),
+                      gender,
+                      country,
+                      phoneNumber,
+                      bio,
+                      cohort,
+                      website,
+                      currentActivity,
+                      employment,
+                      career,
+                      imageUrl,
+                      email: user?.email,
+                      uid: user.uid,
+                      displayName: user.displayName,
+                      timestamp:
+                        firebase.firestore.FieldValue.serverTimestamp(),
+                    };
 
-              const blogData = {
-                fName,
-                slug: fName.replace(/\s/g, "-"),
-                gender,
-                country,
-                phoneNumber,
-                bio,
-                cohort,
-                website,
-                currentActivity,
-                employment,
-                career,
-                imageUrl,
-                email: user?.email,
-                uid: user.uid,
-                displayName: user.displayName,
-                timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-              };
-
-              usersCollection
-                .add(blogData)
-                .then(() => {
-                  setFName("");
-                  setPhoneNumber("");
-                  setBio("");
-                  setCareer("");
-                  setWebsite("");
-                  setCurrentActivity("");
-                  setArticleImage(null);
-                  setImagePreview(null);
-                  toast.success("Profile Created successfully!", {
-                    position: "top-center",
-                    autoClose: 3000,
-                    hideProgressBar: false,
-                    closeOnClick: true,
-                    pauseOnHover: true,
-                    draggable: true,
-                    progress: undefined,
+                    usersCollection
+                      .add(blogData)
+                      .then(() => {
+                        setFName("");
+                        setPhoneNumber("");
+                        setBio("");
+                        setCareer("");
+                        setWebsite("");
+                        setCurrentActivity("");
+                        setArticleImage(null);
+                        setImagePreview(null);
+                        toast.success("Profile Created successfully!", {
+                          position: "top-center",
+                          autoClose: 3000,
+                          hideProgressBar: false,
+                          closeOnClick: true,
+                          pauseOnHover: true,
+                          draggable: true,
+                          progress: undefined,
+                        });
+                      })
+                      .catch((error) => {
+                        console.log("Error creating blog post: ", error);
+                      });
+                  })
+                  .catch((error) => {
+                    console.log("Error retrieving image URL: ", error);
                   });
-                })
-                .catch((error) => {
-                  console.log("Error creating blog post: ", error);
-                });
-            })
-            .catch((error) => {
-              console.log("Error retrieving image URL: ", error);
-            });
+              }
+            );
+          } catch (error) {
+            console.log("Error creating blog post: ", error);
+          }
         }
-      );
-    } catch (error) {
-      console.log("Error creating blog post: ", error);
-    }
+      });
   };
 
   return (
@@ -130,6 +140,7 @@ const CreateProfile = () => {
         Edit Profile
       </button>
       <ToastContainer />
+
       <div
         id="hs-static-backdrop-modal"
         className="hs-overlay hidden w-full h-full fixed top-0 left-0 overflow-x-hidden overflow-y-auto [--overlay-backdrop:static] bg-[#13ABC4] bg-opacity-20 backdrop-blur-xs"
@@ -147,6 +158,11 @@ const CreateProfile = () => {
                 <CloseOutlinedIcon />
               </button>
             </div>
+            {errorMessage && (
+              <p className="px-4 mb-1 font-semibold text-[#C1224F]">
+                {errorMessage}
+              </p>
+            )}
             <div className="p-4 overflow-y-auto">
               <div className="mb-5">
                 <label className="font-semibold">Add Cover Image</label>
@@ -336,6 +352,11 @@ const CreateProfile = () => {
                 </div>
               </div>
             </div>
+            {errorMessage && (
+              <p className="px-4 mb-1 font-semibold text-[#C1224F]">
+                {errorMessage}
+              </p>
+            )}
 
             <div className="flex justify-between items-center gap-x-2 py-3 px-4 border-t">
               <button
