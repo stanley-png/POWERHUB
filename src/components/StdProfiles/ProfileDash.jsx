@@ -46,7 +46,7 @@ const ProfileDash = () => {
             <h1 className="font-extrabold text-xl text-gray-500 ">
               My Profile
             </h1>
-            {!userProfileDetails ? <EditProfile /> : <CreateProfile />}
+            {!userProfileDetails ? <CreateProfile /> : <EditProfile />}
           </div>
 
           <section className="w-full ml-0 mt-5">
