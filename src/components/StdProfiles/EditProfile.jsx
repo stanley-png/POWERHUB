@@ -12,7 +12,7 @@ const EditProfile = ({
   editGender,
   editBio,
   editPhoneNumber,
-  editDisplayName,
+  editFName,
   editCountry,
   editCareer,
   editEmployment,
@@ -26,7 +26,7 @@ const EditProfile = ({
   const [currentActivity, setCurrentActivity] = useState(editCurrentActivity);
   const [gender, setGender] = useState(editGender);
   const [phoneNumber, setPhoneNumber] = useState(editPhoneNumber);
-  const [fName, setFName] = useState(editDisplayName);
+  const [fName, setFName] = useState(editFName);
   const [employment, setEmployment] = useState(editEmployment);
   const [country, setCountry] = useState(editCountry);
   const [career, setCareer] = useState(editCareer);
@@ -56,87 +56,85 @@ const EditProfile = ({
     db.collection("usersProfiles")
       .where("email", "==", user.email)
       .get()
-      .then((querySnapshot) => {
-        if (!querySnapshot.empty) {
-          setErrorMessage("You can't create more than one Profile");
-        } else {
-          try {
-            const uploadTask = storage
-              .ref(`usersProfilesImages/${articleImage.name}`)
-              .put(articleImage);
+      .then(() => {
+        try {
+          const uploadTask = storage
+            .ref(`usersProfilesImages/${articleImage.name}`)
+            .put(articleImage);
 
-            uploadTask.on(
-              "state_changed",
-              (snapshot) => {
-                const progress = Math.round(
-                  (snapshot.bytesTransferred / snapshot.totalBytes) * 100
-                );
-                console.log("Upload progress: ", progress);
-              },
-              (error) => {
-                console.log("Error uploading image: ", error);
-              },
-              () => {
-                storage
-                  .ref("usersProfilesImages")
-                  .child(articleImage.name)
-                  .getDownloadURL()
-                  .then((imageUrl) => {
-                    const usersCollection = db.collection("usersProfiles");
+          uploadTask.on(
+            "state_changed",
+            (snapshot) => {
+              const progress = Math.round(
+                (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+              );
+              console.log("Upload progress: ", progress);
+            },
+            (error) => {
+              console.log("Error uploading image: ", error);
+            },
+            () => {
+              storage
+                .ref("usersProfilesImages")
+                .child(articleImage.name)
+                .getDownloadURL()
+                .then((imageUrl) => {
+                  const usersCollection = db
+                    .collection("usersProfiles")
+                    .doc(id);
 
-                    const blogData = {
-                      fName,
-                      slug: fName.replace(/\s/g, "-"),
-                      gender,
-                      country,
-                      phoneNumber,
-                      bio,
-                      cohort,
-                      website,
-                      currentActivity,
-                      employment,
-                      career,
-                      imageUrl,
-                      // email: user?.email,
-                      // uid: user.uid,
-                      // displayName: user.displayName,
-                      // timestamp:
-                      //   firebase.firestore.FieldValue.serverTimestamp(),
-                    };
+                  const blogData = {
+                    fName,
+                    slug: fName.replace(/\s/g, "-"),
+                    gender,
+                    country,
+                    phoneNumber,
+                    bio,
+                    cohort,
+                    website,
+                    currentActivity,
+                    employment,
+                    career,
+                    imageUrl,
+                    // email: user?.email,
+                    // uid: user.uid,
+                    // displayName: user.displayName,
+                    // timestamp:
+                    //   firebase.firestore.FieldValue.serverTimestamp(),
+                  };
 
-                    usersCollection
-                      .add(blogData)
-                      .then(() => {
-                        setFName("");
-                        setPhoneNumber("");
-                        setBio("");
-                        setCareer("");
-                        setWebsite("");
-                        setCurrentActivity("");
-                        setArticleImage(null);
-                        setImagePreview(null);
-                        toast.success("Profile Created successfully!", {
-                          position: "top-center",
-                          autoClose: 3000,
-                          hideProgressBar: false,
-                          closeOnClick: true,
-                          pauseOnHover: true,
-                          draggable: true,
-                          progress: undefined,
-                        });
-                      })
-                      .catch((error) => {
-                        console.log("Error creating blog post: ", error);
+                  usersCollection
+                    .update(blogData, { merge: true })
+                    .then(() => {
+                      setFName("");
+                      setPhoneNumber("");
+                      setBio("");
+                      setCareer("");
+                      setWebsite("");
+                      setCurrentActivity("");
+                      setArticleImage(null);
+                      setImagePreview(null);
+                      toast.success("Profile Created successfully!", {
+                        position: "top-center",
+                        autoClose: 3000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
                       });
-                  })
-                  .catch((error) => {
-                    console.log("Error retrieving image URL: ", error);
-                  });
-              }
-            );
-          } catch (error) {
-            console.log("Error creating blog post: ", error);
-          }
+                    })
+                    .catch((error) => {
+                      console.log("Error creating blog post: ", error);
+                    });
+                })
+                .catch((error) => {
+                  console.log("Error retrieving image URL: ", error);
+                });
+            }
+          );
+        } catch (error) {
+          console.log("Error creating blog post: ", error);
         }
       });
   };

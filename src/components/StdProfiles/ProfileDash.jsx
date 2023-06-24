@@ -145,7 +145,7 @@ const ProfileDash = () => {
                       <EditProfile
                         id={userData?.id}
                         editCurrentActivity={userData?.currentActivity}
-                        editDisplayName={userData?.displayName}
+                        editDisplayName={userData?.fName}
                         editPhoneNumber={userData.phoneNumber}
                         editGender={userData.gender}
                         editBio={userData.bio}
