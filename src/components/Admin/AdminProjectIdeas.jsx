@@ -54,11 +54,11 @@ const AdminProjectIdeas = () => {
         csv +
         `${user.id},${user.fName + " " + user.lName},${user.email},${
           user.country
-        }, ${user.phoneNumber},${user.cohort},${user.hackCategory}, ${
-          user.description
-        },${user.pitchDeck}\n`
+        }, ${user.phoneNumber},${user.gender},${user.cohort},${
+          user.hackCategory
+        }, ${user.description},${user.pitchDeck}\n`
       );
-    }, `id,${"fName + lName"},email,country,phoneNumber,cohort,hackCategory,description,pitchDeck\n`);
+    }, `id,${"fName + lName"},email,country,phoneNumber,gender,cohort,hackCategory,description,pitchDeck\n`);
 
     // Generate a downloadable link for the CSV file
     const encodedData = encodeURI(csvData);
@@ -74,13 +74,13 @@ const AdminProjectIdeas = () => {
 
     if (user) {
       // Create a CSV string with the user's data
-      const csvData = `id,${"fName + lName"},email,country,phoneNumber,cohort,hackCategory,description,pitchDeck\n$${
+      const csvData = `id,${"fName + lName"},email,country,phoneNumber,gender,cohort,hackCategory,description,pitchDeck\n$${
         user.id
       },${user.fName + " " + user.lName},${user.email},${user.country}, ${
         user.phoneNumber
-      },${user.cohort},${user.hackCategory}, ${user.description},${
-        user.pitchDeck
-      }`;
+      },${user.gender},${user.cohort},${user.hackCategory}, ${
+        user.description
+      },${user.pitchDeck}`;
 
       // Generate a downloadable link for the CSV file
       const encodedData = encodeURI(csvData);
