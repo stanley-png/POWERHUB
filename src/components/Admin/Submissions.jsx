@@ -83,7 +83,7 @@ const Submissions = () => {
       const encodedData = encodeURI(csvData);
       const link = document.createElement("a");
       link.setAttribute("href", `data:text/csv;charset=utf-8,${encodedData}`);
-      link.setAttribute("download", `userData_${user?.id}.csv`);
+      link.setAttribute("download", `ProjectsData_${user?.fName}.csv`);
       link.click();
     }
   };
