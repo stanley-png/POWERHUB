@@ -164,6 +164,9 @@ const AdminModSpecialization = () => {
                             <th className="px-6 py-3 text-left text-xs font-bold uppercase tracking-wider">
                               Category
                             </th>
+                            <th className="px-6 py-3 text-left text-xs font-bold uppercase tracking-wider">
+                              Download
+                            </th>
                           </tr>
                         </thead>
                         <tbody>
@@ -197,6 +200,16 @@ const AdminModSpecialization = () => {
                               </td>
                               <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                                 {assignment.hackCategory}
+                              </td>
+                              <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                <button
+                                  className="py-1 px-2 rounded-md border border-transparent font-semibold bg-[#C1224F] text-white hover:bg-[#13ABC4] transition-all text-sm "
+                                  onClick={() =>
+                                    handleDownloadSingle(assignment.id)
+                                  }
+                                >
+                                  Download
+                                </button>
                               </td>
                             </tr>
                           ))}
