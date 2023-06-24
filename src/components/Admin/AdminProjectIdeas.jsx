@@ -64,7 +64,7 @@ const AdminProjectIdeas = () => {
     const encodedData = encodeURI(csvData);
     const link = document.createElement("a");
     link.setAttribute("href", `data:text/csv;charset=utf-8,${encodedData}`);
-    link.setAttribute("download", "ProjectsData.csv");
+    link.setAttribute("download", "ProjectIdeasData.csv");
     link.click();
   };
 
@@ -86,7 +86,7 @@ const AdminProjectIdeas = () => {
       const encodedData = encodeURI(csvData);
       const link = document.createElement("a");
       link.setAttribute("href", `data:text/csv;charset=utf-8,${encodedData}`);
-      link.setAttribute("download", `userData_${user?.id}.csv`);
+      link.setAttribute("download", `ProjectIdeasData_${user?.id}.csv`);
       link.click();
     }
   };
@@ -167,6 +167,9 @@ const AdminProjectIdeas = () => {
                             <th className="px-6 py-3 text-left text-xs font-bold uppercase tracking-wider">
                               Category
                             </th>
+                            <th className="px-6 py-3 text-left text-xs font-bold uppercase tracking-wider">
+                              Download
+                            </th>
                           </tr>
                         </thead>
                         <tbody>
@@ -206,6 +209,16 @@ const AdminProjectIdeas = () => {
                               </td>
                               <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                                 {assignment.hackCategory}
+                              </td>
+                              <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                <button
+                                  className="py-1 px-2 rounded-md border border-transparent font-semibold bg-[#C1224F] text-white hover:bg-[#13ABC4] transition-all text-sm "
+                                  onClick={() =>
+                                    handleDownloadSingle(assignment.id)
+                                  }
+                                >
+                                  Download
+                                </button>
                               </td>
                             </tr>
                           ))}
