@@ -74,7 +74,7 @@ const PostGraduation = () => {
 
     if (user) {
       // Create a CSV string with the user's data
-      const csvData = `id,${"fName + lName"},email,country,phoneNumber,gender,cohort,hackCategory,expertise,description,pitchDeck\n$${
+      const csvData = `id,fName,email,city,country,phoneNumber,gender,education,qualification,institution,employment,cohort,career,hackCategory\n$${
         user.id
       },${user.fName + " " + user.lName},${user.email},${user.country}, ${
         user.phoneNumber
