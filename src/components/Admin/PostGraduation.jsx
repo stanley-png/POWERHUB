@@ -53,12 +53,12 @@ const PostGraduation = () => {
       return (
         csv +
         `${user.id},${user.fName + " " + user.lName},${user.email},${
-          user.country
-        }, ${user.phoneNumber},${user.gender},${user.cohort},${
+          user.city
+        },${user.country}, ${user.phoneNumber},${user.gender},${user.cohort},${
           user.hackCategory
         }, ${user.expertise},${user.description},${user.pitchDeck}\n`
       );
-    }, `id,${"fName + lName"},email,country,phoneNumber,gender,cohort,hackCategory,expertise,description,pitchDeck\n`);
+    }, `id,fName,email,city,country,phoneNumber,gender,education,qualification,institution,employment,cohort,career,hackCategory\n`);
 
     // Generate a downloadable link for the CSV file
     const encodedData = encodeURI(csvData);
