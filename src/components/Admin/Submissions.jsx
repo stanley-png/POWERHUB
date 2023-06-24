@@ -114,10 +114,14 @@ const Submissions = () => {
               <h1 className="text-2xl font-bold">Project Submissions</h1>
               <div class="flex flex-col">
                 <div class="-m-1.5 overflow-x-auto mt-10">
-                  <p className="m-1 font-semibold">
-                    {totalSubmissions} Submissions{" "}
-                  </p>
-                  <button onClick={handleDownloadAll}>Download All Data</button>
+                  <div className="flex">
+                    <p className="m-1 font-semibold">
+                      {totalSubmissions} Submissions{" "}
+                    </p>
+                    <button className="" onClick={handleDownloadAll}>
+                      Download All Data
+                    </button>
+                  </div>
                   <div class="p-1.5 min-w-full inline-block align-middle border-gray-400 border rounded-md ">
                     <div class="overflow-hidden ">
                       <table className="min-w-full divide-y divide-gray-400">
