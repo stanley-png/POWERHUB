@@ -113,8 +113,8 @@ const Submissions = () => {
             <section className="max-w-7xl min-h-[70vh]">
               <h1 className="text-2xl font-bold">Project Submissions</h1>
               <div class="flex flex-col">
-                <div class="-m-1.5 overflow-x-auto mt-10">
-                  <div className="flex">
+                <div class="-m-1.5 overflow-x-auto mt-4">
+                  <div className="flex justify-between my-5">
                     <p className="m-1 font-semibold">
                       {totalSubmissions} Submissions{" "}
                     </p>
