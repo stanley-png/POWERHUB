@@ -55,7 +55,7 @@ const Submissions = () => {
           user.githubLink
         },${user.pitchDeck}\n`
       );
-    }, `id,${"fName + lName"},email,country,phoneNumber,cohort,hackCategory,githubLink,pitchDeck\n`);
+    }, `id,${"fName + lName"},email,country,phoneNumber,cohort,hackCategory,githubLink,pitchDeck,type,groupMembers\n`);
 
     // Generate a downloadable link for the CSV file
     const encodedData = encodeURI(csvData);
@@ -71,7 +71,7 @@ const Submissions = () => {
 
     if (user) {
       // Create a CSV string with the user's data
-      const csvData = `id,${"fName + lName"},email,country,phoneNumber,cohort,hackCategory,githubLink,pitchDeck\n$${
+      const csvData = `id,${"fName + lName"},email,country,phoneNumber,cohort,hackCategory,githubLink,pitchDeck,type,groupMembers\n$${
         user.id
       },${user.fName + " " + user.lName},${user.email},${user.country}, ${
         user.phoneNumber
