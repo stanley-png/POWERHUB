@@ -54,9 +54,11 @@ const PostGraduation = () => {
         csv +
         `${user.id},${user.fName + " " + user.lName},${user.email},${
           user.city
-        },${user.country}, ${user.phoneNumber},${user.gender},${user.cohort},${
-          user.hackCategory
-        }, ${user.expertise},${user.description},${user.pitchDeck}\n`
+        },${user.country}, ${user.phoneNumber},${user.gender},${
+          user.education
+        }${user.qualification}${user.institution},${user.employment},${
+          user.cohort
+        },${user.career}${user.hackCategory}\n`
       );
     }, `id,fName,email,city,country,phoneNumber,gender,education,qualification,institution,employment,cohort,career,hackCategory\n`);
 
@@ -76,11 +78,13 @@ const PostGraduation = () => {
       // Create a CSV string with the user's data
       const csvData = `id,fName,email,city,country,phoneNumber,gender,education,qualification,institution,employment,cohort,career,hackCategory\n$${
         user.id
-      },${user.fName + " " + user.lName},${user.email},${user.country}, ${
-        user.phoneNumber
-      },${user.gender},${user.cohort},${user.hackCategory}, ${user.expertise},${
-        user.description
-      },${user.pitchDeck}`;
+      },${user.fName + " " + user.lName},${user.email},${user.city},${
+        user.country
+      }, ${user.phoneNumber},${user.gender},${user.education}${
+        user.qualification
+      }${user.institution},${user.employment},${user.cohort},${user.career}${
+        user.hackCategory
+      },`;
 
       // Generate a downloadable link for the CSV file
       const encodedData = encodeURI(csvData);
