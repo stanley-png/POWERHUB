@@ -47,6 +47,50 @@ const AdminProjectIdeas = () => {
     fetchTotalSubmissions();
   }, []);
 
+  const handleDownloadAll = () => {
+    // Create a CSV string with all the users data
+    const csvData = projects.reduce((csv, user) => {
+      return (
+        csv +
+        `${user.id},${user.fName + " " + user.lName},${user.email},${
+          user.country
+        }, ${user.phoneNumber},${user.cohort},${user.hackCategory}, ${
+          user.githubLink
+        },${user.pitchDeck}\n`
+      );
+    }, `id,${"fName + lName"},email,country,phoneNumber,cohort,hackCategory,githubLink,pitchDeck\n`);
+
+    // Generate a downloadable link for the CSV file
+    const encodedData = encodeURI(csvData);
+    const link = document.createElement("a");
+    link.setAttribute("href", `data:text/csv;charset=utf-8,${encodedData}`);
+    link.setAttribute("download", "ProjectsData.csv");
+    link.click();
+  };
+
+  const handleDownloadSingle = (userId) => {
+    // Find the selected user's data
+    const user = projects.find((user) => user.id === userId);
+
+    if (user) {
+      // Create a CSV string with the user's data
+      const csvData = `id,${"fName + lName"},email,country,phoneNumber,cohort,hackCategory,githubLink,pitchDeck\n$${
+        user.id
+      },${user.fName + " " + user.lName},${user.email},${user.country}, ${
+        user.phoneNumber
+      },${user.cohort},${user.hackCategory}, ${user.githubLink},${
+        user.pitchDeck
+      }`;
+
+      // Generate a downloadable link for the CSV file
+      const encodedData = encodeURI(csvData);
+      const link = document.createElement("a");
+      link.setAttribute("href", `data:text/csv;charset=utf-8,${encodedData}`);
+      link.setAttribute("download", `userData_${user?.id}.csv`);
+      link.click();
+    }
+  };
+
   // Pagination
 
   const indexOfLastAssignment = currentPage * assignmentsPerPage;
@@ -79,9 +123,17 @@ const AdminProjectIdeas = () => {
               <h1 className="text-2xl font-bold">Project Ideas Submissions</h1>
               <div class="flex flex-col">
                 <div class="-m-1.5 overflow-x-auto mt-10">
-                  <p className="m-1 font-semibold">
-                    {totalSubmissions} Submissions{" "}
-                  </p>
+                  <div className="flex justify-between my-5">
+                    <p className="m-1 font-semibold">
+                      {totalSubmissions} Submissions{" "}
+                    </p>
+                    <button
+                      className="py-3 px-4 rounded-md border border-transparent font-semibold bg-[#C1224F] text-white hover:bg-[#13ABC4] transition-all text-sm "
+                      onClick={handleDownloadAll}
+                    >
+                      Download All Data
+                    </button>
+                  </div>
                   <div class="p-1.5 min-w-full inline-block align-middle border-gray-400 border rounded-md ">
                     <div class="overflow-hidden ">
                       <table className="min-w-full divide-y divide-gray-400">
