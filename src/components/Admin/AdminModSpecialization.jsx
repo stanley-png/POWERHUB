@@ -56,9 +56,9 @@ const AdminModSpecialization = () => {
           user.country
         }, ${user.phoneNumber},${user.gender},${user.cohort},${
           user.hackCategory
-        }, ${user.expertise},${user.description},${user.pitchDeck}\n`
+        }, ${user.expertise}\n`
       );
-    }, `id,${"fName + lName"},email,country,phoneNumber,gender,cohort,hackCategory,expertise,description,pitchDeck\n`);
+    }, `id,${"fName + lName"},email,country,phoneNumber,gender,cohort,hackCategory,expertise,\n`);
 
     // Generate a downloadable link for the CSV file
     const encodedData = encodeURI(csvData);
@@ -74,13 +74,11 @@ const AdminModSpecialization = () => {
 
     if (user) {
       // Create a CSV string with the user's data
-      const csvData = `id,${"fName + lName"},email,country,phoneNumber,gender,cohort,hackCategory,expertise,description,pitchDeck\n$${
+      const csvData = `id,${"fName + lName"},email,country,phoneNumber,gender,cohort,hackCategory,expertise\n$${
         user.id
       },${user.fName + " " + user.lName},${user.email},${user.country}, ${
         user.phoneNumber
-      },${user.gender},${user.cohort},${user.hackCategory}, ${user.expertise},${
-        user.description
-      },${user.pitchDeck}`;
+      },${user.gender},${user.cohort},${user.hackCategory}, ${user.expertise}`;
 
       // Generate a downloadable link for the CSV file
       const encodedData = encodeURI(csvData);
