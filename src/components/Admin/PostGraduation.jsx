@@ -122,9 +122,17 @@ const PostGraduation = () => {
               <h1 className="text-2xl font-bold">Post Graduation Data</h1>
               <div class="flex flex-col">
                 <div class="-m-1.5 overflow-x-auto mt-10">
-                  <p className="m-1 font-semibold">
-                    {totalSubmissions} Submissions{" "}
-                  </p>
+                  <div className="flex justify-between my-5">
+                    <p className="m-1 font-semibold">
+                      {totalSubmissions} Submissions{" "}
+                    </p>
+                    <button
+                      className="py-3 px-4 rounded-md border border-transparent font-semibold bg-[#C1224F] text-white hover:bg-[#13ABC4] transition-all text-sm "
+                      onClick={handleDownloadAll}
+                    >
+                      Download All Data
+                    </button>
+                  </div>
                   <div class="p-1.5 min-w-full inline-block align-middle border-gray-400 border rounded-md ">
                     <div class="overflow-hidden ">
                       <table className="min-w-full divide-y divide-gray-400">
