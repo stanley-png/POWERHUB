@@ -4,6 +4,7 @@ import CreateProfile from "./CreateProfile";
 import { useSelector } from "react-redux";
 import { selectUser } from "../../features/userSlice";
 import { db } from "../../utils/firebase";
+import EditProfile from "./EditProfile";
 
 const ProfileDash = () => {
   const user = useSelector(selectUser);
@@ -45,7 +46,7 @@ const ProfileDash = () => {
             <h1 className="font-extrabold text-xl text-gray-500 ">
               My Profile
             </h1>
-            <CreateProfile />
+            {!userProfileDetails ? <EditProfile /> : <CreateProfile />}
           </div>
 
           <section className="w-full ml-0 mt-5">
