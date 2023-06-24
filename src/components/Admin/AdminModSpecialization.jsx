@@ -10,13 +10,13 @@ function classNames(...classes) {
 const AdminModSpecialization = () => {
   const user = useSelector(selectUser);
 
-  const [assignments, setAssignments] = useState([]);
+  const [specializations, setSpecializations] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [assignmentsPerPage] = useState(10);
   const [totalSubmissions, setTotalSubmissions] = useState(0);
 
   useEffect(() => {
-    // Fetch all submitted assignments from Firestore
+    // Fetch all submitted specializations from Firestore
     const fetchAssignments = async () => {
       try {
         const assignmentsSnapshot = await db
@@ -26,9 +26,9 @@ const AdminModSpecialization = () => {
           id: doc.id,
           ...doc.data(),
         }));
-        setAssignments(assignmentsData);
+        setSpecializations(assignmentsData);
       } catch (error) {
-        console.log("Error fetching assignments", error);
+        console.log("Error fetching specializations", error);
       }
     };
 
@@ -40,18 +40,62 @@ const AdminModSpecialization = () => {
         const totalSubmissions = submissionsSnapshot.size;
         setTotalSubmissions(totalSubmissions);
       } catch (error) {
-        console.log("Error fetching assignments", error);
+        console.log("Error fetching specializations", error);
       }
     };
     fetchAssignments();
     fetchTotalSubmissions();
   }, []);
 
+  const handleDownloadAll = () => {
+    // Create a CSV string with all the users data
+    const csvData = specializations.reduce((csv, user) => {
+      return (
+        csv +
+        `${user.id},${user.fName + " " + user.lName},${user.email},${
+          user.country
+        }, ${user.phoneNumber},${user.gender},${user.cohort},${
+          user.hackCategory
+        }, ${user.expertise},${user.description},${user.pitchDeck}\n`
+      );
+    }, `id,${"fName + lName"},email,country,phoneNumber,gender,cohort,hackCategory,expertise,description,pitchDeck\n`);
+
+    // Generate a downloadable link for the CSV file
+    const encodedData = encodeURI(csvData);
+    const link = document.createElement("a");
+    link.setAttribute("href", `data:text/csv;charset=utf-8,${encodedData}`);
+    link.setAttribute("download", "ProjectIdeasData.csv");
+    link.click();
+  };
+
+  const handleDownloadSingle = (userId) => {
+    // Find the selected user's data
+    const user = specializations.find((user) => user.id === userId);
+
+    if (user) {
+      // Create a CSV string with the user's data
+      const csvData = `id,${"fName + lName"},email,country,phoneNumber,gender,cohort,hackCategory,expertise,description,pitchDeck\n$${
+        user.id
+      },${user.fName + " " + user.lName},${user.email},${user.country}, ${
+        user.phoneNumber
+      },${user.gender},${user.cohort},${user.hackCategory}, ${user.expertise},${
+        user.description
+      },${user.pitchDeck}`;
+
+      // Generate a downloadable link for the CSV file
+      const encodedData = encodeURI(csvData);
+      const link = document.createElement("a");
+      link.setAttribute("href", `data:text/csv;charset=utf-8,${encodedData}`);
+      link.setAttribute("download", `ProjectIdeasData_${user?.fName}.csv`);
+      link.click();
+    }
+  };
+
   // Pagination
 
   const indexOfLastAssignment = currentPage * assignmentsPerPage;
   const indexOfFirstAssignment = indexOfLastAssignment - assignmentsPerPage;
-  const currentAssignments = assignments.slice(
+  const currentAssignments = specializations.slice(
     indexOfFirstAssignment,
     indexOfLastAssignment
   );
@@ -156,7 +200,7 @@ const AdminModSpecialization = () => {
               </div>
 
               <div className="mt-4 ">
-                {assignments.length > assignmentsPerPage && (
+                {specializations.length > assignmentsPerPage && (
                   <div className="flex-1 flex justify-center gap-4">
                     <button
                       onClick={() => paginate(currentPage - 1)}
@@ -172,10 +216,10 @@ const AdminModSpecialization = () => {
                     </button>
                     <button
                       onClick={() => paginate(currentPage + 1)}
-                      disabled={indexOfLastAssignment >= assignments.length}
+                      disabled={indexOfLastAssignment >= specializations.length}
                       className={classNames(
                         "px-2 py-1 rounded-md text-sm font-medium",
-                        indexOfLastAssignment >= assignments.length
+                        indexOfLastAssignment >= specializations.length
                           ? "bg-gray-600 text-white px-5 py-2 cursor-not-allowed"
                           : "bg-[#13ABC4] hover:bg-[#C1224F] text-white px-5 py-2 rounded-md"
                       )}
