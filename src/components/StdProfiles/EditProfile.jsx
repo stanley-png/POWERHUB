@@ -1,18 +1,60 @@
-import React from "react";
+import React, { useState } from "react";
 import CloseOutlinedIcon from "@mui/icons-material/CloseOutlined";
 
-const EditProfile = () => {
+const EditProfile = ({
+  id,
+  editCurrentActivity,
+  editGender,
+  editBio,
+  editPhoneNumber,
+  editDisplayName,
+  editCountry,
+  editCareer,
+  editEmployment,
+  editWebsite,
+  editCohort,
+  editImagePreview,
+  editProfileImage,
+}) => {
+  const [bio, setBio] = useState(editBio);
+  const [currentActivity, setCurrentActivity] = useState(editCurrentActivity);
+  const [gender, setGender] = useState(editGender);
+  const [phoneNumber, setPhoneNumber] = useState(editPhoneNumber);
+  const [fName, setFName] = useState(editDisplayName);
+  const [employment, setEmployment] = useState(editEmployment);
+  const [country, setCountry] = useState(editCountry);
+  const [career, setCareer] = useState(editCareer);
+  const [website, setWebsite] = useState(editWebsite);
+  const [cohort, setCohort] = useState(editCohort);
+  const [articleImage, setArticleImage] = useState(editProfileImage);
+  const [imagePreview, setImagePreview] = useState(editImagePreview);
+
+  const [errorMessage, setErrorMessage] = useState("");
+  const handleImagePreview = (e) => {
+    const file = e.target.files[0];
+    setArticleImage(file);
+
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = () => {
+        setImagePreview(reader.result);
+      };
+      reader.readAsDataURL(file);
+    } else {
+      setImagePreview(null);
+    }
+  };
   return (
     <section>
       <button
         type="button"
         className="py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-[#C1224F] text-white hover:bg-[#13ABC4] transition-all text-sm "
-        data-hs-overlay="#hs-static-backdrop-modal"
+        data-hs-overlay={`#hs-static-backdrop-modal${id}`}
       >
         Edit Profile
       </button>
       <div
-        id="hs-static-backdrop-modal"
+        id={`hs-static-backdrop-modal${id}`}
         className="hs-overlay hidden w-full h-full fixed top-0 left-0 overflow-x-hidden overflow-y-auto [--overlay-backdrop:static] bg-[#13ABC4] bg-opacity-20 backdrop-blur-xs"
         data-hs-overlay-keyboard="false"
       >
@@ -23,22 +65,22 @@ const EditProfile = () => {
               <button
                 type="button"
                 className="hs-dropdown-toggle inline-flex flex-shrink-0 justify-center items-center h-8 w-8 rounded-md text-gray-500 hover:text-gray-400 transition-all text-sm"
-                data-hs-overlay="#hs-static-backdrop-modal"
+                data-hs-overlay={`#hs-static-backdrop-modal${id}`}
               >
                 <CloseOutlinedIcon />
               </button>
             </div>
-            {/* {errorMessage && (
+            {errorMessage && (
               <p className="px-4 mb-1 font-semibold text-[#C1224F]">
                 {errorMessage}
               </p>
-            )} */}
+            )}
             <div className="p-4 overflow-y-auto">
               <div className="mb-5">
                 <label className="font-semibold">Add Cover Image</label>
                 <input
                   type="file"
-                  // onChange={handleImagePreview}
+                  onChange={handleImagePreview}
                   className="block cursor-pointer w-full text-sm text-gray-500
               file:mr-4 file:py-2 file:px-4
               file:rounded-md file:border-0
@@ -48,14 +90,14 @@ const EditProfile = () => {
                   accept="image/*"
                 />
                 <div className="mt-4 max-w-[300px]">
-                  {/* {imagePreview && (
+                  {imagePreview && (
                     <img
                       src={imagePreview}
                       alt="Image Preview"
                       style={{ maxWidth: "400px", maxHeight: "200px" }}
                       className="rounded-md h-[250px] w-full"
                     />
-                  )} */}
+                  )}
                 </div>
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 lg:gap-6">
@@ -65,8 +107,8 @@ const EditProfile = () => {
                   </label>
                   <input
                     required
-                    // value={fName}
-                    // onChange={(e) => setFName(e.target.value)}
+                    value={fName}
+                    onChange={(e) => setFName(e.target.value)}
                     type="text"
                     className="py-3 px-4 block w-full border-gray-200 rounded-md text-sm  border border-1"
                   />
@@ -79,8 +121,8 @@ const EditProfile = () => {
                   <input
                     type="number"
                     required
-                    // value={phoneNumber}
-                    // onChange={(e) => setPhoneNumber(e.target.value)}
+                    value={phoneNumber}
+                    onChange={(e) => setPhoneNumber(e.target.value)}
                     className="py-3 px-4 block w-full border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 border border-1"
                   />
                 </div>
@@ -94,8 +136,8 @@ const EditProfile = () => {
                   type="text"
                   required
                   autoComplete
-                  // value={bio}
-                  // onChange={(e) => setBio(e.target.value)}
+                  value={bio}
+                  onChange={(e) => setBio(e.target.value)}
                   cols={10}
                   rows={5}
                   className="py-3 px-4 block w-full border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 border border-1"
@@ -109,8 +151,8 @@ const EditProfile = () => {
                   </label>
                   <select
                     className=" p-2 cursor-pointer bg-white border rounded-md shadow-sm outline-none "
-                    // value={gender}
-                    // onChange={(e) => setGender(e.target.value)}
+                    value={gender}
+                    onChange={(e) => setGender(e.target.value)}
                   >
                     <option value="" disabled>
                       Select Gender
@@ -128,8 +170,8 @@ const EditProfile = () => {
                   </label>
                   <select
                     className=" p-2 cursor-pointer bg-white border rounded-md shadow-sm outline-none "
-                    // value={country}
-                    // onChange={(e) => setCountry(e.target.value)}
+                    value={country}
+                    onChange={(e) => setCountry(e.target.value)}
                   >
                     <option value="" disabled>
                       Select Country
@@ -148,8 +190,8 @@ const EditProfile = () => {
                   </label>
                   <select
                     className=" p-2 cursor-pointer bg-white border rounded-md shadow-sm outline-none "
-                    // value={cohort}
-                    // onChange={(e) => setCohort(e.target.value)}
+                    value={cohort}
+                    onChange={(e) => setCohort(e.target.value)}
                   >
                     <option value="" disabled>
                       Select Cohort
@@ -166,8 +208,8 @@ const EditProfile = () => {
                   </label>
                   <select
                     className=" p-2 cursor-pointer bg-white border rounded-md shadow-sm outline-none "
-                    // value={employment}
-                    // onChange={(e) => setEmployment(e.target.value)}
+                    value={employment}
+                    onChange={(e) => setEmployment(e.target.value)}
                   >
                     <option value="" disabled>
                       Employment Status
@@ -186,8 +228,8 @@ const EditProfile = () => {
                     type="text"
                     required
                     autoComplete
-                    // value={career}
-                    // onChange={(e) => setCareer(e.target.value)}
+                    value={career}
+                    onChange={(e) => setCareer(e.target.value)}
                     className="py-3 px-4 block w-full border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 border border-1"
                     placeholder="Web developer, ML Expert etc"
                   />
@@ -200,8 +242,8 @@ const EditProfile = () => {
                     type="text"
                     required
                     autoComplete
-                    // value={website}
-                    // onChange={(e) => setWebsite(e.target.value)}
+                    value={website}
+                    onChange={(e) => setWebsite(e.target.value)}
                     className="py-3 px-4 block w-full border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 border border-1"
                     placeholder="https://... or github link"
                   />
@@ -214,25 +256,25 @@ const EditProfile = () => {
                     type="text"
                     required
                     autoComplete
-                    // value={currentActivity}
-                    // onChange={(e) => setCurrentActivity(e.target.value)}
+                    value={currentActivity}
+                    onChange={(e) => setCurrentActivity(e.target.value)}
                     className="py-3 px-4 block w-full border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 border border-1"
                     placeholder="What are you currently working on"
                   />
                 </div>
               </div>
             </div>
-            {/* {errorMessage && (
+            {errorMessage && (
               <p className="px-4 mb-1 font-semibold text-[#C1224F]">
                 {errorMessage}
               </p>
-            )} */}
+            )}
 
             <div className="flex justify-between items-center gap-x-2 py-3 px-4 border-t">
               <button
                 type="button"
                 className="hs-dropdown-toggle py-3 px-6 inline-flex justify-center items-center gap-2 rounded-md border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 transition-all text-sm "
-                data-hs-overlay="#hs-static-backdrop-modal"
+                data-hs-overlay={`#hs-static-backdrop-modal${id}`}
               >
                 Cancel
               </button>
@@ -240,7 +282,7 @@ const EditProfile = () => {
                 // onClick={handleCreateProfile}
                 className="py-3 px-6 inline-flex justify-center items-center gap-2 cursor-pointer rounded-md border border-transparent font-semibold bg-[#C1224F] text-white hover:bg-[#13ABC4] transition-all text-sm"
               >
-                Save
+                Update
               </button>
             </div>
           </div>

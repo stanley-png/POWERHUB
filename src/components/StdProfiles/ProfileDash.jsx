@@ -9,6 +9,7 @@ import EditProfile from "./EditProfile";
 const ProfileDash = () => {
   const user = useSelector(selectUser);
   const [userProfileDetails, setUserProfileDetails] = useState([]);
+
   const fetchUserProfileDetails = async () => {
     await db
       .collection("usersProfiles")
@@ -25,6 +26,7 @@ const ProfileDash = () => {
   useEffect(() => {
     fetchUserProfileDetails();
   }, []);
+
   return (
     <main className="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 mx-auto">
       <section className="flex gap-24">
@@ -46,7 +48,16 @@ const ProfileDash = () => {
             <h1 className="font-extrabold text-xl text-gray-500 ">
               My Profile
             </h1>
-            {!userProfileDetails ? <CreateProfile /> : <EditProfile />}
+            {/* {!userProfileDetails ? (
+              <CreateProfile />
+            ) : (
+              <EditProfile
+                id={userProfileDetails.id}
+                editCurrentActivity={userProfileDetails.currentActivity}
+                editBio={userProfileDetails.bio}
+                editArticleBody={userProfileDetails.articleBody}
+              />
+            )} */}
           </div>
 
           <section className="w-full ml-0 mt-5">
@@ -131,6 +142,21 @@ const ProfileDash = () => {
                         <h1 className="font-bold text-2xl mb-3">About</h1>
                         <p className="text-sm"> {userData?.bio}</p>
                       </div>
+                      <EditProfile
+                        id={userData?.id}
+                        editCurrentActivity={userData?.currentActivity}
+                        editDisplayName={userData?.displayName}
+                        editPhoneNumber={userData.phoneNumber}
+                        editGender={userData.gender}
+                        editBio={userData.bio}
+                        editCountry={userData.country}
+                        editCareer={userData.career}
+                        editEmployment={userData.employment}
+                        editWebsite={userData.website}
+                        editCohort={userData.cohort}
+                        // editProfileImage={userData.cohort}
+                        editImagePreview={userData.imageUrl}
+                      />
                     </article>
                   </>
                 );
