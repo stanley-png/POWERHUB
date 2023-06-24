@@ -118,7 +118,10 @@ const Submissions = () => {
                     <p className="m-1 font-semibold">
                       {totalSubmissions} Submissions{" "}
                     </p>
-                    <button className="" onClick={handleDownloadAll}>
+                    <button
+                      className="py-3 px-4 rounded-md border border-transparent font-semibold bg-[#C1224F] text-white hover:bg-[#13ABC4] transition-all text-sm "
+                      onClick={handleDownloadAll}
+                    >
                       Download All Data
                     </button>
                   </div>
