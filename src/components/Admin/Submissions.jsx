@@ -71,7 +71,13 @@ const Submissions = () => {
 
     if (user) {
       // Create a CSV string with the user's data
-      const csvData = `id,username,email,country,submissionLink,pitchDeckLink\n${user.id},${user.username},${user.email},${user.country},${user.submissionLink},${user.pitchDeckLink}`;
+      const csvData = `id,${"fName + lName"},email,country,phoneNumber,cohort,hackCategory,githubLink,pitchDeck\n$${
+        user.id
+      },${user.fName + " " + user.lName},${user.email},${user.country}, ${
+        user.phoneNumber
+      },${user.cohort},${user.hackCategory}, ${user.githubLink},${
+        user.pitchDeck
+      }`;
 
       // Generate a downloadable link for the CSV file
       const encodedData = encodeURI(csvData);
@@ -158,6 +164,9 @@ const Submissions = () => {
                             <th className="px-6 py-3 text-left text-xs font-bold uppercase tracking-wider">
                               Category
                             </th>
+                            <th className="px-6 py-3 text-left text-xs font-bold uppercase tracking-wider">
+                              Download
+                            </th>
                           </tr>
                         </thead>
                         <tbody>
@@ -203,6 +212,13 @@ const Submissions = () => {
                               </td>
                               <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                                 {assignment.hackCategory}
+                              </td>
+                              <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                <button
+                                  onClick={() => handleDownloadSingle(user.id)}
+                                >
+                                  Download
+                                </button>
                               </td>
                             </tr>
                           ))}
