@@ -86,7 +86,7 @@ const AdminProjectIdeas = () => {
       const encodedData = encodeURI(csvData);
       const link = document.createElement("a");
       link.setAttribute("href", `data:text/csv;charset=utf-8,${encodedData}`);
-      link.setAttribute("download", `ProjectIdeasData_${user?.id}.csv`);
+      link.setAttribute("download", `ProjectIdeasData_${user?.fName}.csv`);
       link.click();
     }
   };
