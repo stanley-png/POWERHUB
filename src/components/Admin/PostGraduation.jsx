@@ -10,13 +10,13 @@ function classNames(...classes) {
 
 const PostGraduation = () => {
   const user = useSelector(selectUser);
-  const [assignments, setAssignments] = useState([]);
+  const [postGraduation, setPostGraduation] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [assignmentsPerPage] = useState(10);
   const [totalSubmissions, setTotalSubmissions] = useState(0);
 
   useEffect(() => {
-    // Fetch all submitted assignments from Firestore
+    // Fetch all submitted postGraduation from Firestore
     const fetchAssignments = async () => {
       try {
         const assignmentsSnapshot = await db
@@ -26,9 +26,9 @@ const PostGraduation = () => {
           id: doc.id,
           ...doc.data(),
         }));
-        setAssignments(assignmentsData);
+        setPostGraduation(assignmentsData);
       } catch (error) {
-        console.log("Error fetching assignments", error);
+        console.log("Error fetching postGraduation", error);
       }
     };
 
@@ -40,18 +40,40 @@ const PostGraduation = () => {
         const totalSubmissions = submissionsSnapshot.size;
         setTotalSubmissions(totalSubmissions);
       } catch (error) {
-        console.log("Error fetching assignments", error);
+        console.log("Error fetching postGraduation", error);
       }
     };
     fetchAssignments();
     fetchTotalSubmissions();
   }, []);
 
+  const handleDownloadSingle = (userId) => {
+    // Find the selected user's data
+    const user = postGraduation.find((user) => user.id === userId);
+
+    if (user) {
+      // Create a CSV string with the user's data
+      const csvData = `id,${"fName + lName"},email,country,phoneNumber,gender,cohort,hackCategory,expertise,description,pitchDeck\n$${
+        user.id
+      },${user.fName + " " + user.lName},${user.email},${user.country}, ${
+        user.phoneNumber
+      },${user.gender},${user.cohort},${user.hackCategory}, ${user.expertise},${
+        user.description
+      },${user.pitchDeck}`;
+
+      // Generate a downloadable link for the CSV file
+      const encodedData = encodeURI(csvData);
+      const link = document.createElement("a");
+      link.setAttribute("href", `data:text/csv;charset=utf-8,${encodedData}`);
+      link.setAttribute("download", `ProjectIdeasData_${user?.fName}.csv`);
+      link.click();
+    }
+  };
   // Pagination
 
   const indexOfLastAssignment = currentPage * assignmentsPerPage;
   const indexOfFirstAssignment = indexOfLastAssignment - assignmentsPerPage;
-  const currentAssignments = assignments.slice(
+  const currentAssignments = postGraduation.slice(
     indexOfFirstAssignment,
     indexOfLastAssignment
   );
@@ -169,7 +191,7 @@ const PostGraduation = () => {
               </div>
 
               <div className="mt-4 ">
-                {assignments.length > assignmentsPerPage && (
+                {postGraduation.length > assignmentsPerPage && (
                   <div className="flex-1 flex justify-center gap-4">
                     <button
                       onClick={() => paginate(currentPage - 1)}
@@ -185,10 +207,10 @@ const PostGraduation = () => {
                     </button>
                     <button
                       onClick={() => paginate(currentPage + 1)}
-                      disabled={indexOfLastAssignment >= assignments.length}
+                      disabled={indexOfLastAssignment >= postGraduation.length}
                       className={classNames(
                         "px-2 py-1 rounded-md text-sm font-medium",
-                        indexOfLastAssignment >= assignments.length
+                        indexOfLastAssignment >= postGraduation.length
                           ? "bg-gray-600 text-white px-5 py-2 cursor-not-allowed"
                           : "bg-[#13ABC4] hover:bg-[#C1224F] text-white px-5 py-2 rounded-md"
                       )}
