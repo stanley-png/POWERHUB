@@ -10,13 +10,13 @@ function classNames(...classes) {
 const AdminProjectIdeas = () => {
   const user = useSelector(selectUser);
 
-  const [assignments, setAssignments] = useState([]);
+  const [projectIdeas, setProjectIdeas] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [assignmentsPerPage] = useState(10);
   const [totalSubmissions, setTotalSubmissions] = useState(0);
 
   useEffect(() => {
-    // Fetch all submitted assignments from Firestore
+    // Fetch all submitted projectIdeas from Firestore
     const fetchAssignments = async () => {
       try {
         const assignmentsSnapshot = await db
@@ -26,9 +26,9 @@ const AdminProjectIdeas = () => {
           id: doc.id,
           ...doc.data(),
         }));
-        setAssignments(assignmentsData);
+        setProjectIdeas(assignmentsData);
       } catch (error) {
-        console.log("Error fetching assignments", error);
+        console.log("Error fetching projectIdeas", error);
       }
     };
 
@@ -40,7 +40,7 @@ const AdminProjectIdeas = () => {
         const totalSubmissions = submissionsSnapshot.size;
         setTotalSubmissions(totalSubmissions);
       } catch (error) {
-        console.log("Error fetching assignments", error);
+        console.log("Error fetching projectIdeas", error);
       }
     };
     fetchAssignments();
@@ -49,7 +49,7 @@ const AdminProjectIdeas = () => {
 
   const handleDownloadAll = () => {
     // Create a CSV string with all the users data
-    const csvData = projects.reduce((csv, user) => {
+    const csvData = projectIdeas.reduce((csv, user) => {
       return (
         csv +
         `${user.id},${user.fName + " " + user.lName},${user.email},${
@@ -70,7 +70,7 @@ const AdminProjectIdeas = () => {
 
   const handleDownloadSingle = (userId) => {
     // Find the selected user's data
-    const user = projects.find((user) => user.id === userId);
+    const user = projectIdeas.find((user) => user.id === userId);
 
     if (user) {
       // Create a CSV string with the user's data
@@ -95,7 +95,7 @@ const AdminProjectIdeas = () => {
 
   const indexOfLastAssignment = currentPage * assignmentsPerPage;
   const indexOfFirstAssignment = indexOfLastAssignment - assignmentsPerPage;
-  const currentAssignments = assignments.slice(
+  const currentAssignments = projectIdeas.slice(
     indexOfFirstAssignment,
     indexOfLastAssignment
   );
@@ -217,7 +217,7 @@ const AdminProjectIdeas = () => {
               </div>
 
               <div className="mt-4 ">
-                {assignments.length > assignmentsPerPage && (
+                {projectIdeas.length > assignmentsPerPage && (
                   <div className="flex-1 flex justify-center gap-4">
                     <button
                       onClick={() => paginate(currentPage - 1)}
@@ -233,10 +233,10 @@ const AdminProjectIdeas = () => {
                     </button>
                     <button
                       onClick={() => paginate(currentPage + 1)}
-                      disabled={indexOfLastAssignment >= assignments.length}
+                      disabled={indexOfLastAssignment >= projectIdeas.length}
                       className={classNames(
                         "px-2 py-1 rounded-md text-sm font-medium",
-                        indexOfLastAssignment >= assignments.length
+                        indexOfLastAssignment >= projectIdeas.length
                           ? "bg-gray-600 text-white px-5 py-2 cursor-not-allowed"
                           : "bg-[#13ABC4] hover:bg-[#C1224F] text-white px-5 py-2 rounded-md"
                       )}
