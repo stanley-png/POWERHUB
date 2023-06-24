@@ -114,7 +114,7 @@ const EditProfile = ({
                       setCurrentActivity("");
                       setArticleImage(null);
                       setImagePreview(null);
-                      toast.success("Profile Created successfully!", {
+                      toast.success("Profile Updated successfully!", {
                         position: "top-center",
                         autoClose: 3000,
                         hideProgressBar: false,
@@ -154,6 +154,7 @@ const EditProfile = ({
       >
         <div className="hs-overlay-open:mt-7 hs-overlay-open:opacity-100 hs-overlay-open:duration-500 md:mt-24 opacity-100 ease-out transition-all sm:max-w-4xl w-full m-3 mx-auto ">
           <div className="flex flex-col bg-white border shadow-sm rounded-xl">
+            <ToastContainer />
             <div className="flex justify-between items-center py-3 px-4 border-b">
               <h3 className="font-bold text-gray-800">Create Profile</h3>
               <button

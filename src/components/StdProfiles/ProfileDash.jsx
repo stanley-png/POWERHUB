@@ -76,7 +76,7 @@ const ProfileDash = () => {
 
                       <div className="ml-10">
                         <h1 className="text-md md:text-2xl font-bold">
-                          {user.displayName}
+                          {userData.fName}
                         </h1>
                         <p className="font-semibold text-xs">
                           {userData?.email}
@@ -145,7 +145,7 @@ const ProfileDash = () => {
                       <EditProfile
                         id={userData?.id}
                         editCurrentActivity={userData?.currentActivity}
-                        editDisplayName={userData?.fName}
+                        editFName={userData?.fName}
                         editPhoneNumber={userData.phoneNumber}
                         editGender={userData.gender}
                         editBio={userData.bio}
