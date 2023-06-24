@@ -53,7 +53,7 @@ const Submissions = () => {
           user.country
         }, ${user.phoneNumber},${user.cohort},${user.hackCategory}, ${
           user.githubLink
-        },${user.pitchDeck}\n`
+        },${user.pitchDeck},${user.type},${user.groupMembers}\n`
       );
     }, `id,${"fName + lName"},email,country,phoneNumber,cohort,hackCategory,githubLink,pitchDeck,type,groupMembers\n`);
 
@@ -77,7 +77,7 @@ const Submissions = () => {
         user.phoneNumber
       },${user.cohort},${user.hackCategory}, ${user.githubLink},${
         user.pitchDeck
-      }`;
+      },${user.type},${user.groupMembers}`;
 
       // Generate a downloadable link for the CSV file
       const encodedData = encodeURI(csvData);
