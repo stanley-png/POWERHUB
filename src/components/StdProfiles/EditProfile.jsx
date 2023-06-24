@@ -1,5 +1,10 @@
 import React, { useState } from "react";
 import CloseOutlinedIcon from "@mui/icons-material/CloseOutlined";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { db, storage } from "../../utils/firebase";
+import { useSelector } from "react-redux";
+import { selectUser } from "../../features/userSlice";
 
 const EditProfile = ({
   id,
@@ -16,6 +21,7 @@ const EditProfile = ({
   editImagePreview,
   editProfileImage,
 }) => {
+  const user = useSelector(selectUser);
   const [bio, setBio] = useState(editBio);
   const [currentActivity, setCurrentActivity] = useState(editCurrentActivity);
   const [gender, setGender] = useState(editGender);
@@ -43,6 +49,96 @@ const EditProfile = ({
     } else {
       setImagePreview(null);
     }
+  };
+
+  const handleUpdateProfile = (e) => {
+    e.preventDefault();
+    db.collection("usersProfiles")
+      .where("email", "==", user.email)
+      .get()
+      .then((querySnapshot) => {
+        if (!querySnapshot.empty) {
+          setErrorMessage("You can't create more than one Profile");
+        } else {
+          try {
+            const uploadTask = storage
+              .ref(`usersProfilesImages/${articleImage.name}`)
+              .put(articleImage);
+
+            uploadTask.on(
+              "state_changed",
+              (snapshot) => {
+                const progress = Math.round(
+                  (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+                );
+                console.log("Upload progress: ", progress);
+              },
+              (error) => {
+                console.log("Error uploading image: ", error);
+              },
+              () => {
+                storage
+                  .ref("usersProfilesImages")
+                  .child(articleImage.name)
+                  .getDownloadURL()
+                  .then((imageUrl) => {
+                    const usersCollection = db.collection("usersProfiles");
+
+                    const blogData = {
+                      fName,
+                      slug: fName.replace(/\s/g, "-"),
+                      gender,
+                      country,
+                      phoneNumber,
+                      bio,
+                      cohort,
+                      website,
+                      currentActivity,
+                      employment,
+                      career,
+                      imageUrl,
+                      // email: user?.email,
+                      // uid: user.uid,
+                      // displayName: user.displayName,
+                      // timestamp:
+                      //   firebase.firestore.FieldValue.serverTimestamp(),
+                    };
+
+                    usersCollection
+                      .add(blogData)
+                      .then(() => {
+                        setFName("");
+                        setPhoneNumber("");
+                        setBio("");
+                        setCareer("");
+                        setWebsite("");
+                        setCurrentActivity("");
+                        setArticleImage(null);
+                        setImagePreview(null);
+                        toast.success("Profile Created successfully!", {
+                          position: "top-center",
+                          autoClose: 3000,
+                          hideProgressBar: false,
+                          closeOnClick: true,
+                          pauseOnHover: true,
+                          draggable: true,
+                          progress: undefined,
+                        });
+                      })
+                      .catch((error) => {
+                        console.log("Error creating blog post: ", error);
+                      });
+                  })
+                  .catch((error) => {
+                    console.log("Error retrieving image URL: ", error);
+                  });
+              }
+            );
+          } catch (error) {
+            console.log("Error creating blog post: ", error);
+          }
+        }
+      });
   };
   return (
     <section>
@@ -279,7 +375,7 @@ const EditProfile = ({
                 Cancel
               </button>
               <button
-                // onClick={handleCreateProfile}
+                onClick={handleUpdateProfile}
                 className="py-3 px-6 inline-flex justify-center items-center gap-2 cursor-pointer rounded-md border border-transparent font-semibold bg-[#C1224F] text-white hover:bg-[#13ABC4] transition-all text-sm"
               >
                 Update
