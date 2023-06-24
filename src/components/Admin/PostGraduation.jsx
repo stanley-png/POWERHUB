@@ -47,6 +47,27 @@ const PostGraduation = () => {
     fetchTotalSubmissions();
   }, []);
 
+  const handleDownloadAll = () => {
+    // Create a CSV string with all the users data
+    const csvData = postGraduation.reduce((csv, user) => {
+      return (
+        csv +
+        `${user.id},${user.fName + " " + user.lName},${user.email},${
+          user.country
+        }, ${user.phoneNumber},${user.gender},${user.cohort},${
+          user.hackCategory
+        }, ${user.expertise},${user.description},${user.pitchDeck}\n`
+      );
+    }, `id,${"fName + lName"},email,country,phoneNumber,gender,cohort,hackCategory,expertise,description,pitchDeck\n`);
+
+    // Generate a downloadable link for the CSV file
+    const encodedData = encodeURI(csvData);
+    const link = document.createElement("a");
+    link.setAttribute("href", `data:text/csv;charset=utf-8,${encodedData}`);
+    link.setAttribute("download", "PostGraduationData.csv");
+    link.click();
+  };
+
   const handleDownloadSingle = (userId) => {
     // Find the selected user's data
     const user = postGraduation.find((user) => user.id === userId);
@@ -65,7 +86,7 @@ const PostGraduation = () => {
       const encodedData = encodeURI(csvData);
       const link = document.createElement("a");
       link.setAttribute("href", `data:text/csv;charset=utf-8,${encodedData}`);
-      link.setAttribute("download", `ProjectIdeasData_${user?.fName}.csv`);
+      link.setAttribute("download", `PostGraduationData_${user?.fName}.csv`);
       link.click();
     }
   };
