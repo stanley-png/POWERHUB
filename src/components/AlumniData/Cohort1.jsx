@@ -51,25 +51,31 @@ const Cohort1 = () => {
               </div>
               <div className="p-4 overflow-y-auto">
                 <div class="max-w-5xl px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
-                  {profiles.map((profile) => (
-                    <div
-                      key={profile.id}
-                      class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-8 md:gap-12"
-                    >
-                      <div class="text-center">
-                        <img
-                          class="rounded-full w-24 h-24 mx-auto"
-                          src={profile.imageUrl}
-                          alt="Image Description"
-                        />
-                        <div class="mt-2 sm:mt-4">
-                          <h3 class="font-medium text-gray-800">
-                            {profile.fName}
-                          </h3>
+                  {profiles.length > 0 ? (
+                    profiles.map((profile) => (
+                      <div
+                        key={profile.id}
+                        class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-8 md:gap-12"
+                      >
+                        <div class="text-center">
+                          <img
+                            class="rounded-full w-24 h-24 mx-auto"
+                            src={profile.imageUrl}
+                            alt="Image Description"
+                          />
+                          <div class="mt-2 sm:mt-4">
+                            <h3 class="font-medium text-gray-800">
+                              {profile.fName}
+                            </h3>
+                          </div>
                         </div>
                       </div>
+                    ))
+                  ) : (
+                    <div className="font-extrabold text-gray-600 text-xl">
+                      No Profiles
                     </div>
-                  ))}
+                  )}
 
                   <div class="mt-12 flex justify-center">
                     <div class="border border-gray-200 p-1.5 pl-5 rounded-full">

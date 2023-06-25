@@ -1,6 +1,8 @@
 import React from "react";
 import CloseOutlinedIcon from "@mui/icons-material/CloseOutlined";
 import Cohort1 from "../AlumniData/Cohort1";
+import Cohort2 from "../AlumniData/Cohort2";
+import Cohort3 from "../AlumniData/Cohort3";
 
 const Alumni = () => {
   return (
@@ -152,61 +154,9 @@ const Alumni = () => {
         </div>
 
         <div className="mt-12 grid gap-5 w-full sm:inline-flex justify-center">
-          {/* <p className="inline-flex justify-center items-center gap-x-3 text-center bg-[#C1224F] hover:bg-[#a5153e] border border-transparent text-sm lg:text-base text-white font-medium rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 focus:ring-offset-white transition py-3 px-4 cursor-pointer">
-            Cohort 1 Alumni
-          </p>
-          <p className="inline-flex justify-center items-center gap-x-3 text-center bg-[#C1224F] hover:bg-[#a5153e] border border-transparent text-sm lg:text-base text-white font-medium rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 focus:ring-offset-white transition py-3 px-4 cursor-pointer">
-            Cohort 2 Alumni
-          </p>
-          <p className="inline-flex justify-center items-center gap-x-3 text-center bg-[#C1224F] hover:bg-[#a5153e] border border-transparent text-sm lg:text-base text-white font-medium rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 focus:ring-offset-white transition py-3 px-4 cursor-pointer">
-            Cohort 3 Alumni
-          </p> */}
-
           <Cohort1 />
-
-          {/* <section>
-            <button
-              type="button"
-              className="py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-[#C1224F] text-white hover:bg-[#13ABC4] transition-all text-sm "
-              data-hs-overlay="#hs-static-backdrop-modal"
-            >
-              Cohort 1 Alumni
-            </button>
-
-            <div
-              id="hs-static-backdrop-modal"
-              className="hs-overlay hidden w-full h-full fixed top-0 left-0 overflow-x-hidden overflow-y-auto [--overlay-backdrop:static] bg-[#13ABC4] bg-opacity-20 backdrop-blur-xs"
-              data-hs-overlay-keyboard="false"
-            >
-              <div className="hs-overlay-open:mt-7 hs-overlay-open:opacity-100 hs-overlay-open:duration-500 md:mt-24 opacity-100 ease-out transition-all sm:max-w-4xl w-full m-3 mx-auto ">
-                <div className="flex flex-col bg-white border shadow-sm rounded-xl">
-                  <div className="flex justify-between items-center py-3 px-4 border-b">
-                    <h3 className="font-bold text-gray-800">Cohort 1 Alumni</h3>
-                    <button
-                      type="button"
-                      className="hs-dropdown-toggle inline-flex flex-shrink-0 justify-center items-center h-8 w-8 rounded-md text-gray-500 hover:text-gray-400 transition-all text-sm"
-                      data-hs-overlay="#hs-static-backdrop-modal"
-                    >
-                      <CloseOutlinedIcon />
-                    </button>
-                  </div>
-                  <div className="p-4 overflow-y-auto">
-                    <Cohort1 />
-                  </div>
-
-                  <div className="flex justify-between items-center gap-x-2 py-3 px-4 border-t">
-                    <button
-                      type="button"
-                      className="hs-dropdown-toggle py-3 px-6 inline-flex justify-center items-center gap-2 rounded-md border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 transition-all text-sm "
-                      data-hs-overlay="#hs-static-backdrop-modal"
-                    >
-                      Cancel
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section> */}
+          <Cohort2 />
+          <Cohort3 />
         </div>
       </div>
     </main>
