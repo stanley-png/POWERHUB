@@ -162,7 +162,9 @@ const Alumni = () => {
             Cohort 3 Alumni
           </p> */}
 
-          <section>
+          <Cohort1 />
+
+          {/* <section>
             <button
               type="button"
               className="py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-[#C1224F] text-white hover:bg-[#13ABC4] transition-all text-sm "
@@ -200,14 +202,11 @@ const Alumni = () => {
                     >
                       Cancel
                     </button>
-                    {/* <a className="py-3 px-6 inline-flex justify-center items-center gap-2 cursor-pointer rounded-md border border-transparent font-semibold bg-[#C1224F] text-white hover:bg-[#13ABC4] transition-all text-sm">
-                      Save
-                    </a> */}
                   </div>
                 </div>
               </div>
             </div>
-          </section>
+          </section> */}
         </div>
       </div>
     </main>
