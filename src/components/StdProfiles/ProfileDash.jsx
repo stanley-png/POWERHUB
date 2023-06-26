@@ -48,16 +48,8 @@ const ProfileDash = () => {
             <h1 className="font-extrabold text-xl text-gray-500 ">
               My Profile
             </h1>
-            {/* {!userProfileDetails ? (
-              <CreateProfile />
-            ) : (
-              <EditProfile
-                id={userProfileDetails.id}
-                editCurrentActivity={userProfileDetails.currentActivity}
-                editBio={userProfileDetails.bio}
-                editArticleBody={userProfileDetails.articleBody}
-              />
-            )} */}
+
+            <CreateProfile />
           </div>
 
           <section className="w-full ml-0 mt-5">
