@@ -39,13 +39,13 @@ const ManagePitches = () => {
     fetchArticles();
   }, []);
   const handleDelete = (id) => {
-    if (window.confirm("Are you sure you want to delete this topic?")) {
-      const topicRef = db.collection("blogArticles").doc(id);
+    if (window.confirm("Are you sure you want to delete this Project?")) {
+      const topicRef = db.collection("projectsPitches").doc(id);
 
       topicRef
         .delete()
         .then(() => {
-          toast.success("Article Deleted successfully!", {
+          toast.success("Project Deleted successfully!", {
             position: "top-center",
             autoClose: 3000,
             hideProgressBar: false,
@@ -88,16 +88,47 @@ const ManagePitches = () => {
                 </button>
               </div>
             </header>
-            <article className="mt-10 max-w-7xl flex flex-col gap-3 flex justify-between">
+            <article className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {pitches &&
                 pitches.map((pitch) => (
-                  <section key={pitch.id} className="flex w-full bg-red-500">
-                    <article className="w-64 bg-yellow-300">
-                      <img src={pitch.imageUrl} className="w-full" alt="" />
-                      <h1>{pitch.pitchTitle}</h1>
-                      <p
-                        dangerouslySetInnerHTML={{ __html: pitch.pitchBody }}
+                  <section
+                    key={pitch.id}
+                    className="group  rounded-xl shadow-md transition-all "
+                  >
+                    <article className="rounded-xl">
+                      <img
+                        src={pitch.imageUrl}
+                        className="w-full rounded-t-xl"
+                        alt=""
                       />
+                      <div className="p-2">
+                        <h1 className="font-bold text-lg mb-3 text-[#C1224F]">
+                          {pitch.pitchTitle}
+                        </h1>
+                        <p className=" text-md  font-semibold">
+                          Cohort : {pitch.cohort}
+                        </p>
+                        <p className=" text-md mb-3 font-semibold">
+                          For Incubation : {pitch.incubation}
+                        </p>
+                        <p
+                          dangerouslySetInnerHTML={{ __html: pitch.pitchBody }}
+                        />
+                      </div>
+                      <div className="flex justify-between">
+                        <button
+                          onClick={() => navigate("/Add-Pitch")}
+                          className="py-3 px-9 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-[#13ABC4]  text-white hover:bg-[#C1224F] text-sm "
+                        >
+                          Edit
+                        </button>
+                        <button
+                          onClick={() => handleDelete(pitch.id)}
+                          className="py-3 px-9 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-[#C1224F]  text-white hover:bg-[#C1224F] text-sm "
+                        >
+                          Delete
+                        </button>
+                      </div>
                     </article>
                   </section>
                 ))}
