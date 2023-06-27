@@ -35,9 +35,9 @@ const modules = {
 const AddPitch = () => {
   const user = useSelector(selectUser);
   const navigate = useNavigate();
-  const [articleHeader, setArticleHeader] = useState("");
-  const [articleBody, setArticleBody] = useState("");
-  const [articleImage, setArticleImage] = useState(null);
+  const [pitchTitle, setArticleHeader] = useState("");
+  const [pitchBody, setArticleBody] = useState("");
+  const [pitchImage, setPitchImage] = useState(null);
   const [imagePreview, setImagePreview] = useState(null);
   const [cohort, setCohort] = useState("");
   const [incubation, setIncubation] = useState("");
@@ -52,7 +52,7 @@ const AddPitch = () => {
 
   const handleImagePreview = (e) => {
     const file = e.target.files[0];
-    setArticleImage(file);
+    setPitchImage(file);
 
     if (file) {
       const reader = new FileReader();
@@ -69,9 +69,7 @@ const AddPitch = () => {
     // Calculate the reading time based on your preferred logic
     // For example, you can estimate 200 words per minute
     const wordsPerMinute = 200;
-    const words = articleBody
-      .split(" ")
-      .filter((word) => word.length > 0).length;
+    const words = pitchBody.split(" ").filter((word) => word.length > 0).length;
     const readingTime = Math.ceil(words / wordsPerMinute);
 
     return readingTime;
@@ -82,8 +80,8 @@ const AddPitch = () => {
 
     try {
       const uploadTask = storage
-        .ref(`projectsImages/${articleImage.name}`)
-        .put(articleImage);
+        .ref(`projectsImages/${pitchImage.name}`)
+        .put(pitchImage);
 
       uploadTask.on(
         "state_changed",
@@ -99,15 +97,15 @@ const AddPitch = () => {
         () => {
           storage
             .ref("projectsImages")
-            .child(articleImage.name)
+            .child(pitchImage.name)
             .getDownloadURL()
             .then((imageUrl) => {
               const blogsCollection = db.collection("projectsPitches");
 
               const blogData = {
-                articleHeader,
-                slug: articleHeader.replace(/\s/g, "-"),
-                articleBody,
+                pitchTitle,
+                slug: pitchTitle.replace(/\s/g, "-"),
+                pitchBody,
                 readingTime: calculateReadingTime(),
                 imageUrl,
                 cohort,
@@ -123,7 +121,7 @@ const AddPitch = () => {
                   setArticleBody("");
                   setCohort("");
                   setIncubation("");
-                  setArticleImage(null);
+                  setPitchImage(null);
                   setImagePreview(null);
                   toast.success("Pitch Project Added successfully!", {
                     position: "top-center",
@@ -210,7 +208,7 @@ const AddPitch = () => {
                 Project Title
               </label>
               <input
-                value={articleHeader}
+                value={pitchTitle}
                 onChange={(e) => setArticleHeader(e.target.value)}
                 type="text"
                 className="py-3 px-4 block w-full border-gray-400 border rounded-md text-sm focus:border-[#13ABC4] focus:ring-[#13ABC4] mb-3"
@@ -257,7 +255,7 @@ const AddPitch = () => {
                 Project Content
               </label>
               <ReactQuill
-                value={articleBody}
+                value={pitchBody}
                 onChange={handleBlogBodyChange}
                 modules={modules}
                 theme="snow"
