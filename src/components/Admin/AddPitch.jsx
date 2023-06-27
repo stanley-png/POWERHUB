@@ -39,6 +39,8 @@ const AddPitch = () => {
   const [articleBody, setArticleBody] = useState("");
   const [articleImage, setArticleImage] = useState(null);
   const [imagePreview, setImagePreview] = useState(null);
+  const [cohort, setCohort] = useState("");
+  const [incubation, setIncubation] = useState("");
 
   const authorizedEmails = env.AUTHORIZED_EMAILS
     ? env.AUTHORIZED_EMAILS.split(",")
@@ -209,6 +211,42 @@ const AddPitch = () => {
                 className="py-3 px-4 block w-full border-gray-400 border rounded-md text-sm focus:border-[#13ABC4] focus:ring-[#13ABC4] mb-3"
                 placeholder="Event Title or Article Header"
               />{" "}
+              <br />
+              <div className="flex flex-col w-full mx-wd2 mx-auto rounded-lg">
+                <label className="block text-sm text-gray-700 font-medium ">
+                  Cohort
+                </label>
+                <select
+                  className=" p-2 cursor-pointer bg-white border rounded-md shadow-sm outline-none "
+                  value={cohort}
+                  onChange={(e) => setCohort(e.target.value)}
+                >
+                  <option value="" disabled>
+                    Select Cohort
+                  </option>
+                  <option value="Cohort 1">Cohort 1</option>
+                  <option value="Cohort 2">Cohort 2</option>
+                  <option value="Cohort 3">Cohort 3</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+              <br />
+              <div className="flex flex-col w-full mx-wd2 mx-auto rounded-lg">
+                <label className="block text-sm text-gray-700 font-medium ">
+                  Ready For Incubation
+                </label>
+                <select
+                  className=" p-2 cursor-pointer bg-white border rounded-md shadow-sm outline-none "
+                  value={incubation}
+                  onChange={(e) => setIncubation(e.target.value)}
+                >
+                  <option value="" disabled>
+                    Select Yes or No
+                  </option>
+                  <option value="Yes">Yes</option>
+                  <option value="No">No</option>
+                </select>
+              </div>
               <br />
               <label htmlFor="CatName" className="font-semibold">
                 Project Content
