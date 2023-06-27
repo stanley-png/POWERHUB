@@ -9,6 +9,7 @@ const Dashboard = () => {
   const [totalCoursesCount, setTotalCoursesCount] = useState(0);
   const [publishedBlogsCount, setPublishedBlogsCount] = useState(0);
   const [ideasCount, setIdeasCount] = useState(0);
+  const [pitchCount, setPitchCount] = useState(0);
 
   useEffect(() => {
     const fetchTotalCoursesCount = async () => {
@@ -43,11 +44,11 @@ const Dashboard = () => {
 
     const fetchPitchDecksForIncubationCount = async () => {
       try {
-        const blogsSnapshot = await db.collection("specialization").get();
-        const publishedBlogsCount = blogsSnapshot.size;
-        setPublishedBlogsCount(publishedBlogsCount);
+        const pitchSnapshot = await db.collection("projectsPitches").get();
+        const allPitchDeckCount = pitchSnapshot.size;
+        setPitchCount(allPitchDeckCount);
       } catch (error) {
-        console.log("Error fetching published blogs count", error);
+        console.log("Error fetching pitch deck count", error);
       }
     };
 
@@ -148,7 +149,7 @@ const Dashboard = () => {
 
                   <div class="text-center">
                     <h3 class="text-3xl sm:text-4xl lg:text-5xl font-semibold text-gray-800 ">
-                      {publishedBlogsCount}
+                      {pitchCount}
                     </h3>
                   </div>
                 </div>
