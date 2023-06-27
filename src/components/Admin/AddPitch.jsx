@@ -80,7 +80,7 @@ const AddPitch = () => {
 
     try {
       const uploadTask = storage
-        .ref(`articleImages/${articleImage.name}`)
+        .ref(`projectsImages/${articleImage.name}`)
         .put(articleImage);
 
       uploadTask.on(
@@ -96,11 +96,11 @@ const AddPitch = () => {
         },
         () => {
           storage
-            .ref("articleImages")
+            .ref("projectsImages")
             .child(articleImage.name)
             .getDownloadURL()
             .then((imageUrl) => {
-              const blogsCollection = db.collection("blogArticles");
+              const blogsCollection = db.collection("projectsPitches");
 
               const blogData = {
                 articleHeader,
@@ -200,7 +200,7 @@ const AddPitch = () => {
               </div>
               <br />
               <label htmlFor="title" className="font-semibold">
-                Title
+                Project Title
               </label>
               <input
                 value={articleHeader}
@@ -211,7 +211,7 @@ const AddPitch = () => {
               />{" "}
               <br />
               <label htmlFor="CatName" className="font-semibold">
-                Article Content
+                Project Content
               </label>
               <ReactQuill
                 value={articleBody}
@@ -225,7 +225,7 @@ const AddPitch = () => {
                   onClick={handleCreateBlog}
                   className="py-3 px-6 inline-flex justify-center items-center gap-2 cursor-pointer rounded-md border border-transparent font-semibold bg-[#C1224F] text-white hover:bg-[#13ABC4] transition-all text-sm"
                 >
-                  Publish
+                  Save
                 </button>
               </div>
             </section>
