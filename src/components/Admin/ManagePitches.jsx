@@ -88,13 +88,17 @@ const ManagePitches = () => {
                 </button>
               </div>
             </header>
-            <article className="mt-10 max-w-7xl flex flex-col gap-3">
+            <article className="mt-10 max-w-7xl flex flex-col gap-3 flex justify-between">
               {pitches &&
                 pitches.map((pitch) => (
-                  <section key={pitch.id}>
-                    <img src={pitch.imageUrl} alt="" />
-                    <h1>{pitch.pitchTitle}</h1>
-                    <p>{pitch.pitchBody}</p>
+                  <section key={pitch.id} className="flex w-full bg-red-500">
+                    <article className="w-64 bg-yellow-300">
+                      <img src={pitch.imageUrl} className="w-full" alt="" />
+                      <h1>{pitch.pitchTitle}</h1>
+                      <p
+                        dangerouslySetInnerHTML={{ __html: pitch.pitchBody }}
+                      />
+                    </article>
                   </section>
                 ))}
             </article>
