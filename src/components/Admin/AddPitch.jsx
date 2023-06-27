@@ -180,6 +180,7 @@ const AddPitch = () => {
             </header>
 
             <section className="max-w-7xl mt-10 border border-gray-600 rounded-md p-4">
+              <ToastContainer />
               <div>
                 <label className="font-semibold">Add Cover Image</label>
                 <input
