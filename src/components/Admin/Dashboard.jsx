@@ -41,9 +41,20 @@ const Dashboard = () => {
       }
     };
 
+    const fetchPitchDecksForIncubationCount = async () => {
+      try {
+        const blogsSnapshot = await db.collection("specialization").get();
+        const publishedBlogsCount = blogsSnapshot.size;
+        setPublishedBlogsCount(publishedBlogsCount);
+      } catch (error) {
+        console.log("Error fetching published blogs count", error);
+      }
+    };
+
     fetchTotalCoursesCount();
     fetchPublishedBlogsCount();
     fetchTotalIdeasCount();
+    fetchPitchDecksForIncubationCount();
   }, []);
 
   const authorizedEmails = [
@@ -118,6 +129,20 @@ const Dashboard = () => {
                     <span class="w-2 h-2 inline-block bg-[#C1224F] rounded-full mr-2"></span>
                     <span class="text-xs font-semibold uppercase text-gray-600">
                       Submitted Specializations
+                    </span>
+                  </div>
+
+                  <div class="text-center">
+                    <h3 class="text-3xl sm:text-4xl lg:text-5xl font-semibold text-gray-800 ">
+                      {publishedBlogsCount}
+                    </h3>
+                  </div>
+                </div>
+                <div class="flex flex-col gap-y-3 lg:gap-y-5 p-4 md:p-5 bg-white border shadow-sm rounded-xl">
+                  <div class="inline-flex justify-center items-center">
+                    <span class="w-2 h-2 inline-block bg-[#C1224F] rounded-full mr-2"></span>
+                    <span class="text-xs font-semibold uppercase text-gray-600">
+                      Pitch Decks
                     </span>
                   </div>
 
