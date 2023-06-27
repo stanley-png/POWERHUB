@@ -157,7 +157,7 @@ const AddPitch = () => {
             <header className="max-w-7xl mb-6 flex justify-between">
               <div>
                 <h1 class="block text-2xl font-bold text-gray-800 sm:text-3xl">
-                  Create Article
+                  +Add Project
                 </h1>
                 <p class="mt-2 text-lg text-gray-800 ">
                   Make sure you fill all the sections and add image.
@@ -168,7 +168,7 @@ const AddPitch = () => {
                   onClick={() => navigate("/ManageArticles")}
                   className="py-3 px-9 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-[#13ABC4]  text-white hover:bg-[#C1224F] text-sm "
                 >
-                  View Articles
+                  View Projects
                 </button>
               </div>
             </header>
