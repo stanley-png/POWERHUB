@@ -22,6 +22,7 @@ import ProfileDash from './components/StdProfiles/ProfileDash';
 import Graduation from './components/Graduation';
 import PostGraduation from './components/Admin/PostGraduation';
 import AddPitch from './components/Admin/AddPitch';
+import ManagePitches from './components/Admin/ManagePitches';
 
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -41,6 +42,7 @@ function App() {
         <Route path="/idea-submission" element={<SubmitIdea />} />
         <Route path="/specialization" element={<Specialization />} />
         <Route path="/Add-Pitch" element={<AddPitch />} />
+        <Route path="/ManagePitches" element={<ManagePitches />} />
         <Route path="/graduation" element={<Graduation />} />
         <Route path="/update-profile" element={<ProfileDash/>}/>
         <Route path="/alumni" element={<Alumni />} />

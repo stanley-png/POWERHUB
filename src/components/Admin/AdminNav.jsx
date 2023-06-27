@@ -255,24 +255,14 @@ const AdminNav = () => {
                 className="hs-accordion-content w-full overflow-hidden transition-[height] duration-300 hidden"
               >
                 <ul className="pt-2 pl-7">
-                  {/* {existingCourses.length > 0 ? (
-                    <>
-                      {existingCourses.map((course) => (
-                        <li key={course.id}>
-                          <li
-                            onClick={() => handleCourseClick(course.id)}
-                            className="flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-white hover:text-white rounded-md hover:bg-[#C1224F] cursor-pointer"
-                          >
-                            {course.courseName}
-                          </li>
-                        </li>
-                      ))}
-                    </>
-                  ) : (
-                    <section>
-                      <h1>No Existing Categories</h1>
-                    </section>
-                  )} */}
+                  <li>
+                    <a
+                      onClick={() => navigate("/ManagePitches")}
+                      className="flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-white hover:text-white rounded-md  cursor-pointer"
+                    >
+                      Pitches
+                    </a>
+                  </li>
 
                   <li>
                     <a

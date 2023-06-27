@@ -92,7 +92,7 @@ const AddPitch = () => {
           console.log("Upload progress: ", progress);
         },
         (error) => {
-          console.log("Error uploading blog image: ", error);
+          console.log("Error uploading pitch image: ", error);
         },
         () => {
           storage
@@ -130,7 +130,7 @@ const AddPitch = () => {
                   });
                 })
                 .catch((error) => {
-                  console.log("Error creating blog post: ", error);
+                  console.log("Error creating pitch: ", error);
                 });
             })
             .catch((error) => {
@@ -165,7 +165,7 @@ const AddPitch = () => {
               </div>
               <div>
                 <button
-                  onClick={() => navigate("/ManageArticles")}
+                  onClick={() => navigate("/ManagePitches")}
                   className="py-3 px-9 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-[#13ABC4]  text-white hover:bg-[#C1224F] text-sm "
                 >
                   View Projects
