@@ -6,6 +6,7 @@ import AdminNav from "./AdminNav";
 import { db } from "../../utils/firebase";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import EditPitch from "./EditPitch";
 
 const ManagePitches = () => {
   const user = useSelector(selectUser);
@@ -116,12 +117,14 @@ const ManagePitches = () => {
                         />
                       </div>
                       <div className="flex justify-between">
-                        <button
-                          onClick={() => navigate("/Add-Pitch")}
-                          className="py-3 px-9 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-[#13ABC4]  text-white hover:bg-[#C1224F] text-sm "
-                        >
-                          Edit
-                        </button>
+                        <EditPitch
+                          id={pitch.id}
+                          editPitchTitle={pitch.pitchTitle}
+                          editPitchBody={pitch.pitchBody}
+                          editCohort={pitch.cohort}
+                          editIncubation={pitch.incubation}
+                          editImagePreview={pitch.imageUrl}
+                        />
                         <button
                           onClick={() => handleDelete(pitch.id)}
                           className="py-3 px-9 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-[#C1224F]  text-white hover:bg-[#C1224F] text-sm "
