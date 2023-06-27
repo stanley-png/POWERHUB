@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import { db } from "../../../utils/firebase";
 import { ToastContainer, toast } from "react-toastify";
@@ -38,7 +38,21 @@ const formats = [
   "blockquote",
   "strike",
 ];
-const EditPitch = () => {
+const EditPitch = ({
+  id,
+  editPitchTitle,
+  editPitchBody,
+  editCohort,
+  editIncubation,
+  editImagePreview,
+  editProfileImage,
+}) => {
+  const [pitchTitle, setArticleHeader] = useState(editPitchTitle);
+  const [pitchBody, setArticleBody] = useState(editPitchBody);
+  const [cohort, setCohort] = useState(editCohort);
+  const [incubation, setIncubation] = useState(editIncubation);
+  const [pitchImage, setPitchImage] = useState(editProfileImage);
+  const [imagePreview, setImagePreview] = useState(editImagePreview);
   return <div>EditPitch</div>;
 };
 
