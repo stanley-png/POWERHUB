@@ -10,7 +10,7 @@ import "react-toastify/dist/ReactToastify.css";
 const ManagePitches = () => {
   const user = useSelector(selectUser);
   const navigate = useNavigate();
-  const [articles, setArticles] = React.useState([]);
+  const [pitches, setPitches] = React.useState([]);
 
   const authorizedEmails = [
     "evansnyamai98@gmail.com",
@@ -22,15 +22,15 @@ const ManagePitches = () => {
     // Fetch all blogs from Firestore
     const fetchArticles = async () => {
       try {
-        const blogsCollection = db.collection("projectsPitches");
-        const snapshot = await blogsCollection.get();
+        const pitchCollection = db.collection("projectsPitches");
+        const snapshot = await pitchCollection.get();
 
-        const articlesData = snapshot.docs.map((doc) => ({
+        const pitchData = snapshot.docs.map((doc) => ({
           id: doc.id,
           ...doc.data(),
         }));
 
-        setArticles(articlesData);
+        setPitches(pitchData);
       } catch (error) {
         console.log("Error fetching blogs: ", error);
       }
@@ -88,6 +88,16 @@ const ManagePitches = () => {
                 </button>
               </div>
             </header>
+            <article className="mt-10 max-w-7xl flex flex-col gap-3">
+              {pitches &&
+                pitches.map((pitch) => (
+                  <section key={pitch.id}>
+                    <img src={pitch.imageUrl} alt="" />
+                    <h1>{pitch.pitchTitle}</h1>
+                    <p>{pitch.pitchBody}</p>
+                  </section>
+                ))}
+            </article>
           </section>
         </section>
       )}
