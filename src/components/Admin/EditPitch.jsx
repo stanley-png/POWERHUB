@@ -53,6 +53,25 @@ const EditPitch = ({
   const [incubation, setIncubation] = useState(editIncubation);
   const [pitchImage, setPitchImage] = useState(editProfileImage);
   const [imagePreview, setImagePreview] = useState(editImagePreview);
+
+  const handleBlogBodyChange = (value) => {
+    setArticleBody(value);
+  };
+
+  const handleImagePreview = (e) => {
+    const file = e.target.files[0];
+    setPitchImage(file);
+
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = () => {
+        setImagePreview(reader.result);
+      };
+      reader.readAsDataURL(file);
+    } else {
+      setImagePreview(null);
+    }
+  };
   return <div>EditPitch</div>;
 };
 
