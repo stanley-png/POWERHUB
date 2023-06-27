@@ -110,6 +110,8 @@ const AddPitch = () => {
                 articleBody,
                 readingTime: calculateReadingTime(),
                 imageUrl,
+                cohort,
+                incubation,
                 displayName: user.displayName,
                 timestamp: firebase.firestore.FieldValue.serverTimestamp(),
               };
@@ -119,9 +121,11 @@ const AddPitch = () => {
                 .then(() => {
                   setArticleHeader("");
                   setArticleBody("");
+                  setCohort("");
+                  setIncubation("");
                   setArticleImage(null);
                   setImagePreview(null);
-                  toast.success("Content Updated successfully!", {
+                  toast.success("Pitch Project Added successfully!", {
                     position: "top-center",
                     autoClose: 3000,
                     hideProgressBar: false,
