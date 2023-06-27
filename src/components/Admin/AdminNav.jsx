@@ -201,6 +201,90 @@ const AdminNav = () => {
                 Hackathons
               </a>
             </li>
+            <li className="hs-accordion" id="projects-accordion">
+              <a
+                className="hs-accordion-toggle flex items-center gap-x-3.5 py-2 px-2.5 hs-accordion-active:text-white hs-accordion-active:hover:bg-transparent text-sm text-white hover:text-white rounded-md hover:bg-[#C1224F]"
+                href="javascript:;"
+              >
+                <svg
+                  className="w-3.5 h-3.5"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  viewBox="0 0 16 16"
+                >
+                  <path d="M1.5 0A1.5 1.5 0 0 0 0 1.5V13a1 1 0 0 0 1 1V1.5a.5.5 0 0 1 .5-.5H14a1 1 0 0 0-1-1H1.5z"></path>
+                  <path d="M3.5 2A1.5 1.5 0 0 0 2 3.5v11A1.5 1.5 0 0 0 3.5 16h6.086a1.5 1.5 0 0 0 1.06-.44l4.915-4.914A1.5 1.5 0 0 0 16 9.586V3.5A1.5 1.5 0 0 0 14.5 2h-11zM3 3.5a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 .5.5V9h-4.5A1.5 1.5 0 0 0 9 10.5V15H3.5a.5.5 0 0 1-.5-.5v-11zm7 11.293V10.5a.5.5 0 0 1 .5-.5h4.293L10 14.793z"></path>
+                </svg>
+                Pitch Decks
+                <svg
+                  className="hs-accordion-active:block ml-auto hidden w-3 h-3 text-white group-hover:text-white"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 16 16"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M2 11L8.16086 5.31305C8.35239 5.13625 8.64761 5.13625 8.83914 5.31305L15 11"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                  ></path>
+                </svg>
+                <svg
+                  className="hs-accordion-active:hidden ml-auto block w-3 h-3 text-white group-hover:text-white"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 16 16"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M2 5L8.16086 10.6869C8.35239 10.8637 8.64761 10.8637 8.83914 10.6869L15 5"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                  ></path>
+                </svg>
+              </a>
+
+              <div
+                id="projects-accordion-child"
+                className="hs-accordion-content w-full overflow-hidden transition-[height] duration-300 hidden"
+              >
+                <ul className="pt-2 pl-7">
+                  {/* {existingCourses.length > 0 ? (
+                    <>
+                      {existingCourses.map((course) => (
+                        <li key={course.id}>
+                          <li
+                            onClick={() => handleCourseClick(course.id)}
+                            className="flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-white hover:text-white rounded-md hover:bg-[#C1224F] cursor-pointer"
+                          >
+                            {course.courseName}
+                          </li>
+                        </li>
+                      ))}
+                    </>
+                  ) : (
+                    <section>
+                      <h1>No Existing Categories</h1>
+                    </section>
+                  )} */}
+
+                  <li>
+                    <a
+                      onClick={() => navigate("/Add-Pitch")}
+                      className="flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-white hover:text-white rounded-md bg-[#c9315c] hover:bg-[#C1224F] cursor-pointer"
+                    >
+                      Add Project
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </li>
             <li>
               <a
                 className="flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-white hover:text-white rounded-md hover:bg-blue-600-300"
