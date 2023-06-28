@@ -74,7 +74,7 @@ const EditPitch = ({
     }
   };
 
-  const updatePitch = async (e) => {
+  const updatePitch = (e) => {
     e.preventDefault();
     try {
       const uploadTask = storage
@@ -265,7 +265,7 @@ const EditPitch = ({
                 Cancel
               </button>
               <button
-                // onClick={handleUpdate}
+                onClick={updatePitch}
                 className="py-3 px-6 inline-flex justify-center items-center gap-2 cursor-pointer rounded-md border border-transparent font-semibold bg-[#C1224F] text-white hover:bg-[#13ABC4] transition-all text-sm"
               >
                 Save Changes
