@@ -100,9 +100,9 @@ const AddPitch = () => {
             .child(pitchImage.name)
             .getDownloadURL()
             .then((imageUrl) => {
-              const blogsCollection = db.collection("projectsPitches");
+              const pitchCollection = db.collection("projectsPitches");
 
-              const blogData = {
+              const pitchData = {
                 pitchTitle,
                 slug: pitchTitle.replace(/\s/g, "-"),
                 pitchBody,
@@ -114,8 +114,8 @@ const AddPitch = () => {
                 timestamp: firebase.firestore.FieldValue.serverTimestamp(),
               };
 
-              blogsCollection
-                .add(blogData)
+              pitchCollection
+                .add(pitchData)
                 .then(() => {
                   setArticleHeader("");
                   setArticleBody("");

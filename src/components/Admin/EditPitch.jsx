@@ -7,6 +7,7 @@ import hljs from "highlight.js";
 import "highlight.js/styles/github.css";
 import ReactQuill from "react-quill";
 import CloseOutlinedIcon from "@mui/icons-material/CloseOutlined";
+import { db, storage } from "../../utils/firebase";
 
 const modules = {
   syntax: {
@@ -75,7 +76,70 @@ const EditPitch = ({
 
   const updatePitch = async (e) => {
     e.preventDefault();
-    // await
+    try {
+      const uploadTask = storage
+        .ref(`usersProfilesImages/${pitchImage.name}`)
+        .put(pitchImage);
+
+      uploadTask.on(
+        "state_changed",
+        (snapshot) => {
+          const progress = Math.round(
+            (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+          );
+          console.log("Upload progress: ", progress);
+        },
+        (error) => {
+          console.log("Error uploading image: ", error);
+        },
+        () => {
+          storage
+            .ref("usersProfilesImages")
+            .child(pitchImage.name)
+            .getDownloadURL()
+            .then((imageUrl) => {
+              const pitchCollection = db.collection("usersProfiles").doc(id);
+
+              const pitchData = {
+                pitchTitle,
+                slug: pitchTitle.replace(/\s/g, "-"),
+                pitchBody,
+                imageUrl,
+                cohort,
+                incubation,
+              };
+
+              pitchCollection
+                .update(pitchData, { merge: true })
+                .then(() => {
+                  setArticleHeader("");
+                  setArticleBody("");
+                  setCohort("");
+                  setIncubation("");
+                  setPitchImage(null);
+                  setImagePreview(null);
+                  toast.success("Pitch Updated successfully!", {
+                    position: "top-center",
+                    autoClose: 3000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                  });
+                })
+                .catch((error) => {
+                  console.log("Error creating blog post: ", error);
+                });
+            })
+            .catch((error) => {
+              console.log("Error retrieving image URL: ", error);
+            });
+        }
+      );
+    } catch (error) {
+      console.log("Error creating blog post: ", error);
+    }
   };
   return (
     <section>
