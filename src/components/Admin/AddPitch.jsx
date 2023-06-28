@@ -282,31 +282,7 @@ const AddPitch = () => {
                     />
                   </div>
                 )}
-
-                {/* <Select
-                  className=" p-2 cursor-pointer bg-white border rounded-md shadow-sm outline-none "
-                  value={incubation}
-                  options={options}
-                  onChange={handleOptionChange}
-                /> */}
               </div>
-              {incubation && incubation.value === "Yes" && (
-                <div>
-                  <label className="block text-sm text-gray-700 font-medium mt-2">
-                    Company Incubating
-                  </label>
-                  <textarea
-                    required
-                    className="py-3 px-4 block w-full border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 border border-1"
-                    type="text"
-                    rows="5"
-                    name="member1"
-                    value={incubationCompany.member1 || ""}
-                    onChange={handleGroupMembersChange}
-                    placeholder="Enter the name of the company incubating this project "
-                  />
-                </div>
-              )}
               <br />
               <label htmlFor="CatName" className="font-semibold">
                 Project Content
