@@ -78,7 +78,7 @@ const EditPitch = ({
     e.preventDefault();
     try {
       const uploadTask = storage
-        .ref(`usersProfilesImages/${pitchImage.name}`)
+        .ref(`projectsImages/${pitchImage.name}`)
         .put(pitchImage);
 
       uploadTask.on(
@@ -94,11 +94,11 @@ const EditPitch = ({
         },
         () => {
           storage
-            .ref("usersProfilesImages")
+            .ref("projectsImages")
             .child(pitchImage.name)
             .getDownloadURL()
             .then((imageUrl) => {
-              const pitchCollection = db.collection("usersProfiles").doc(id);
+              const pitchCollection = db.collection("projectsPitches").doc(id);
 
               const pitchData = {
                 pitchTitle,
