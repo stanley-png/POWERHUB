@@ -14,6 +14,7 @@ import env from "dotenv";
 import { useNavigate } from "react-router-dom";
 import { selectUser } from "../../features/userSlice";
 import { db, storage } from "../../utils/firebase";
+import Select from "react-select";
 
 const modules = {
   syntax: {
@@ -32,6 +33,11 @@ const modules = {
   ],
 };
 
+const options = [
+  { value: "No", label: "No" },
+  { value: "Yes", label: "Yes" },
+];
+
 const AddPitch = () => {
   const user = useSelector(selectUser);
   const navigate = useNavigate();
@@ -42,6 +48,18 @@ const AddPitch = () => {
   const [cohort, setCohort] = useState("");
   const [incubation, setIncubation] = useState(null);
   const [incubationCompany, setIncubationCompany] = useState([]);
+
+  const handleOptionChange = (option) => {
+    setIncubation(option);
+  };
+
+  const handleGroupMembersChange = (event) => {
+    const { name, value } = event.target;
+    setIncubationCompany((prevMembers) => ({
+      ...prevMembers,
+      [name]: value,
+    }));
+  };
 
   const authorizedEmails = env.AUTHORIZED_EMAILS
     ? env.AUTHORIZED_EMAILS.split(",")
@@ -237,20 +255,38 @@ const AddPitch = () => {
               <br />
               <div className="flex flex-col w-full mx-wd2 mx-auto rounded-lg">
                 <label className="block text-sm text-gray-700 font-medium ">
-                  Ready For Incubation
+                  Project Incubation
                 </label>
-                <select
+                <Select
                   className=" p-2 cursor-pointer bg-white border rounded-md shadow-sm outline-none "
                   value={incubation}
-                  onChange={(e) => setIncubation(e.target.value)}
-                >
-                  <option value="" disabled>
+                  options={options}
+                  onChange={handleOptionChange}
+                />
+                {/* <option value="" disabled>
                     Select Yes or No
                   </option>
                   <option value="Yes">Yes</option>
-                  <option value="No">No</option>
-                </select>
+                  <option value="No">No</option> */}
               </div>
+              {incubation && incubation.value === "Yes" && (
+                <div>
+                  <label className="block text-sm text-gray-700 font-medium mt-2">
+                    Company Incubating
+                  </label>
+                  <textarea
+                    required
+                    className="py-3 px-4 block w-full border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 border border-1"
+                    type="text"
+                    rows="5"
+                    name="member1"
+                    value={incubationCompany.member1 || ""}
+                    onChange={handleGroupMembersChange}
+                    placeholder="Enter the name of the company incubating this project "
+                  />
+                  {/* Add more input fields for additional group members */}
+                </div>
+              )}
               <br />
               <label htmlFor="CatName" className="font-semibold">
                 Project Content
