@@ -114,15 +114,6 @@ const Dashboard = () => {
                       {ideasCount}
                     </h3>
                   </div>
-
-                  {/* <dl class="flex justify-center items-center divide-x divide-gray-200 ">
-                    <dt class="pr-3 flex items-center gap-1">
-                      <span class="inline-block text-sm">
-                        {signedUpUsersCount}
-                      </span>
-                      <span class="block text-sm text-gray-500">Profiles</span>
-                    </dt>
-                  </dl> */}
                 </div>
 
                 <div class="flex flex-col gap-y-3 lg:gap-y-5 p-4 md:p-5 bg-white border shadow-sm rounded-xl">
