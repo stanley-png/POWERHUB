@@ -32,7 +32,7 @@ const ViewAlumniProfile = () => {
 
   return (
     <main className="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
-      <section className="flex justify-between">
+      <section className="flex justify-between flex-wrap">
         <div className="text-center flex flex-col items-center">
           <img
             src={alumniData?.imageUrl}
@@ -48,10 +48,15 @@ const ViewAlumniProfile = () => {
             Follow
           </button>
         </div>
-        <section></section>
-        <article className="w-2/6">
-          <h1>Biography</h1>
-          <h1>{alumniData?.bio}</h1>
+        <section className="bg-white w-3/6 p-3 shadow-md">
+          <h1 className="font-bold text-lg mb-2">Biography</h1>
+          <p className="text-sm">{alumniData?.bio}</p>
+        </section>
+        <article className="md:w-1/6">
+          {/* <p className="text-sm">{alumniData?.bio}</p> */}
+
+          <h1 className="font-bold text-lg mb-1">Location</h1>
+          <p className="text-sm">{alumniData?.country}</p>
         </article>
       </section>
       {/* {alumniData?.fName} */}
