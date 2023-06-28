@@ -116,7 +116,7 @@ const ManagePitches = () => {
                           dangerouslySetInnerHTML={{ __html: pitch.pitchBody }}
                         />
                       </div>
-                      <div className="flex justify-between">
+                      <div className="flex justify-between mt-4 px-2 py-2">
                         <EditPitch
                           id={pitch.id}
                           editPitchTitle={pitch.pitchTitle}
@@ -127,7 +127,7 @@ const ManagePitches = () => {
                         />
                         <button
                           onClick={() => handleDelete(pitch.id)}
-                          className="py-3 px-9 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-[#C1224F]  text-white hover:bg-[#C1224F] text-sm "
+                          className="py-2 px-9 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-[#C1224F]  text-white hover:bg-[#C1224F] text-sm "
                         >
                           Delete
                         </button>
