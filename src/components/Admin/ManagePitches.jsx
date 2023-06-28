@@ -110,7 +110,10 @@ const ManagePitches = () => {
                           Cohort : {pitch.cohort}
                         </p>
                         <p className=" text-md mb-3 font-semibold">
-                          For Incubation : {pitch.incubation}
+                          For Incubation : {pitch.type || pitch.incubation}
+                        </p>
+                        <p className=" text-md mb-3 font-semibold">
+                          Incubated by : {pitch?.member1}
                         </p>
                         <p
                           dangerouslySetInnerHTML={{ __html: pitch.pitchBody }}

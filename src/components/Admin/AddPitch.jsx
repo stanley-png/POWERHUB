@@ -46,8 +46,8 @@ const AddPitch = () => {
   const [pitchImage, setPitchImage] = useState(null);
   const [imagePreview, setImagePreview] = useState(null);
   const [cohort, setCohort] = useState("");
-  const [incubation, setIncubation] = useState(null);
-  const [incubationCompany, setIncubationCompany] = useState([]);
+  const [incubation, setIncubation] = useState(false);
+  const [incubationCompany, setIncubationCompany] = useState("");
 
   const handleOptionChange = (option) => {
     setIncubation(option);
@@ -129,9 +129,7 @@ const AddPitch = () => {
                 imageUrl,
                 cohort,
                 incubation,
-                type: incubation.value,
-                incubationCompany:
-                  incubation.value === "Yes" ? incubationCompany : [],
+                incubationCompany: incubation ? incubationCompany : "",
                 displayName: user.displayName,
                 timestamp: firebase.firestore.FieldValue.serverTimestamp(),
               };
@@ -142,7 +140,8 @@ const AddPitch = () => {
                   setArticleHeader("");
                   setArticleBody("");
                   setCohort("");
-                  setIncubation("");
+                  setIncubation(false);
+                  setIncubationCompany("");
                   setPitchImage(null);
                   setImagePreview(null);
                   toast.success("Pitch Project Added successfully!", {
@@ -227,7 +226,7 @@ const AddPitch = () => {
               </div>
               <br />
               <label htmlFor="title" className="font-semibold">
-                Project Title
+                Project Title or Name
               </label>
               <input
                 value={pitchTitle}
@@ -260,12 +259,36 @@ const AddPitch = () => {
                 <label className="block text-sm text-gray-700 font-medium ">
                   Project Incubation
                 </label>
-                <Select
+                <select
+                  className=" p-2 cursor-pointer bg-white border rounded-md shadow-sm outline-none "
+                  value={incubation}
+                  onChange={(e) => setIncubation(e.target.value === "Yes")}
+                  required
+                >
+                  <option value={false}>No</option>
+                  <option value={true}>Yes</option>
+                </select>
+                {incubation && (
+                  <div>
+                    <label className="block text-sm text-gray-700 font-medium mt-2">
+                      Incubation Company:
+                    </label>
+                    <textarea
+                      rows="3"
+                      className="py-3 px-4 block w-full border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 border border-1"
+                      value={incubationCompany}
+                      onChange={(e) => setIncubationCompany(e.target.value)}
+                      required
+                    />
+                  </div>
+                )}
+
+                {/* <Select
                   className=" p-2 cursor-pointer bg-white border rounded-md shadow-sm outline-none "
                   value={incubation}
                   options={options}
                   onChange={handleOptionChange}
-                />
+                /> */}
               </div>
               {incubation && incubation.value === "Yes" && (
                 <div>
@@ -282,7 +305,6 @@ const AddPitch = () => {
                     onChange={handleGroupMembersChange}
                     placeholder="Enter the name of the company incubating this project "
                   />
-                  {/* Add more input fields for additional group members */}
                 </div>
               )}
               <br />
