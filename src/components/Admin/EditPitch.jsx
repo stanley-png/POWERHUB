@@ -72,6 +72,11 @@ const EditPitch = ({
       setImagePreview(null);
     }
   };
+
+  const updatePitch = async (e) => {
+    e.preventDefault();
+    // await
+  };
   return (
     <section>
       <ToastContainer />
