@@ -129,6 +129,9 @@ const AddPitch = () => {
                 imageUrl,
                 cohort,
                 incubation,
+                type: incubation.value,
+                incubationCompany:
+                  incubation.value === "Yes" ? incubationCompany : [],
                 displayName: user.displayName,
                 timestamp: firebase.firestore.FieldValue.serverTimestamp(),
               };
@@ -263,11 +266,6 @@ const AddPitch = () => {
                   options={options}
                   onChange={handleOptionChange}
                 />
-                {/* <option value="" disabled>
-                    Select Yes or No
-                  </option>
-                  <option value="Yes">Yes</option>
-                  <option value="No">No</option> */}
               </div>
               {incubation && incubation.value === "Yes" && (
                 <div>
