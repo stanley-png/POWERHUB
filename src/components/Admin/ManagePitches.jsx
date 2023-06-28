@@ -109,15 +109,24 @@ const ManagePitches = () => {
                         <p className=" text-md  font-semibold">
                           Cohort : {pitch.cohort}
                         </p>
-                        <p className=" text-md mb-3 font-semibold">
-                          For Incubation : {pitch.type || pitch.incubation}
-                        </p>
-                        <p className=" text-md mb-3 font-semibold">
-                          Incubated by : {pitch?.member1}
-                        </p>
-                        <p
-                          dangerouslySetInnerHTML={{ __html: pitch.pitchBody }}
-                        />
+                        {/* <p className=" text-md  font-semibold">
+                          For Incubation : {pitch.incubation}
+                        </p> */}
+                        {/* <p>Incubated: {pitch.incubation ? "Yes" : "No"}</p> */}
+                        {pitch.incubationCompany ? (
+                          <p className=" text-md mb-3 font-semibold">
+                            Incubated by : {pitch.incubationCompany}
+                          </p>
+                        ) : (
+                          <></>
+                        )}
+                        <div className="mt-5">
+                          <p
+                            dangerouslySetInnerHTML={{
+                              __html: pitch.pitchBody,
+                            }}
+                          />
+                        </div>
                       </div>
                       <div className="flex justify-between mt-4 px-2 py-2">
                         <EditPitch

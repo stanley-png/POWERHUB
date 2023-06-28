@@ -262,7 +262,7 @@ const AddPitch = () => {
                 <select
                   className=" p-2 cursor-pointer bg-white border rounded-md shadow-sm outline-none "
                   value={incubation}
-                  onChange={(e) => setIncubation(e.target.value === "Yes")}
+                  onChange={(e) => setIncubation(e.target.value === "true")}
                   required
                 >
                   <option value={false}>No</option>
