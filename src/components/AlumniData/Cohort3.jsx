@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { db } from "../../utils/firebase";
 import CloseOutlinedIcon from "@mui/icons-material/CloseOutlined";
+import { Link } from "react-router-dom";
 
 const Cohort3 = () => {
   const [profiles, setProfiles] = useState([]);
@@ -63,9 +64,14 @@ const Cohort3 = () => {
                             alt="Image Description"
                           />
                           <div class="mt-2 sm:mt-4">
-                            <h3 class="font-medium text-gray-800">
+                            <h3 class="font-medium  text-sm text-gray-800 mb-2">
                               {profile.fName}
                             </h3>
+                            <Link to={`/student/${profile.slug}`}>
+                              <button className="py-1 px-4 bg-red-500 text-white font-semibold rounded-md">
+                                View
+                              </button>
+                            </Link>
                           </div>
                         </div>
                       </div>
