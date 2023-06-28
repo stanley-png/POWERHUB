@@ -2,6 +2,8 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { selectUser } from "../../features/userSlice";
+import AssessmentIcon from "@mui/icons-material/Assessment";
+import AccountTreeIcon from "@mui/icons-material/AccountTree";
 
 const AdminNav = () => {
   const user = useSelector(selectUser);
@@ -107,6 +109,15 @@ const AdminNav = () => {
                   />
                 </svg>
                 Dashboard
+              </p>
+            </li>
+            <li>
+              <p
+                className="flex items-center gap-x-3 py-2 px-2.5 hover:bg-[#C1224F] text-sm text-white rounded-md cursor-pointer"
+                onClick={() => navigate("/admin")}
+              >
+                <AssessmentIcon />
+                Reports
               </p>
             </li>
 

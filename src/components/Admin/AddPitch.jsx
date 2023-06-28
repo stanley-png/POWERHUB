@@ -40,7 +40,8 @@ const AddPitch = () => {
   const [pitchImage, setPitchImage] = useState(null);
   const [imagePreview, setImagePreview] = useState(null);
   const [cohort, setCohort] = useState("");
-  const [incubation, setIncubation] = useState("");
+  const [incubation, setIncubation] = useState(null);
+  const [incubationCompany, setIncubationCompany] = useState([]);
 
   const authorizedEmails = env.AUTHORIZED_EMAILS
     ? env.AUTHORIZED_EMAILS.split(",")
