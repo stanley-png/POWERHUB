@@ -24,6 +24,7 @@ import PostGraduation from './components/Admin/PostGraduation';
 import AddPitch from './components/Admin/AddPitch';
 import ManagePitches from './components/Admin/ManagePitches';
 import ViewAlumniProfile from './components/AlumniData/ViewAlumniProfile';
+import UsersProfiles from './components/Admin/UsersProfiles';
 
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -54,6 +55,7 @@ function App() {
         <Route path="/ideas-submissions" element={<AdminProjectIdeas/>}/>
         <Route path="/module-specialization" element={<AdminModSpecialization/>}/>
         <Route path="/post-graduation" element={<PostGraduation/>}/>
+        <Route path="/usersProfiles" element={<UsersProfiles/>}/>
         <Route path="/top-projects" element={<TopProjects/>}/>
         <Route path="/success" element={<SuccessPage/>}/>
         <Route path="*" element={<PageNotFound />} />
