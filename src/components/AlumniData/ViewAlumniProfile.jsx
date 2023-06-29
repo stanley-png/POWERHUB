@@ -48,7 +48,7 @@ const ViewAlumniProfile = () => {
             Follow
           </button>
         </div>
-        <section className="bg-white w-3/6 p-3 shadow-md">
+        <section className="bg-white rounded-md w-3/6 p-3 shadow-md">
           <h1 className="font-bold text-lg mb-2">Biography</h1>
           <p className="text-sm">{alumniData?.bio}</p>
         </section>
@@ -57,6 +57,9 @@ const ViewAlumniProfile = () => {
 
           <h1 className="font-bold text-lg mb-1">Location</h1>
           <p className="text-sm">{alumniData?.country}</p>
+          <br />
+          <h1 className="font-bold text-lg mb-1">Cohort</h1>
+          <p className="text-sm">{alumniData?.cohort}</p>
         </article>
       </section>
       {/* {alumniData?.fName} */}
