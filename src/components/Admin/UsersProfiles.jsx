@@ -63,6 +63,9 @@ const UsersProfiles = () => {
             <section className="max-w-7xl min-h-[70vh]">
               <header>
                 <h1 className="text-2xl font-bold">Students Profiles</h1>
+                <div className="flex justify-between my-5">
+                  <p className="m-1 font-semibold">{totalProfiles} Profile </p>
+                </div>
               </header>
               <section className="mt-5 flex flex-wrap gap-10">
                 <div className="rounded-md border border-gray-500 p-3 shadow-md text-center flex flex-col items-center">
