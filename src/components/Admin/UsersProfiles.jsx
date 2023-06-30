@@ -68,18 +68,24 @@ const UsersProfiles = () => {
                 </div>
               </header>
               <section className="mt-5 flex flex-wrap gap-10">
-                <div className="rounded-md border border-gray-500 p-3 shadow-md text-center flex flex-col items-center">
-                  <img
-                    src=""
-                    alt=""
-                    className="rounded-full ring-1 ring-red-500 h-16 w-16"
-                  />
-                  <h1 className="font-bold text-sm">Evans Mutuku</h1>
-                  <p className="text-sm">Cohort 3</p>
-                  <button className="mt-3 py-1 px-4 bg-[#13ABC4] text-white hover:bg-[#C1224F] rounded-md text-sm">
-                    View Profile
-                  </button>
-                </div>
+                {profiles &&
+                  profiles.map((profile) => (
+                    <div
+                      key={profile.id}
+                      className="rounded-md border border-gray-500 p-3 shadow-md text-center flex flex-col items-center"
+                    >
+                      <img
+                        src={profile.imageUrl}
+                        alt=""
+                        className="rounded-full ring-1 ring-red-500 h-16 w-16"
+                      />
+                      <h1 className="font-bold text-sm">{profile.fName}</h1>
+                      <p className="text-sm">{profile.cohort}</p>
+                      <button className="mt-3 py-1 px-4 bg-[#13ABC4] text-white hover:bg-[#C1224F] rounded-md text-sm">
+                        View Profile
+                      </button>
+                    </div>
+                  ))}
               </section>
             </section>
           </section>
