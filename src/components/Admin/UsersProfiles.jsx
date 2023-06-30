@@ -3,6 +3,7 @@ import AdminNav from "./AdminNav";
 import { useSelector } from "react-redux";
 import { selectUser } from "../../features/userSlice";
 import { db } from "../../utils/firebase";
+import { Link } from "react-router-dom";
 
 const UsersProfiles = () => {
   const user = useSelector(selectUser);
@@ -82,11 +83,14 @@ const UsersProfiles = () => {
                       <h1 className="font-bold text-sm mt-3">
                         {profile.fName}
                       </h1>
-                      <p className="text-sm">{profile.country}</p>
+                      <p className="text">{profile.country}</p>
                       <p className="text-sm">{profile.cohort}</p>
-                      <button className="mt-3 py-1 px-4 bg-[#13ABC4] text-white hover:bg-[#C1224F] rounded-md text-sm">
-                        View Profile
-                      </button>
+                      <p className="text-sm">{profile.employment}</p>
+                      <Link to={`/student/${profile.slug}`}>
+                        <button className="mt-3 py-1 px-4 bg-[#13ABC4] text-white hover:bg-[#C1224F] rounded-md text-sm">
+                          View Profile
+                        </button>
+                      </Link>
                     </div>
                   ))}
               </section>
