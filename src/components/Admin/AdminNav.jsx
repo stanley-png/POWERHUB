@@ -214,7 +214,7 @@ const AdminNav = () => {
             </li>
             <li>
               <p
-                className="flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-white hover:text-white rounded-md hover:bg-blue-600-300"
+                className="flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-white hover:text-white rounded-md hover:bg-blue-600-300 cursor-pointer"
                 onClick={() => navigate("/usersProfiles")}
               >
                 <svg
