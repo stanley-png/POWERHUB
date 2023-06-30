@@ -77,9 +77,12 @@ const UsersProfiles = () => {
                       <img
                         src={profile.imageUrl}
                         alt=""
-                        className="rounded-full ring-1 ring-red-500 h-16 w-16"
+                        className="rounded-full ring-2 ring-[#C1224F] h-24 w-24"
                       />
-                      <h1 className="font-bold text-sm">{profile.fName}</h1>
+                      <h1 className="font-bold text-sm mt-3">
+                        {profile.fName}
+                      </h1>
+                      <p className="text-sm">{profile.country}</p>
                       <p className="text-sm">{profile.cohort}</p>
                       <button className="mt-3 py-1 px-4 bg-[#13ABC4] text-white hover:bg-[#C1224F] rounded-md text-sm">
                         View Profile
