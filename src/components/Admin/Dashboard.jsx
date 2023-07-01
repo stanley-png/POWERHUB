@@ -177,7 +177,15 @@ const Dashboard = () => {
                     </span>
                   </div>
 
-                  <div class="text-center"></div>
+                  <div>
+                    <a
+                      href=""
+                      target="_blank"
+                      className="flex items-center text-center gap-x-3.5 py-2 px-2.5 text-sm text-white hover:text-white rounded-md bg-[#C1224F] cursor-pointer"
+                    >
+                      Post Graduation
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
