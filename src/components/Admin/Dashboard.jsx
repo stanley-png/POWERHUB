@@ -10,6 +10,7 @@ const Dashboard = () => {
   const [publishedBlogsCount, setPublishedBlogsCount] = useState(0);
   const [ideasCount, setIdeasCount] = useState(0);
   const [pitchCount, setPitchCount] = useState(0);
+  const [profilesCount, setProfilesCount] = useState(0);
 
   useEffect(() => {
     const fetchTotalCoursesCount = async () => {
@@ -51,11 +52,21 @@ const Dashboard = () => {
         console.log("Error fetching pitch deck count", error);
       }
     };
+    const fetchLearnersProfiles = async () => {
+      try {
+        const profilesSnapshot = await db.collection("projectsPitches").get();
+        const profilesCount = profilesSnapshot.size;
+        setProfilesCount(profilesCount);
+      } catch (error) {
+        console.log("Error fetching profiles count", error);
+      }
+    };
 
     fetchTotalCoursesCount();
     fetchPublishedBlogsCount();
     fetchTotalIdeasCount();
     fetchPitchDecksForIncubationCount();
+    fetchLearnersProfiles();
   }, []);
 
   const authorizedEmails = [

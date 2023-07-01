@@ -73,7 +73,7 @@ const UsersProfiles = () => {
                   profiles.map((profile) => (
                     <div
                       key={profile.id}
-                      className="rounded-md border border-gray-500 p-3 shadow-md text-center flex flex-col items-center"
+                      className="rounded-md border border-[#13ABC4] p-3 shadow-md text-center flex flex-col items-center"
                     >
                       <img
                         src={profile.imageUrl}
@@ -91,6 +91,9 @@ const UsersProfiles = () => {
                           View Profile
                         </button>
                       </Link>
+                      {/* <button className="mt-3 py-1 px-4 bg-[#C1224F]  text-white hover:bg-[#13ABC4] rounded-md text-sm">
+                        Delete
+                      </button> */}
                     </div>
                   ))}
               </section>
