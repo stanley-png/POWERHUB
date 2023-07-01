@@ -179,9 +179,9 @@ const Dashboard = () => {
 
                   <div>
                     <a
-                      href=""
+                      href="https://canva.com"
                       target="_blank"
-                      className="flex items-center text-center gap-x-3.5 py-2 px-2.5 text-sm text-white hover:text-white rounded-md bg-[#C1224F] cursor-pointer"
+                      className="flex items-center justify-center gap-x-3.5 py-2 px-2.5 font-semibold text-sm text-white rounded-md bg-[#C1224F] hover:bg-[#13ABC4] cursor-pointer"
                     >
                       Post Graduation
                     </a>
