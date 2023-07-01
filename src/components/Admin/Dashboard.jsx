@@ -169,6 +169,16 @@ const Dashboard = () => {
                     </h3>
                   </div>
                 </div>
+                <div class="flex flex-col gap-y-3 lg:gap-y-5 p-4 md:p-5 bg-white border shadow-sm rounded-xl">
+                  <div class="inline-flex justify-center items-center">
+                    <span class="w-2 h-2 inline-block bg-[#C1224F] rounded-full mr-2"></span>
+                    <span class="text-xs font-semibold uppercase text-gray-600">
+                      Canva Reports
+                    </span>
+                  </div>
+
+                  <div class="text-center"></div>
+                </div>
               </div>
             </div>
           </div>
