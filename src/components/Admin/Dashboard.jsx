@@ -54,7 +54,7 @@ const Dashboard = () => {
     };
     const fetchLearnersProfiles = async () => {
       try {
-        const profilesSnapshot = await db.collection("projectsPitches").get();
+        const profilesSnapshot = await db.collection("usersProfiles").get();
         const profilesCount = profilesSnapshot.size;
         setProfilesCount(profilesCount);
       } catch (error) {
