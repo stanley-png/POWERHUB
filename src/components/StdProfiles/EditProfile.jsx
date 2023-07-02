@@ -17,6 +17,7 @@ const EditProfile = ({
   editCareer,
   editEmployment,
   editWebsite,
+  editEmail,
   editCohort,
   editImagePreview,
   editProfileImage,
@@ -31,7 +32,7 @@ const EditProfile = ({
   const [country, setCountry] = useState(editCountry);
   const [career, setCareer] = useState(editCareer);
   const [website, setWebsite] = useState(editWebsite);
-  const [email, setEmail] = useState(editWebsite);
+  const [email, setEmail] = useState(editEmail);
   const [cohort, setCohort] = useState(editCohort);
   const [articleImage, setArticleImage] = useState(editProfileImage);
   const [imagePreview, setImagePreview] = useState(editImagePreview);

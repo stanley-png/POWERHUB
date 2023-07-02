@@ -119,6 +119,7 @@ const UsersProfiles = () => {
                           editCareer={profile.career}
                           editEmployment={profile.employment}
                           editWebsite={profile.website}
+                          editEmail={profile.email}
                           editCohort={profile.cohort}
                           // editProfileImage={userData.cohort}
                           editImagePreview={profile.imageUrl}
