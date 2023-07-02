@@ -5,6 +5,7 @@ import { selectUser } from "../../features/userSlice";
 import { db } from "../../utils/firebase";
 import { Link, useNavigate } from "react-router-dom";
 import EditProfile from "../StdProfiles/EditProfile";
+import AdminCreateProfile from "./AdminCreateProfile";
 
 const UsersProfiles = () => {
   const user = useSelector(selectUser);
@@ -79,12 +80,7 @@ const UsersProfiles = () => {
                   </div>
                 </div>
                 <div>
-                  <button
-                    onClick={() => navigate("/ManagePitches")}
-                    className="py-3 px-9 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-[#13ABC4]  text-white hover:bg-[#C1224F] text-sm "
-                  >
-                    Create Profile
-                  </button>
+                  <AdminCreateProfile />
                 </div>
               </header>
               <section className="mt-5 flex flex-wrap gap-10">
