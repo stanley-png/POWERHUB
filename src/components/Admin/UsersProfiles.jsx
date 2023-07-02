@@ -86,14 +86,16 @@ const UsersProfiles = () => {
                       <p className="text">{profile.country}</p>
                       <p className="text-sm">{profile.cohort}</p>
                       <p className="text-sm">{profile.employment}</p>
-                      <Link to={`/student/${profile.slug}`}>
-                        <button className="mt-3 py-1 px-4 bg-[#13ABC4] text-white hover:bg-[#C1224F] rounded-md text-sm">
-                          View Profile
+                      <div className="flex gap-3">
+                        <Link to={`/student/${profile.slug}`}>
+                          <button className="mt-3 py-1 px-4 bg-[#13ABC4] text-white hover:bg-[#C1224F] rounded-md text-sm">
+                            View Profile
+                          </button>
+                        </Link>
+                        <button className="mt-3 py-1 px-4 bg-[#C1224F]  text-white hover:bg-[#13ABC4] rounded-md text-sm">
+                          Edit
                         </button>
-                      </Link>
-                      {/* <button className="mt-3 py-1 px-4 bg-[#C1224F]  text-white hover:bg-[#13ABC4] rounded-md text-sm">
-                        Delete
-                      </button> */}
+                      </div>
                     </div>
                   ))}
               </section>
