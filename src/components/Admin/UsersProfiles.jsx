@@ -3,12 +3,12 @@ import AdminNav from "./AdminNav";
 import { useSelector } from "react-redux";
 import { selectUser } from "../../features/userSlice";
 import { db } from "../../utils/firebase";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import EditProfile from "../StdProfiles/EditProfile";
 
 const UsersProfiles = () => {
   const user = useSelector(selectUser);
-
+  const navigate = useNavigate();
   const [profiles, setProfiles] = useState([]);
   const [totalProfiles, setTotalProfiles] = useState(0);
 
@@ -63,10 +63,28 @@ const UsersProfiles = () => {
           <AdminNav />
           <section className="md:mt-16 px-4 sm:px-6 md:mx-8 lg:pl-72">
             <section className="max-w-7xl min-h-[70vh]">
-              <header>
+              {/* <header>
                 <h1 className="text-2xl font-bold">Students Profiles</h1>
                 <div className="flex justify-between my-5">
                   <p className="m-1 font-semibold">{totalProfiles} Profile </p>
+                </div>
+              </header> */}
+              <header className="max-w-7xl mb-6 flex justify-between">
+                <div>
+                  <h1 className="text-2xl font-bold">Students Profiles</h1>
+                  <div className="flex justify-between my-5">
+                    <p className="m-1 font-semibold">
+                      {totalProfiles} Profile{" "}
+                    </p>
+                  </div>
+                </div>
+                <div>
+                  <button
+                    onClick={() => navigate("/ManagePitches")}
+                    className="py-3 px-9 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-[#13ABC4]  text-white hover:bg-[#C1224F] text-sm "
+                  >
+                    Create Profile
+                  </button>
                 </div>
               </header>
               <section className="mt-5 flex flex-wrap gap-10">
