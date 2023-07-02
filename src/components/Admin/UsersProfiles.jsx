@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import { selectUser } from "../../features/userSlice";
 import { db } from "../../utils/firebase";
 import { Link } from "react-router-dom";
+import EditProfile from "../StdProfiles/EditProfile";
 
 const UsersProfiles = () => {
   const user = useSelector(selectUser);
@@ -86,15 +87,28 @@ const UsersProfiles = () => {
                       <p className="text">{profile.country}</p>
                       <p className="text-sm">{profile.cohort}</p>
                       <p className="text-sm">{profile.employment}</p>
-                      <div className="flex gap-3">
+                      <div className="flex gap-3 mt-4">
                         <Link to={`/student/${profile.slug}`}>
-                          <button className="mt-3 py-1 px-4 bg-[#13ABC4] text-white hover:bg-[#C1224F] rounded-md text-sm">
+                          <button className=" py-3 px-4 bg-[#13ABC4] text-white hover:bg-[#C1224F] rounded-md text-sm">
                             View Profile
                           </button>
                         </Link>
-                        <button className="mt-3 py-1 px-4 bg-[#C1224F]  text-white hover:bg-[#13ABC4] rounded-md text-sm">
-                          Edit
-                        </button>
+
+                        <EditProfile
+                          id={profile?.id}
+                          editCurrentActivity={profile?.currentActivity}
+                          editFName={profile?.fName}
+                          editPhoneNumber={profile.phoneNumber}
+                          editGender={profile.gender}
+                          editBio={profile.bio}
+                          editCountry={profile.country}
+                          editCareer={profile.career}
+                          editEmployment={profile.employment}
+                          editWebsite={profile.website}
+                          editCohort={profile.cohort}
+                          // editProfileImage={userData.cohort}
+                          editImagePreview={profile.imageUrl}
+                        />
                       </div>
                     </div>
                   ))}
