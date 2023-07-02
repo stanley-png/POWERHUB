@@ -133,13 +133,13 @@ const AdminCreateProfile = () => {
       <button
         type="button"
         className="py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-[#C1224F] text-white hover:bg-[#13ABC4] transition-all text-sm "
-        data-hs-overlay={`#hs-static-backdrop-modal-4`}
+        data-hs-overlay="#hs-static-backdrop-modal-4"
       >
         Create Profile
       </button>
 
       <div
-        id="hs-static-backdrop-modal"
+        id="hs-static-backdrop-modal-4"
         className="hs-overlay hidden w-full h-full fixed top-0 left-0 overflow-x-hidden overflow-y-auto [--overlay-backdrop:static] bg-[#13ABC4] bg-opacity-20 backdrop-blur-xs"
         data-hs-overlay-keyboard="false"
       >
@@ -150,7 +150,7 @@ const AdminCreateProfile = () => {
               <button
                 type="button"
                 className="hs-dropdown-toggle inline-flex flex-shrink-0 justify-center items-center h-8 w-8 rounded-md text-gray-500 hover:text-gray-400 transition-all text-sm"
-                data-hs-overlay="#hs-static-backdrop-modal"
+                data-hs-overlay="#hs-static-backdrop-modal-4"
               >
                 <CloseOutlinedIcon />
               </button>
@@ -359,7 +359,7 @@ const AdminCreateProfile = () => {
               <button
                 type="button"
                 className="hs-dropdown-toggle py-3 px-6 inline-flex justify-center items-center gap-2 rounded-md border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 transition-all text-sm "
-                data-hs-overlay="#hs-static-backdrop-modal"
+                data-hs-overlay="#hs-static-backdrop-modal-4"
               >
                 Cancel
               </button>
