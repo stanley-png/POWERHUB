@@ -145,6 +145,7 @@ const ProfileDash = () => {
                         editCareer={userData.career}
                         editEmployment={userData.employment}
                         editWebsite={userData.website}
+                        editEmail={userData.email}
                         editCohort={userData.cohort}
                         // editProfileImage={userData.cohort}
                         editImagePreview={userData.imageUrl}
