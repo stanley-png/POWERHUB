@@ -2,6 +2,10 @@ import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { selectUser } from "../../features/userSlice";
 import { useNavigate } from "react-router-dom";
+import { db, storage } from "../../utils/firebase";
+import firebase from "firebase/compat/app";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const AdminCreateProfile = () => {
   const user = useSelector(selectUser);
@@ -13,6 +17,7 @@ const AdminCreateProfile = () => {
   const [bio, setBio] = useState("");
   const [cohort, setCohort] = useState("");
   const [website, setWebsite] = useState("");
+  const [email, setEmail] = useState("");
   const [currentActivity, setCurrentActivity] = useState("");
   const [employment, setEmployment] = useState("");
   const [career, setCareer] = useState("");
@@ -33,6 +38,94 @@ const AdminCreateProfile = () => {
     } else {
       setImagePreview(null);
     }
+  };
+  const handleCreateProfile = (e) => {
+    e.preventDefault();
+    db.collection("usersProfiles")
+      .where("email", "==", user.email)
+      .get()
+      .then((querySnapshot) => {
+        if (!querySnapshot.empty) {
+          setErrorMessage("You can't create more than one Profile");
+        } else {
+          try {
+            const uploadTask = storage
+              .ref(`usersProfilesImages/${articleImage.name}`)
+              .put(articleImage);
+
+            uploadTask.on(
+              "state_changed",
+              (snapshot) => {
+                const progress = Math.round(
+                  (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+                );
+                console.log("Upload progress: ", progress);
+              },
+              (error) => {
+                console.log("Error uploading image: ", error);
+              },
+              () => {
+                storage
+                  .ref("usersProfilesImages")
+                  .child(articleImage.name)
+                  .getDownloadURL()
+                  .then((imageUrl) => {
+                    const usersCollection = db.collection("usersProfiles");
+
+                    const blogData = {
+                      fName,
+                      slug: fName.replace(/\s/g, "-"),
+                      gender,
+                      country,
+                      phoneNumber,
+                      bio,
+                      cohort,
+                      website,
+                      currentActivity,
+                      employment,
+                      career,
+                      imageUrl,
+                      email,
+                      timestamp:
+                        firebase.firestore.FieldValue.serverTimestamp(),
+                    };
+
+                    usersCollection
+                      .add(blogData)
+                      .then(() => {
+                        setFName("");
+                        setPhoneNumber("");
+                        setBio("");
+                        setCareer("");
+                        setWebsite("");
+                        setEmail("");
+                        setCurrentActivity("");
+                        setArticleImage(null);
+                        setImagePreview(null);
+                        toast.success("Profile Created successfully!", {
+                          position: "top-center",
+                          autoClose: 3000,
+                          hideProgressBar: false,
+                          closeOnClick: true,
+                          pauseOnHover: true,
+                          draggable: true,
+                          progress: undefined,
+                        });
+                      })
+                      .catch((error) => {
+                        console.log("Error creating blog post: ", error);
+                      });
+                  })
+                  .catch((error) => {
+                    console.log("Error retrieving image URL: ", error);
+                  });
+              }
+            );
+          } catch (error) {
+            console.log("Error creating blog post: ", error);
+          }
+        }
+      });
   };
   return (
     <section>
