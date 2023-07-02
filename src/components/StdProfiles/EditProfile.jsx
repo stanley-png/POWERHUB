@@ -31,6 +31,7 @@ const EditProfile = ({
   const [country, setCountry] = useState(editCountry);
   const [career, setCareer] = useState(editCareer);
   const [website, setWebsite] = useState(editWebsite);
+  const [email, setEmail] = useState(editWebsite);
   const [cohort, setCohort] = useState(editCohort);
   const [articleImage, setArticleImage] = useState(editProfileImage);
   const [imagePreview, setImagePreview] = useState(editImagePreview);
@@ -54,7 +55,7 @@ const EditProfile = ({
   const handleUpdateProfile = (e) => {
     e.preventDefault();
     db.collection("usersProfiles")
-      .where("email", "==", user.email)
+      .where("email", "==", email)
       .get()
       .then(() => {
         try {
@@ -96,7 +97,7 @@ const EditProfile = ({
                     employment,
                     career,
                     imageUrl,
-                    // email: user?.email,
+                    email,
                     // uid: user.uid,
                     // displayName: user.displayName,
                     // timestamp:
@@ -111,6 +112,7 @@ const EditProfile = ({
                       setBio("");
                       setCareer("");
                       setWebsite("");
+                      setEmail("");
                       setCurrentActivity("");
                       setArticleImage(null);
                       setImagePreview(null);

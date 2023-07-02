@@ -216,7 +216,7 @@ const AdminCreateProfile = () => {
                     Email Address
                   </label>
                   <input
-                    type="number"
+                    type="email"
                     required
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
