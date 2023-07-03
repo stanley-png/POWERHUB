@@ -353,7 +353,7 @@ const Graduation = () => {
                             value={city}
                             onChange={(e) => setCity(e.target.value)}
                             className="py-3 px-4 block w-full border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 border border-1"
-                            placeholder="Briefly tell us area of expertise eg, Web dev, Python"
+                            placeholder="eg, Nairobi, Lagos"
                           />
                         </div>
 
